@@ -40,7 +40,7 @@ public:
     Vector(unsigned int dim);
     Vector(const std::vector<double>& data);
     Vector(const Vector& vec);
-    ~Vector();
+    virtual ~Vector();
 
     double operator[](unsigned int index) const;
     double& operator[](unsigned int index);
@@ -141,6 +141,7 @@ public:
     Vector Concatenate(const Vector& vec) const;
     Vector Repeat(unsigned int n) const;
     unsigned int Find(double value) const;
+    std::string ToString() const;
 
     static double Norm(const Vector& vec, unsigned int p = 2);
     static double Length(const Vector& vec);
