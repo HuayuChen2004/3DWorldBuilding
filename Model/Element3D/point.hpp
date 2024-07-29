@@ -13,11 +13,11 @@
 //         so that the point class can be used in many places
 //         and can be extended to support more operations
 // -----------------------------------------------------------
-//
-//
-//
-//
-//
+// date: 2024/7/29
+// author: Huayu Chen
+// edit: delete some math functions that are not suitable for the point class
+// reason: the point class should only contain operations that are suitable for points
+// -----------------------------------------------------------
 //更改记录
 //
 //
@@ -43,7 +43,6 @@ class Point
 //
 //
 public:
-    Point(unsigned int dim);
     Point(const vector<double>& coords);
     Point(const Point& p);
     Point(const Vector& vec);
@@ -54,29 +53,13 @@ public:
 
     double At(unsigned int index) const;
     void Translate(const Vector& vec);
-    void Translate(const double& dx, const double& dy);
-    void Scale(const double& factor);
-    void Scale(const double& sx, const double& sy);
-    void Rotate(const double& angle);
-    void Rotate(const double& angle, const Point& center);
-    void Reflect(const Point& p);
-    void Normalize();
+
     double DistanceFromOrigin() const;
     double DistanceFrom(const Point& p) const;
     bool operator==(const Point& p) const;
     bool operator!=(const Point& p) const;
-    Point operator+(const Point& p) const;
-    Point operator-(const Point& p) const;
-    Point operator*(const double& factor) const;
-    Point operator/(const double& factor) const;
-    double Dot(const Point& p) const;
-    Vector Cross(const Point& p) const;
-    double Angle(const Point& p) const;
-    double DistanceToLine(const Line& line) const;
-    Point ProjectToLine(const Line& line) const;
-    double DistanceToPlane(const Face3D& face) const;
-    Point ProjectToPlane(const Face3D& face) const;
-    bool IsZero() const;
+
+    bool IsOrigin() const;
     bool IsInside(const Face3D& face) const;
     bool IsOnBoundary(const Face3D& face) const;
     bool IsOnFace(const Face3D& face) const;
@@ -106,7 +89,7 @@ public:
 //
 private:
     unsigned int m_uiDim;
-    vector<double> m_vdCoords;
+    vector<double> m_vrCoords;
 
 
 };
