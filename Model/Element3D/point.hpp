@@ -18,11 +18,11 @@
 // edit: delete some math functions that are not suitable for the point class
 // reason: the point class should only contain operations that are suitable for points
 // -----------------------------------------------------------
-//更改记录
-//
-//
-//
-//
+// date: 2024/7/30
+// author: Huayu Chen
+// edit: add string representation for the point class
+// reason: to support the output of the point class in string format
+// -----------------------------------------------------------
 //
 //
 
@@ -31,11 +31,14 @@
 #define POINT_HPP
 
 #include <vector>
+#include <sstream>
+#include <string>
+#include <cmath>
 using namespace std;
 
 //
 class Vector;
-class Line;
+class Line3D;
 class Face3D;
 
 class Point
@@ -60,19 +63,17 @@ public:
     bool operator!=(const Point& p) const;
 
     bool IsOrigin() const;
-    bool IsInside(const Face3D& face) const;
-    bool IsOnBoundary(const Face3D& face) const;
-    bool IsOnFace(const Face3D& face) const;
-    bool IsInside(const Line& line) const;
-    bool IsOnEnd(const Line& line) const;
+
     Point Middle(const Point& p) const;
     Point Lerp(const Point& p, const double& t) const;
     Vector ToVector() const;
-    Vector ToVector(const Point& p) const;
+    
     void InsertDimension(unsigned int dim, double value = 0.0);
     void RemoveDimension(unsigned int dim);
     Point Copy() const;
-    std::string ToString() const;
+    string ToString() const;
+
+    ostream& operator<<(ostream& os) const;
 
     static double Distance(const Point& p1, const Point& p2);
     static double LengthFromOrigin(const Point& p);
@@ -81,6 +82,7 @@ public:
     static double Angle(const Point& p, const Point& q, const Point& r);
     static Point Middle(const Point& p, const Point& q);
     static Point Lerp(const Point& p, const Point& q, const double& t);
+    static Vector ToVector(const Point& p);
 
     static const unsigned int MAX_DIM {999u};
     static const unsigned int MIN_DIM {1u};

@@ -34,6 +34,9 @@
 #include <vector>
 #include <cmath>
 
+using namespace std;
+
+
 
 class Line3D;
 class Face3D;
@@ -47,6 +50,9 @@ public:
     virtual ~Point3D();
     Point3D& operator=(const Point3D& p);
 
+    double operator[](unsigned int index) const;
+    double& operator[](unsigned int index);
+
     void SetX(double x);
     void SetY(double y);
     void SetZ(double z);
@@ -58,19 +64,21 @@ public:
     bool operator==(const Point3D& p) const;
     bool operator!=(const Point3D& p) const;
 
-    Point3D AddVector(const std::vector<double>& v);
-    Point3D SubtractVector(const std::vector<double>& v);
+    Point3D AddVector(const vector<double>& v);
+    Point3D SubtractVector(const vector<double>& v);
 
     double DistanceToLine3d(const Line3D& line) const;
     double DistanceToFace3d(const Face3D& face) const;
 
-    bool IsOnLine3D(const Line3D& line) const;
-    bool IsOnPlane3D(const Face3D& face) const;
-
     Point3D ProjectToLine3D(const Line3D& line) const;
     Point3D ProjectToPlane3D(const Face3D& face) const;
 
-    std::vector<double> ToVector() const;
+    bool IsOnBoundary(const Face3D& face) const;
+    bool IsInside(const Line3D& line) const;
+    bool IsInside(const Face3D& face) const;
+    bool IsOnEnd(const Line3D& line) const;
+
+    
 
 private:
     double m_rX;
