@@ -16,12 +16,17 @@
 //         so that the point3d class can be used in many places
 //         and can be extended to support more operations
 // -----------------------------------------------------------
+// date: 2024/7/30
+// author: Huayu Chen
+// edit: add some relationship judgement functions for points and lines and faces
+//       add some distance calculation functions for points and lines and faces
+//       add const reference for point3d members
+// reason: to support more operations on points and lines and faces
+//         and to make the code more readable and efficient
+// -----------------------------------------------------------
+// date: 2024/8/1
+// author: Huayu Chen
 //
-//
-//
-//
-//
-//更改记录
 //
 //
 //
@@ -56,10 +61,6 @@ public:
     void SetX(double x);
     void SetY(double y);
     void SetZ(double z);
-
-    double GetX() const;
-    double GetY() const;
-    double GetZ() const;
     
     bool operator==(const Point3D& p) const;
     bool operator!=(const Point3D& p) const;
@@ -78,7 +79,9 @@ public:
     bool IsInside(const Face3D& face) const;
     bool IsOnEnd(const Line3D& line) const;
 
-    
+    const double& X{m_rX};
+    const double& Y{m_rY};
+    const double& Z{m_rZ};
 
 private:
     double m_rX;

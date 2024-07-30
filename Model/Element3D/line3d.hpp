@@ -32,6 +32,7 @@
 using namespace std;
 
 class Point3D;
+class Face3D;
 
 class Line3D {
 public:
@@ -68,6 +69,8 @@ public:
     static bool IsPerpendicular(const Line3D& line1, const Line3D& line2);
     static bool IsCoincident(const Line3D& line1, const Line3D& line2);
     static bool IsPointOnLine(const Point3D& p, const Line3D& line);
+
+    Face3D PerpendicularPlane() const;
 
     Point3D GetP1() const;
     Point3D GetP2() const;
