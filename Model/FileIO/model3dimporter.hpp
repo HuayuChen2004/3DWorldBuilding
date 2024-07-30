@@ -12,7 +12,7 @@
 #define IMPORTER_HPP
 //
 //
-#include "../Model/Model3D/model3d.hpp"
+#include "../Model3D/model3d.hpp"
 //
 #include <string>
 //
@@ -49,7 +49,7 @@ public:
     //
     //
     // in this hw, storage is used to store model3d
-    virtual Model3D* Load(const string& path) const;
+    virtual Model3D Load(const string& path) const;
     //
     //
     //

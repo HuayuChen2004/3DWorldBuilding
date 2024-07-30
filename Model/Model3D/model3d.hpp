@@ -89,15 +89,15 @@ public:
 
     void DisplayAllFaces() const;
     void DeleteFace(int index);
-    void AddFace(Point3D p1, Point3D p2, Point3D p3);
+    void AddFace(Face3D& face);
     void DisplayFacePoints(int index) const;
-    void ModifyFacePoint(int index, Point3D new_point);
+    void ModifyFacePoint(int index, Point3D& new_point);
 
     void DisplayAllLines() const;
     void DeleteLine(int index);
-    void AddLine(Point3D p1, Point3D p2);
+    void AddLine(Line3D& line);
     void DisplayLinePoints(int index) const;
-    void ModifyLinePoint(int index, Point3D new_point);
+    void ModifyLinePoint(int index, Point3D& new_point);
 
     void DisplayStatistics() const;
 

@@ -13,9 +13,11 @@
 //
 //
 //
-#include "../Storage/storage.hpp"
+
 //
 #include <string>
+#include "../Model3D/model3d.hpp"
+
 //
 using namespace std;
 //
@@ -25,8 +27,9 @@ using namespace std;
 //
 //
 //
+class Model3D;
 //
-class Exporter
+class Model3DExporter
 {
     //
     //
@@ -44,7 +47,7 @@ public:
     //
     //
     //
-    void Save(const string& path, const Storage& storage) const;
+    void Save(const string& path, const Model3D& model) const;
     //
     //
     //
