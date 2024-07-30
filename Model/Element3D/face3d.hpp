@@ -55,9 +55,10 @@ public:
 private:
 // if the face is initiated with a line and a point, 
 // convert the line to two points that the line is made up of 
-    Point3D* p1;
-    Point3D* p2;
-    Point3D* p3;
+    Point3D* m_pp1;
+    Point3D* m_pp2;
+    Point3D* m_pp3;
+
 };
 
 
