@@ -28,6 +28,7 @@ public:
     Face3D(const Line3D& l1, const Line3D& l2);
     Face3D(const Face3D& face);
     virtual ~Face3D();
+    Face3D& operator=(const Face3D& face);
 
     bool operator==(const Face3D& face) const;
     bool operator!=(const Face3D& face) const;

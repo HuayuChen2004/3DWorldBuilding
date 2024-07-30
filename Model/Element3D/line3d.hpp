@@ -39,6 +39,7 @@ public:
     Line3D(const Point3D& p1, const Point3D& p2);
     Line3D(const Line3D& line);
     virtual ~Line3D();
+    Line3D& operator=(const Line3D& line);
 
     double Distance(const Point3D& p) const;
     double Distance(const Line3D& line) const;

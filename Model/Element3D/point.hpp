@@ -38,18 +38,17 @@ using namespace std;
 
 //
 class Vector;
-class Line3D;
-class Face3D;
 
 class Point
 {
 //
 //
 public:
-    Point(const vector<double>& coords);
+    Point(const vector<double>& coords);  
     Point(const Point& p);
     Point(const Vector& vec);
     virtual ~Point();
+    Point& operator=(const Point& p);
 
     double operator[](unsigned int index) const;
     double& operator[](unsigned int index);
@@ -68,8 +67,6 @@ public:
     Point Lerp(const Point& p, const double& t) const;
     Vector ToVector() const;
     
-    void InsertDimension(unsigned int dim, double value = 0.0);
-    void RemoveDimension(unsigned int dim);
     Point Copy() const;
     string ToString() const;
 
@@ -77,7 +74,6 @@ public:
 
     static double Distance(const Point& p1, const Point& p2);
     static double LengthFromOrigin(const Point& p);
-    static double Length(const Point& p, const Point& q);
     static double AngleFromOrigin(const Point& p, const Point& q);
     static double Angle(const Point& p, const Point& q, const Point& r);
     static Point Middle(const Point& p, const Point& q);

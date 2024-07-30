@@ -38,20 +38,22 @@
 
 #include <vector>
 #include <cmath>
+#include "point.hpp"
 
 using namespace std;
-
-
 
 class Line3D;
 class Face3D;
 
-class Point3D
+
+class Point3D: public Point
 {
 public:
-    Point3D(double x, double y, double z);
+    Point3D(double x, double y, double z);  
+    // remember to add const unsigned int& Dim{3} in the cpp file
+    Point3D(const vector<double>& coords);
     Point3D(const Point3D& p);
-    Point3D(const std::vector<double>& v);
+    Point3D(const vector<double>& v);
     virtual ~Point3D();
     Point3D& operator=(const Point3D& p);
 
@@ -61,15 +63,12 @@ public:
     void SetX(double x);
     void SetY(double y);
     void SetZ(double z);
-    
-    bool operator==(const Point3D& p) const;
-    bool operator!=(const Point3D& p) const;
 
     Point3D AddVector(const vector<double>& v);
     Point3D SubtractVector(const vector<double>& v);
 
-    double DistanceToLine3d(const Line3D& line) const;
-    double DistanceToFace3d(const Face3D& face) const;
+    double DistanceToLine3D(const Line3D& line) const;
+    double DistanceToFace3D(const Face3D& face) const;
 
     Point3D ProjectToLine3D(const Line3D& line) const;
     Point3D ProjectToPlane3D(const Face3D& face) const;
