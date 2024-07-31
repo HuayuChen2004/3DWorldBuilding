@@ -1,4 +1,15 @@
-//
+// this is the header file of the model3dimporter class
+// the class model3dimporter is a class that imports 3D models from files
+// the class model3dimporter is a base class for other model3d importers
+// the class model3dimporter has a virtual function Load that loads a model3d from a file
+// edit logging:
+// -----------------------------------------------------------
+// date: 2024/7/31
+// author: Huayu Chen
+// edit: init model3dimporter class
+//       add Load function
+// reason: to support importing 3D models from files
+// -----------------------------------------------------------
 //
 //
 //
