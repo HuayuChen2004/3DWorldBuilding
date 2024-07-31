@@ -53,7 +53,6 @@ public:
     // remember to add const unsigned int& Dim{3} in the cpp file
     Point3D(const vector<double>& coords);
     Point3D(const Point3D& p);
-    Point3D(const vector<double>& v);
     virtual ~Point3D();
     Point3D& operator=(const Point3D& p);
 

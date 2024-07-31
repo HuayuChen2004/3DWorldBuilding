@@ -87,19 +87,19 @@ public:
     virtual ~Model3D();
     Model3D& operator=(const Model3D& model);
 
-    void DisplayAllFaces() const;
+    // void DisplayAllFaces() const;
     void DeleteFace(int index);
     void AddFace(Face3D& face);
-    void DisplayFacePoints(int index) const;
+    // void DisplayFacePoints(int index) const;
     void ModifyFacePoint(int index, Point3D& new_point);
 
-    void DisplayAllLines() const;
+    // void DisplayAllLines() const;
     void DeleteLine(int index);
     void AddLine(Line3D& line);
-    void DisplayLinePoints(int index) const;
+    // void DisplayLinePoints(int index) const;
     void ModifyLinePoint(int index, Point3D& new_point);
 
-    void DisplayStatistics() const;
+    // void DisplayStatistics() const;
 
 private:
 // use shared pointer because the elements are shared among different faces and lines
