@@ -12,7 +12,13 @@
 //       add functions to interact with the viewer
 // reason: to support various operations on the model and interactions with the viewer
 // -----------------------------------------------------------
-//
+// date: 2024/8/1
+// author: Huayu Chen
+// edit: add HandleArguments function
+//       init Argument and Response classes
+// reason: to support handling arguments from the viewer
+//         and returning responses to the viewer
+// -----------------------------------------------------------
 //
 //
 //
@@ -53,13 +59,46 @@ using namespace std;
 //
 class Argument
 {
+public:
+    enum class ArgumentKey {
+        IMPORT_3D_MODEL,
+        EXPORT_3D_MODEL,
+        DISPLAY_ALL_FACES,
+        DELETE_FACE,
+        ADD_FACE,
+        DISPLAY_FACE_POINTS,
+        MODIFY_FACE_POINT,
+        DISPLAY_ALL_LINES,
+        ADD_LINE,
+        DELETE_LINE,
+        DISPLAY_LINE_POINTS,
+        MODIFY_LINE_POINT,
+        DISPLAY_STATISTICS,
+        UNKNOWN
+    };
+    Argument();
+    Argument(ArgumentKey key, string value);
+    Argument& operator=(const Argument& argument);
+    virtual ~Argument();
+    ArgumentKey GetName() const;
+    string GetValue() const;
+private:
+    ArgumentKey m_key;
+    string m_value;
+
 };
 //
 //
 //
 class Response
 {
+public:
+    Response();
+    Response& operator=(const Response& response);
+    virtual ~Response();
 };
+
+
 
 //
 //
