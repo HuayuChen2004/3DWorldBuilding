@@ -19,6 +19,11 @@
 // reason: to support handling arguments from the viewer
 //         and returning responses to the viewer
 // -----------------------------------------------------------
+// date: 2024/8/2
+// author: Huayu Chen
+// edit: init Response class
+// reason: to support handling some errors
+// -----------------------------------------------------------
 //
 //
 //
@@ -77,10 +82,10 @@ public:
         UNKNOWN
     };
     Argument();
-    Argument(ArgumentKey key, string value);
+    Argument(ArgumentKey key, vector<string> values);
     Argument& operator=(const Argument& argument);
     virtual ~Argument();
-    ArgumentKey GetName() const;
+    ArgumentKey GetKey() const;
     string GetValue() const;
 private:
     ArgumentKey m_key;
@@ -93,9 +98,18 @@ private:
 class Response
 {
 public:
-    Response();
+    enum class ResponseKey {
+        EMPTY_PATH,
+        INVALID_PATH
+    };
+    Response(ResponseKey key, vector<string> values);
     Response& operator=(const Response& response);
     virtual ~Response();
+    ResponseKey GetKey() const;
+    string GetValue() const;
+private:
+    ResponseKey m_key;
+    string m_value;
 };
 
 

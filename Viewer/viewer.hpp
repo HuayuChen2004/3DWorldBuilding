@@ -90,7 +90,6 @@ public:
 private:
     void HandleResponses(vector<Response> responses);
     // list all the interfaces
-    void ShowModifyModel(Controller& controller);
     void ShowStartMenu(Controller& controller);
     void ShowImportModel(Controller& controller);
     void ShowExportModel(Controller& controller);
