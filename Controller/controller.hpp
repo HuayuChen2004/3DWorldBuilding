@@ -25,7 +25,13 @@
 // edit: init Response class
 // reason: to support handling some errors
 // -----------------------------------------------------------
-//
+// date: 2024/8/2
+// author: Huayu Chen
+// edit: add some error catch
+//       add GetInstance function
+// reason: to support handling some error
+//         and to support singleton pattern
+// -----------------------------------------------------------
 //
 //
 //
@@ -114,6 +120,11 @@ public:
         UNKNOWN,
         EXPORT_FAILED,
         IMPORT_FAILED,
+        DISPLAY_ALL_FACES,
+        DISPLAY_FACE_POINTS,
+        DISPLAY_ALL_LINES,
+        DISPLAY_LINE_POINTS,
+        DISPLAY_STATISTICS,
     };
     Response(ResponseKey key, vector<string> values);
     Response& operator=(const Response& response);
@@ -139,7 +150,7 @@ public:
     //操作model的函数
     //
     //
-    
+    static Controller* GetInstance();
     //实现里面的功能
     //
     //
@@ -156,6 +167,7 @@ public:
     //
     //
     //
+
     //
     //
     //
@@ -163,23 +175,29 @@ public:
     //
     //
 private:
+
+    
+    static Controller* m_instance;
+    Controller() {} // 私有构造函数
+    Controller(const Controller&) = delete; // 删除拷贝构造函数
+    void operator=(const Controller&) = delete; // 删除拷贝赋值运算符
+
     void Import3DModel(const string& path);
     //
     void Export3DModel(const string& path);
     //word里面2.几那些功能最好每一个写一个函数
-    void DisplayAllFaces() const;
+
     void DeleteFace(unsigned int FaceIndex);
     void AddFace(const Face3D& face);
-    void DisplayFacePoints(unsigned int FaceIndex) const;
+
     void ModifyFacePoint(unsigned int FaceIndex, unsigned int PointIndex, 
                         const Point3D& point);
-    void DisplayAllLines();
+
     void AddLine(const Line3D& line);
     void DeleteLine(unsigned int LineIndex);
-    void DisplayLinePoints(unsigned int LineIndex) const;
+
     void ModifyLinePoint(unsigned int LineIndex, unsigned int PointIndex, 
                         const Point3D& point);
-    void DisplayStatistics() const;
     //
     // support only one model 
     shared_ptr<Model3D> m_model;

@@ -28,20 +28,22 @@
 
 #include <string>
 #include <ostream>
+#include "fixedsizepoint3dcontainer.hpp"
 
 using namespace std;
 
 class Point3D;
 class Face3D;
 
-class Line3D {
+class Line3D : public FixedSizePoint3DContainer
+{
 public:
-    Line3D(const Point3D& p1, const Point3D& p2);
+    Line3D(const Point3D& point1, const Point3D& point2);
     Line3D(const Line3D& line);
     virtual ~Line3D();
     Line3D& operator=(const Line3D& line);
 
-    double Distance(const Point3D& p) const;
+    double Distance(const Point3D& point) const;
     double Distance(const Line3D& line) const;
     Point3D Intersection(const Line3D& line) const;
 
@@ -52,29 +54,27 @@ public:
     bool IsPerpendicular(const Line3D& line) const;
     bool IsCoincident(const Line3D& line) const;
 
-    bool IsPointOnLine(const Point3D& p) const;
+    bool IsPointOnLine(const Point3D& point) const;
 
     double Angle(const Line3D& line) const;
-
-    string ToString() const;
-    ostream& operator<<(ostream& os) const;
-
 
     static double Angle(const Line3D& line1, const Line3D& line2);
     static double Distance(const Line3D& line1, const Line3D& line2);
     static double Distance(const Point3D& p, const Line3D& line);
     
-    static Point3D Projection(const Point3D& p, const Line3D& line);
+    static Point3D Projection(const Point3D& point, const Line3D& line);
     static Point3D Intersection(const Line3D& line1, const Line3D& line2);
     static bool IsParallel(const Line3D& line1, const Line3D& line2);
     static bool IsPerpendicular(const Line3D& line1, const Line3D& line2);
     static bool IsCoincident(const Line3D& line1, const Line3D& line2);
-    static bool IsPointOnLine(const Point3D& p, const Line3D& line);
+    static bool IsPointOnLine(const Point3D& point, const Line3D& line);
 
     Face3D PerpendicularPlane() const;
 
     Point3D GetP1() const;
     Point3D GetP2() const;
+
+    double Length() const;
 
 private:
     Point3D* m_pp1;

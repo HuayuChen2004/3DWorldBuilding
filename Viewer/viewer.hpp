@@ -75,7 +75,7 @@ public:
     //
     //
     //
-    void Start(Controller& controller);
+    void Start();
     //
     //
     //
@@ -88,23 +88,25 @@ public:
 
 
 private:
+
+
     void HandleResponses(vector<Response> responses);
     // list all the interfaces
-    void ShowStartMenu(Controller& controller);
-    void ShowImportModel(Controller& controller);
-    void ShowExportModel(Controller& controller);
-    void ShowModifyModelMenu(Controller& controller);    
-    void ShowListAllFaces(Controller& controller);
-    void ShowDeleteFace(Controller& controller);
-    void ShowAddFace(Controller& controller);
-    void ShowListAllPointsOfFace(Controller& controller);
-    void ShowModifyPointOfFace(Controller& controller);
-    void ShowListAllLines(Controller& controller);
-    void ShowDeleteLine(Controller& controller);
-    void ShowAddLine(Controller& controller);
-    void ShowListAllPointsOfLine(Controller& controller);
-    void ShowModifyPointOfLine(Controller& controller);
-    void ShowShowStatistics(Controller& controller);
+    void ShowStartMenu();
+    void ShowImportModel();
+    void ShowExportModel();
+    void ShowModifyModelMenu();    
+    void ShowListAllFaces();
+    void ShowDeleteFace();
+    void ShowAddFace();
+    void ShowListAllPointsOfFace();
+    void ShowModifyPointOfFace();
+    void ShowListAllLines();
+    void ShowDeleteLine();
+    void ShowAddLine();
+    void ShowListAllPointsOfLine();
+    void ShowModifyPointOfLine();
+    void ShowShowStatistics();
 
 };
 

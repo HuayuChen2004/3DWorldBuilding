@@ -27,7 +27,7 @@ using namespace std;
 using ArgKey = Argument::ArgumentKey;
 class Controller;
 
-void Viewer::Start(Controller& controller)
+void Viewer::Start()
 {
     bool IsRunning = true;
     while (IsRunning)
@@ -48,15 +48,15 @@ void Viewer::Start(Controller& controller)
             switch (atoi(arg.c_str()))
             {
             case 1:
-                ShowImportModel(controller);
+                ShowImportModel();
                 break;
 
             case 2:
-                ShowExportModel(controller);
+                ShowExportModel();
                 break;
 
             case 3:
-                ShowModifyModelMenu(controller);
+                ShowModifyModelMenu();
                 break;
 
             case 4:
@@ -80,7 +80,7 @@ void Viewer::Start(Controller& controller)
 }
 
 //
-void Viewer::ShowImportModel(Controller& controller)
+void Viewer::ShowImportModel()
 {
     try {
         // menu to add 3D model
@@ -96,9 +96,11 @@ void Viewer::ShowImportModel(Controller& controller)
             cout << "Exiting import model process." << endl;
             return;
         }
-
+        Controller* controller = Controller::GetInstance();
+        
         Argument arg(ArgKey::IMPORT_3D_MODEL, vector<string>{path});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -108,7 +110,7 @@ void Viewer::ShowImportModel(Controller& controller)
     }
 }
 
-void Viewer::ShowExportModel(Controller& controller)
+void Viewer::ShowExportModel()
 {
     try {
         // menu to export 3D model
@@ -125,9 +127,11 @@ void Viewer::ShowExportModel(Controller& controller)
             cout << "Exiting export model process." << endl;
             return;
         }
+        Controller* controller = Controller::GetInstance();
 
         Argument arg(ArgKey::EXPORT_3D_MODEL, vector<string>{path});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -137,7 +141,7 @@ void Viewer::ShowExportModel(Controller& controller)
     }
 }
 
-void Viewer::ShowModifyModelMenu(Controller& controller)
+void Viewer::ShowModifyModelMenu()
 {
     try {
         while (true) {
@@ -165,47 +169,47 @@ void Viewer::ShowModifyModelMenu(Controller& controller)
             switch (atoi(choice.c_str()))
             {
             case 1:
-                ShowListAllFaces(controller);
+                ShowListAllFaces();
                 break;
 
             case 2:
-                ShowDeleteFace(controller);
+                ShowDeleteFace();
                 break;
 
             case 3:
-                ShowAddFace(controller);
+                ShowAddFace();
                 break;
 
             case 4:
-                ShowListAllPointsOfFace(controller);
+                ShowListAllPointsOfFace();
                 break;
 
             case 5:
-                ShowModifyPointOfFace(controller);
+                ShowModifyPointOfFace();
                 break;
 
             case 6:
-                ShowListAllLines(controller);
+                ShowListAllLines();
                 break;
 
             case 7:
-                ShowAddLine(controller);
+                ShowAddLine();
                 break;
 
             case 8:
-                ShowDeleteLine(controller);
+                ShowDeleteLine();
                 break;
 
             case 9:
-                ShowListAllPointsOfLine(controller);
+                ShowListAllPointsOfLine();
                 break;
 
             case 10:
-                ShowModifyPointOfLine(controller);
+                ShowModifyPointOfLine();
                 break;
 
             case 11:
-                ShowShowStatistics(controller);
+                ShowShowStatistics();
                 break;
 
             case 12:
@@ -225,10 +229,12 @@ void Viewer::ShowModifyModelMenu(Controller& controller)
     }
 }
 
-void Viewer::ShowListAllFaces(Controller& controller) {
+void Viewer::ShowListAllFaces() {
     try {
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DISPLAY_ALL_FACES, vector<string>());
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -238,14 +244,16 @@ void Viewer::ShowListAllFaces(Controller& controller) {
     }
 }
 
-void Viewer::ShowDeleteFace(Controller& controller) {
+void Viewer::ShowDeleteFace() {
     try {
         cout << "Delete Face" << endl;
         cout << "Enter the face ID to delete: ";
         string face_id;
         cin >> face_id;
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DELETE_FACE, vector<string>{face_id});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -255,7 +263,7 @@ void Viewer::ShowDeleteFace(Controller& controller) {
     }
 }
 
-void Viewer::ShowAddFace(Controller& controller) {
+void Viewer::ShowAddFace() {
     try {
         cout << "Add Face" << endl;
         cout << "Enter the coordinates of the first point: ";
@@ -267,8 +275,10 @@ void Viewer::ShowAddFace(Controller& controller) {
         cout << "Enter the coordinates of the third point: ";
         string coord3;
         cin >> coord3;
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::ADD_FACE, vector<string>{coord1, coord2, coord3});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -278,14 +288,16 @@ void Viewer::ShowAddFace(Controller& controller) {
     }
 }
 
-void Viewer::ShowListAllPointsOfFace(Controller& controller) {
+void Viewer::ShowListAllPointsOfFace() {
     try {
         cout << "List All Points of Face" << endl;
         cout << "Enter the face ID to list: ";
         string face_id;
         cin >> face_id;
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DISPLAY_FACE_POINTS, vector<string>{face_id});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -295,7 +307,7 @@ void Viewer::ShowListAllPointsOfFace(Controller& controller) {
     }
 }
 
-void Viewer::ShowModifyPointOfFace(Controller& controller) {
+void Viewer::ShowModifyPointOfFace() {
     try {
         cout << "Modify Point of Face" << endl;
         cout << "Enter the face ID to modify: ";
@@ -309,7 +321,9 @@ void Viewer::ShowModifyPointOfFace(Controller& controller) {
         cin >> coord;
         Argument arg(ArgKey::MODIFY_FACE_POINT, 
                 vector<string>{face_id, point_id, coord});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Controller* controller = Controller::GetInstance();
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -319,10 +333,12 @@ void Viewer::ShowModifyPointOfFace(Controller& controller) {
     }
 }
 
-void Viewer::ShowListAllLines(Controller& controller) {
+void Viewer::ShowListAllLines() {
     try {
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DISPLAY_ALL_LINES, vector<string>());
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -332,7 +348,7 @@ void Viewer::ShowListAllLines(Controller& controller) {
     }
 }
 
-void Viewer::ShowAddLine(Controller& controller) {
+void Viewer::ShowAddLine() {
     try {
         cout << "Add Line" << endl;
         cout << "Enter the coordinates of the first point: ";
@@ -341,8 +357,10 @@ void Viewer::ShowAddLine(Controller& controller) {
         cout << "Enter the coordinates of the second point: ";
         string coord2;
         cin >> coord2;
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::ADD_LINE, vector<string>{coord1, coord2});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -352,14 +370,16 @@ void Viewer::ShowAddLine(Controller& controller) {
     }
 }
 
-void Viewer::ShowDeleteLine(Controller& controller) {
+void Viewer::ShowDeleteLine() {
     try {
         cout << "Delete Line" << endl;
         cout << "Enter the line ID to delete: ";
         string line_id;
         cin >> line_id;
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DELETE_LINE, vector<string>{line_id});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -369,14 +389,16 @@ void Viewer::ShowDeleteLine(Controller& controller) {
     }
 }
 
-void Viewer::ShowListAllPointsOfLine(Controller& controller) {
+void Viewer::ShowListAllPointsOfLine() {
     try {
         cout << "List All Points of Line" << endl;
         cout << "Enter the line ID to list: ";
         string line_id;
         cin >> line_id;
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DISPLAY_LINE_POINTS, vector<string>{line_id});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -386,7 +408,7 @@ void Viewer::ShowListAllPointsOfLine(Controller& controller) {
     }
 }
 
-void Viewer::ShowModifyPointOfLine(Controller& controller) {
+void Viewer::ShowModifyPointOfLine() {
     try {
         cout << "Modify Point of Line" << endl;
         cout << "Enter the line ID to modify: ";
@@ -400,7 +422,9 @@ void Viewer::ShowModifyPointOfLine(Controller& controller) {
         cin >> coord;
         Argument arg(ArgKey::MODIFY_LINE_POINT, 
                 vector<string>{line_id, point_id, coord});
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Controller* controller = Controller::GetInstance();
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {
@@ -410,10 +434,12 @@ void Viewer::ShowModifyPointOfLine(Controller& controller) {
     }
 }
 
-void Viewer::ShowShowStatistics(Controller& controller) {
+void Viewer::ShowShowStatistics() {
     try {
+        Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DISPLAY_STATISTICS, vector<string>());
-        Response response = controller.HandleArguments(vector<Argument>{arg});
+        Response response = 
+                (*controller).HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
     catch (const exception& e) {

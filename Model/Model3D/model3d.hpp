@@ -10,7 +10,11 @@
 //       add model3d operations
 // reason: to support various operations on model3d
 // -----------------------------------------------------------
-//
+// date: 2024/8/2
+// author: Huayu Chen
+// edit: add getter of faces, lines, and points
+// reason: to support getting faces, lines, and points
+// -----------------------------------------------------------
 //
 //
 //
@@ -100,6 +104,9 @@ public:
     void ModifyLinePoint(int index, Point3D& new_point);
 
     // void DisplayStatistics() const;
+    const vector<shared_ptr<Face3D>>& GetFaces() const;
+    const vector<shared_ptr<Line3D>>& GetLines() const;
+    const vector<shared_ptr<Point3D>>& GetPoints() const;
 
 private:
 // use shared pointer because the elements are shared among different faces and lines

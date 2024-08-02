@@ -52,7 +52,7 @@ public:
     Point3D(double x, double y, double z);  
     // remember to add const unsigned int& Dim{3} in the cpp file
     Point3D(const vector<double>& coords);
-    Point3D(const Point3D& p);
+    Point3D(const Point3D& point);
     virtual ~Point3D();
     Point3D& operator=(const Point3D& p);
 
@@ -63,8 +63,8 @@ public:
     void SetY(double y);
     void SetZ(double z);
 
-    Point3D AddVector(const vector<double>& v);
-    Point3D SubtractVector(const vector<double>& v);
+    Point3D AddVector(const vector<double>& vec);
+    Point3D SubtractVector(const vector<double>& vec);
 
     double DistanceToLine3D(const Line3D& line) const;
     double DistanceToFace3D(const Face3D& face) const;
