@@ -10,7 +10,8 @@
 // -----------------------------------------------------------
 // date: 2024/8/2
 // author: Huayu Chen
-// edit: implement the rest of the functions about the diaplay and modification of the 3D model
+// edit: implement the rest of the functions about the diaplay and modification 
+//       of the 3D model
 // reason: to add various functions of the interface
 // -----------------------------------------------------------
 
@@ -115,7 +116,8 @@ void Viewer::ShowExportModel(Controller& controller)
         cout << string(50, '=') << endl;
         //参数传给controller，并获取response展示给用户
         cout << "Export 3D Model" << endl;
-        cout << "Enter the path to save the 3D model (or type 'exit' to exit): ";
+        cout << "Enter the path to save the 3D model \
+                (or type 'exit' to exit): ";
         string path;
         cin >> path;
         
@@ -305,7 +307,8 @@ void Viewer::ShowModifyPointOfFace(Controller& controller) {
         cout << "Enter the new coordinates of the point: ";
         string coord;
         cin >> coord;
-        Argument arg(ArgKey::MODIFY_FACE_POINT, vector<string>{face_id, point_id, coord});
+        Argument arg(ArgKey::MODIFY_FACE_POINT, 
+                vector<string>{face_id, point_id, coord});
         Response response = controller.HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }
@@ -395,7 +398,8 @@ void Viewer::ShowModifyPointOfLine(Controller& controller) {
         cout << "Enter the new coordinates of the point: ";
         string coord;
         cin >> coord;
-        Argument arg(ArgKey::MODIFY_LINE_POINT, vector<string>{line_id, point_id, coord});
+        Argument arg(ArgKey::MODIFY_LINE_POINT, 
+                vector<string>{line_id, point_id, coord});
         Response response = controller.HandleArguments(vector<Argument>{arg});
         HandleResponses(vector<Response>{response});
     }

@@ -1,5 +1,6 @@
 // This is the header file for the Model3DObjExporter class.
-// The class Model3DObjExporter is derived from Model3DExporter and implements the export function for OBJ files.
+// The class Model3DObjExporter is derived from Model3DExporter and implements 
+// the export function for OBJ files.
 // edit logging
 // -----------------------------------------------------------
 // date: 2024/7/31

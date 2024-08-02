@@ -1,5 +1,6 @@
 // this is the header file for the Model3DObjImporter class
-// the class Model3DObjImporter is derived from Model3DImporter and implements the import function for OBJ files
+// the class Model3DObjImporter is derived from Model3DImporter and implements 
+// the import function for OBJ files
 // edit logging:
 // -----------------------------------------------------------
 // date: 2024/7/31

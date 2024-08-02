@@ -10,7 +10,8 @@
 // edit: init controller class
 //       add functions to operate the model
 //       add functions to interact with the viewer
-// reason: to support various operations on the model and interactions with the viewer
+// reason: to support various operations on the model and interactions with 
+//         the viewer, we need a controller class to manage the model and viewer
 // -----------------------------------------------------------
 // date: 2024/8/1
 // author: Huayu Chen
@@ -100,7 +101,19 @@ class Response
 public:
     enum class ResponseKey {
         EMPTY_PATH,
-        INVALID_PATH
+        NOT_OBJ_PATH,
+        NOT_EXIST_PATH,
+        IMPORT_SUCCESS,
+        EXPORT_SUCCESS,
+        DELETE_FACE_SUCCESS,
+        ADD_FACE_SUCCESS,
+        MODIFY_FACE_POINT_SUCCESS,
+        DELETE_LINE_SUCCESS,
+        ADD_LINE_SUCCESS,
+        MODIFY_LINE_POINT_SUCCESS,
+        UNKNOWN,
+        EXPORT_FAILED,
+        IMPORT_FAILED,
     };
     Response(ResponseKey key, vector<string> values);
     Response& operator=(const Response& response);
@@ -126,21 +139,7 @@ public:
     //操作model的函数
     //
     //
-    void Import3DModel(const string& path);
-    //
-    void Export3DModel(const string& path, const Model3D& model);
-    //word里面2.几那些功能最好每一个写一个函数
-    void DisplayAllFaces() const;
-    void DeleteFace(unsigned int FaceIndex);
-    void AddFace(const Face3D& face);
-    void DisplayFacePoints(unsigned int FaceIndex) const;
-    void ModifyFacePoint(unsigned int FaceIndex, unsigned int PointIndex, const Point3D& point);
-    void DisplayAllLines();
-    void AddLine(const Line3D& line);
-    void DeleteLine(unsigned int LineIndex);
-    void DisplayLinePoints(unsigned int LineIndex) const;
-    void ModifyLinePoint(unsigned int LineIndex, unsigned int PointIndex, const Point3D& point);
-    void DisplayStatistics() const;
+    
     //实现里面的功能
     //
     //
@@ -164,9 +163,26 @@ public:
     //
     //
 private:
+    void Import3DModel(const string& path);
     //
+    void Export3DModel(const string& path);
+    //word里面2.几那些功能最好每一个写一个函数
+    void DisplayAllFaces() const;
+    void DeleteFace(unsigned int FaceIndex);
+    void AddFace(const Face3D& face);
+    void DisplayFacePoints(unsigned int FaceIndex) const;
+    void ModifyFacePoint(unsigned int FaceIndex, unsigned int PointIndex, 
+                        const Point3D& point);
+    void DisplayAllLines();
+    void AddLine(const Line3D& line);
+    void DeleteLine(unsigned int LineIndex);
+    void DisplayLinePoints(unsigned int LineIndex) const;
+    void ModifyLinePoint(unsigned int LineIndex, unsigned int PointIndex, 
+                        const Point3D& point);
+    void DisplayStatistics() const;
     //
-    vector<shared_ptr<Model3D>> m_vpModels;
+    // support only one model 
+    shared_ptr<Model3D> m_model;
     //
     //`
 
