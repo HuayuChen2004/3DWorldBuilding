@@ -40,6 +40,7 @@ class Line3D : public FixedSizePoint3DContainer
 public:
     Line3D(const Point3D& point1, const Point3D& point2);
     Line3D(const Line3D& line);
+    Line3D(const vector<Point3D>& points);
     virtual ~Line3D();
     Line3D& operator=(const Line3D& line);
 

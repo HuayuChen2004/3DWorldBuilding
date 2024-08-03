@@ -13,7 +13,11 @@
 // edit: add display handle argument
 // reason: to support displaying faces, lines, points, and statistics
 // -----------------------------------------------------------
-//
+// date: 2024/8/3
+// author: Huayu Chen
+// edit: add functions to handle face and line operations
+// reason: to support face and line operations
+// -----------------------------------------------------------
 //
 //
 //
@@ -42,6 +46,12 @@
 
 #include "../Model/FileIO/model3dobjimporter.hpp"
 #include "../Model/FileIO/model3dobjexporter.hpp"
+#include "../Model/Element3D/face3d.hpp"
+#include "../Model/Element3D/line3d.hpp"
+#include "../Model/Element3D/point3d.hpp"
+#include "../Message/argument.hpp"
+#include "../Message/response.hpp"
+
 
 using ArgKey = Argument::ArgumentKey;
 using ResKey = Response::ResponseKey;
@@ -62,11 +72,11 @@ Response Controller::HandleArguments(vector<Argument> arguments)
     try {
         ArgKey key = arguments[0].GetKey();
         if (key == ArgKey::IMPORT_3D_MODEL) {
-            Import3DModel(arguments[0].GetValue());
+            Import3DModel(arguments[0].GetValues()[0]);
             return Response(ResKey::IMPORT_SUCCESS, {});
         }
         else if (key == ArgKey::EXPORT_3D_MODEL) {
-            Export3DModel(arguments[0].GetValue());
+            Export3DModel(arguments[0].GetValues()[0]);
             return Response(ResKey::EXPORT_SUCCESS, {});
         }
         else if (key == ArgKey::DISPLAY_ALL_FACES) {
@@ -80,7 +90,7 @@ Response Controller::HandleArguments(vector<Argument> arguments)
         }
         else if (key == ArgKey::DISPLAY_FACE_POINTS) {
             // get the face index
-            int index = stoi(arguments[0].GetValue());
+            int index = stoi(arguments[0].GetValues()[0]);
             // get the face points
             vector<shared_ptr<Face3D>> faces = m_model->GetFaces();
             vector<string> point_strings;
@@ -100,7 +110,7 @@ Response Controller::HandleArguments(vector<Argument> arguments)
         }
         else if (key == ArgKey::DISPLAY_LINE_POINTS) {
             // get the line index
-            int index = stoi(arguments[0].GetValue());
+            int index = stoi(arguments[0].GetValues()[0]);
             // get the line points
             vector<shared_ptr<Line3D>> lines = m_model->GetLines();
             vector<string> point_strings;
@@ -166,6 +176,57 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             
             };
             return Response(ResKey::DISPLAY_STATISTICS, statistics);
+        }
+        else if (key == ArgKey::DELETE_FACE) {
+            // get the face index
+            int index = stoi(arguments[0].GetValues()[0]);
+            DeleteFace(index);
+            return Response(ResKey::DELETE_FACE_SUCCESS, {});
+        }
+        else if (key == ArgKey::ADD_FACE) {
+            // get the face points
+            vector<Point3D> points = FixedSizePoint3DContainer::StringsToPoints(
+                arguments[0].GetValues());
+            AddFace(Face3D(points));
+            return Response(ResKey::ADD_FACE_SUCCESS, {});
+        }
+        else if (key == ArgKey::MODIFY_FACE_POINT) {
+            // get the face index
+            int face_index = stoi(arguments[0].GetValues()[0]);
+            // get the point index
+            int point_index = stoi(arguments[0].GetValues()[1]);
+            // get the new point
+            Point3D new_point = FixedSizePoint3DContainer::StringsToPoints(
+                vector<string>{arguments[0].GetValues()[2]})[0];
+            ModifyFacePoint(face_index, point_index, new_point);
+            return Response(ResKey::MODIFY_FACE_POINT_SUCCESS, {});
+        }
+        else if (key == ArgKey::DELETE_LINE) {
+            // get the line index
+            int index = stoi(arguments[0].GetValues()[0]);
+            DeleteLine(index);
+            return Response(ResKey::DELETE_LINE_SUCCESS, {});
+        }
+        else if (key == ArgKey::ADD_LINE) {
+            // get the line points
+            vector<Point3D> points = FixedSizePoint3DContainer::StringsToPoints(
+                arguments[0].GetValues());
+            AddLine(Line3D(points));
+            return Response(ResKey::ADD_LINE_SUCCESS, {});
+        }
+        else if (key == ArgKey::MODIFY_LINE_POINT) {
+            // get the line index
+            int line_index = stoi(arguments[0].GetValues()[0]);
+            // get the point index
+            int point_index = stoi(arguments[0].GetValues()[1]);
+            // get the new point
+            Point3D new_point = FixedSizePoint3DContainer::StringsToPoints(
+                vector<string>{arguments[0].GetValues()[2]})[0];
+            ModifyLinePoint(line_index, point_index, new_point);
+            return Response(ResKey::MODIFY_LINE_POINT_SUCCESS, {});
+        }
+        else {
+            return Response(ResKey::UNKNOWN, {});
         }
     }
     catch (const exception& e) {
@@ -256,5 +317,106 @@ void Controller::Export3DModel(const string& path)
     }
     // ...
 }
+
+void Controller::DeleteFace(unsigned int FaceIndex)
+{
+    if (FaceIndex >= m_model->GetFaces().size())
+    {
+        throw invalid_argument("Face index out of range.");
+    }
+    // Delete the face
+    try {
+        m_model->DeleteFace(FaceIndex);
+    }
+    catch (const exception& e) {
+        // Handle the exception
+        throw runtime_error("Failed to delete the face.");
+    }
+}
+
+void Controller::AddFace(const Face3D& face)
+{
+    // Add the face
+    try {
+        m_model->AddFace(face);
+    }
+    catch (const exception& e) {
+        // Handle the exception
+        throw runtime_error("Failed to add the face.");
+    }
+}
+
+void Controller::ModifyFacePoint(unsigned int FaceIndex, unsigned int PointIndex, const Point3D& NewPoint)
+{
+    if (FaceIndex >= m_model->GetFaces().size())
+    {
+        throw invalid_argument("Face index out of range.");
+    }
+    if (PointIndex >= m_model->GetFaces()[FaceIndex]->GetPoints().size())
+    {
+        throw invalid_argument("Point index out of range.");
+    }
+    // Modify the face point
+    try {
+        m_model->ModifyFacePoint(FaceIndex, PointIndex, NewPoint);
+    }
+    catch (const exception& e) {
+        // Handle the exception
+        throw runtime_error("Failed to modify the face point.");
+    }
+}
+
+void Controller::DeleteLine(unsigned int LineIndex)
+{
+    if (LineIndex >= m_model->GetLines().size())
+    {
+        throw invalid_argument("Line index out of range.");
+    }
+    // Delete the line
+    try {
+        m_model->DeleteLine(LineIndex);
+    }
+    catch (const exception& e) {
+        // Handle the exception
+        throw runtime_error("Failed to delete the line.");
+    }
+}
+
+void Controller::AddLine(const Line3D& line)
+{
+    // Add the line
+    try {
+        m_model->AddLine(line);
+    }
+    catch (const exception& e) {
+        // Handle the exception
+        throw runtime_error("Failed to add the line.");
+    }
+}
+
+void Controller::ModifyLinePoint(unsigned int LineIndex, 
+                unsigned int PointIndex, const Point3D& NewPoint)
+{
+    if (LineIndex >= m_model->GetLines().size())
+    {
+        throw invalid_argument("Line index out of range.");
+    }
+    if (PointIndex >= m_model->GetLines()[LineIndex]->GetPoints().size())
+    {
+        throw invalid_argument("Point index out of range.");
+    }
+    // Modify the line point
+    try {
+        m_model->ModifyLinePoint(LineIndex, PointIndex, NewPoint);
+    }
+    catch (const exception& e) {
+        // Handle the exception
+        throw runtime_error("Failed to modify the line point.");
+    }
+}
+
+
+
+
 
 

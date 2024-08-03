@@ -69,6 +69,7 @@ public:
     
     Point Copy() const;
     string ToString() const;
+    
 
     ostream& operator<<(ostream& os) const;
 

@@ -14,6 +14,14 @@
 //       of the 3D model
 // reason: to add various functions of the interface
 // -----------------------------------------------------------
+// date: 2024/8/3
+// author: Huayu Chen
+// edit: add functions to display the model
+//       add functions to handle responses
+// reason: to support displaying the model and handling responses
+// -----------------------------------------------------------
+// date: 2024/8/4
+// author: Huayu Chen
 
 
 
@@ -25,7 +33,83 @@
 
 using namespace std;
 using ArgKey = Argument::ArgumentKey;
+using ResKey = Response::ResponseKey;
 class Controller;
+
+void Viewer::HandleResponses(const vector<Response>& responses)
+{
+    if (responses[0].GetKey() == ResKey::EMPTY_PATH) {
+        cout << "Empty path. Please enter a valid path." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::NOT_OBJ_PATH) {
+        cout << "Not an obj file. Please enter a valid path." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::NOT_EXIST_PATH) {
+        cout << "Path does not exist. Please enter a valid path." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::IMPORT_SUCCESS) {
+        cout << "Import successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::EXPORT_SUCCESS) {
+        cout << "Export successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DELETE_FACE_SUCCESS) {
+        cout << "Delete face successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::ADD_FACE_SUCCESS) {
+        cout << "Add face successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DELETE_LINE_SUCCESS) {
+        cout << "Delete line successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::ADD_LINE_SUCCESS) {
+        cout << "Add line successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::MODIFY_FACE_POINT_SUCCESS) {
+        cout << "Modify face point successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::MODIFY_LINE_POINT_SUCCESS) {
+        cout << "Modify line point successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DISPLAY_ALL_FACES) {
+        cout << "Display all faces:" << endl;
+        DisplayAllFaces(responses[0].GetValues());
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DISPLAY_FACE_POINTS) {
+        cout << "Display face points:" << endl;
+        DisplayFacePoints(responses[0].GetValues());
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DISPLAY_ALL_LINES) {
+        cout << "Display all lines:" << endl;
+        DisplayAllLines(responses[0].GetValues());
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DISPLAY_LINE_POINTS) {
+        cout << "Display line points:" << endl;
+        DisplayLinePoints(responses[0].GetValues());
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DISPLAY_STATISTICS) {
+        cout << "Display statistics:" << endl;
+        DisplayStatistics(responses[0].GetValues());
+        return;
+    }
+    
+}
+    
 
 void Viewer::Start()
 {
@@ -446,5 +530,39 @@ void Viewer::ShowShowStatistics() {
         // handle exception here
         cout << "viewer.cpp line 402" << endl;
         cout << "catch exception: " << e.what() << endl;
+    }
+}
+
+void Viewer::DisplayAllFaces(const vector<string>& values) const{
+    for (unsigned int i = 0; i < values.size(); i++) {
+        cout << "Face " << i << endl;
+        cout << values[i] << endl;
+    }
+}
+
+void Viewer::DisplayFacePoints(const vector<string>& values) const{
+    for (unsigned int i = 0; i < values.size(); i++) {
+        cout << "Point " << i << endl;
+        cout << values[i] << endl;
+    }
+}
+
+void Viewer::DisplayAllLines(const vector<string>& values) const{
+    for (unsigned int i = 0; i < values.size(); i++) {
+        cout << "Line " << i << endl;
+        cout << values[i] << endl;
+    }
+}
+
+void Viewer::DisplayLinePoints(const vector<string>& values) const{
+    for (unsigned int i = 0; i < values.size(); i++) {
+        cout << "Point " << i << endl;
+        cout << values[i] << endl;
+    }
+}
+
+void Viewer::DisplayStatistics(const vector<string>& values) const{
+    for (unsigned int i = 0; i < values.size(); i++) {
+        cout << values[i] << endl;
     }
 }

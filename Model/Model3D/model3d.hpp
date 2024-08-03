@@ -1,5 +1,6 @@
 // this is the header file of Model3D class
-// the class Model3D is a class that represents a 3D model in a three-dimensional space
+// the class Model3D is a class that represents a 3D model 
+// in a three-dimensional space
 // a model3d can be initiated with a vector of faces and a vector of lines
 // some operations can also be used on model3d
 // edit logging:
@@ -15,7 +16,12 @@
 // edit: add getter of faces, lines, and points
 // reason: to support getting faces, lines, and points
 // -----------------------------------------------------------
-//
+// date: 2024/8/3
+// author: Huayu Chen
+// edit: add const to getter of faces, lines, and points
+//       add unsigned int to the getter of faces, lines, and points
+// reason: to make the code more readable and efficient
+// -----------------------------------------------------------
 //
 //
 //
@@ -92,16 +98,18 @@ public:
     Model3D& operator=(const Model3D& model);
 
     // void DisplayAllFaces() const;
-    void DeleteFace(int index);
-    void AddFace(Face3D& face);
+    void DeleteFace(unsigned int index);
+    void AddFace(const Face3D& face);
     // void DisplayFacePoints(int index) const;
-    void ModifyFacePoint(int index, Point3D& new_point);
+    void ModifyFacePoint(unsigned int FaceIndex, 
+                        unsigned int PointIndex, const Point3D& new_point);
 
     // void DisplayAllLines() const;
-    void DeleteLine(int index);
-    void AddLine(Line3D& line);
+    void DeleteLine(unsigned int index);
+    void AddLine(const Line3D& line);
     // void DisplayLinePoints(int index) const;
-    void ModifyLinePoint(int index, Point3D& new_point);
+    void ModifyLinePoint(unsigned int LineIndex, 
+                        unsigned int PointIndex, const Point3D& new_point);
 
     // void DisplayStatistics() const;
     const vector<shared_ptr<Face3D>>& GetFaces() const;
@@ -109,7 +117,8 @@ public:
     const vector<shared_ptr<Point3D>>& GetPoints() const;
 
 private:
-// use shared pointer because the elements are shared among different faces and lines
+// use shared pointer because the elements 
+// are shared among different faces and lines
     vector<shared_ptr<Face3D>> m_vpFaces;
     vector<shared_ptr<Line3D>> m_vpLines;
     vector<shared_ptr<Point3D>> m_vpPoints;

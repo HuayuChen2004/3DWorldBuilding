@@ -17,7 +17,11 @@
 //       add functions that show user interface
 // reason: improve the viewer class
 // -----------------------------------------------------------
-//
+// date: 2024/8/3
+// author: Huayu Chen
+// edit: add functions that display the model
+// reason: to support displaying the model
+// -----------------------------------------------------------
 //
 //
 //
@@ -45,6 +49,9 @@
 #include <string>
 #include <iostream>
 #include "../Controller/controller.hpp"
+#include "../Message/argument.hpp"
+#include "../Message/response.hpp"
+
 using namespace std;
 
 
@@ -90,7 +97,7 @@ public:
 private:
 
 
-    void HandleResponses(vector<Response> responses);
+    void HandleResponses(const vector<Response>& responses);
     // list all the interfaces
     void ShowStartMenu();
     void ShowImportModel();
@@ -108,6 +115,11 @@ private:
     void ShowModifyPointOfLine();
     void ShowShowStatistics();
 
+    void DisplayAllFaces(const vector<string>& FaceStrings) const;
+    void DisplayFacePoints(const vector<string>& PointStrings) const;
+    void DisplayAllLines(const vector<string>& LineStrings) const;
+    void DisplayLinePoints(const vector<string>& PointStrings) const;
+    void DisplayStatistics(const vector<string>& StatsStrings) const;
 };
 
 

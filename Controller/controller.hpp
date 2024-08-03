@@ -59,6 +59,8 @@
 #include "../Model/Element3D/point3d.hpp"
 #include "../Model/Element3D/line3d.hpp"
 #include "../Model/Model3D/model3d.hpp"
+#include "../Message/argument.hpp"
+#include "../Message/response.hpp"
 
 using namespace std;
 //
@@ -69,72 +71,10 @@ using namespace std;
 //
 //从viewer传到controller的参数
 //
-class Argument
-{
-public:
-    enum class ArgumentKey {
-        IMPORT_3D_MODEL,
-        EXPORT_3D_MODEL,
-        DISPLAY_ALL_FACES,
-        DELETE_FACE,
-        ADD_FACE,
-        DISPLAY_FACE_POINTS,
-        MODIFY_FACE_POINT,
-        DISPLAY_ALL_LINES,
-        ADD_LINE,
-        DELETE_LINE,
-        DISPLAY_LINE_POINTS,
-        MODIFY_LINE_POINT,
-        DISPLAY_STATISTICS,
-        UNKNOWN
-    };
-    Argument();
-    Argument(ArgumentKey key, vector<string> values);
-    Argument& operator=(const Argument& argument);
-    virtual ~Argument();
-    ArgumentKey GetKey() const;
-    string GetValue() const;
-private:
-    ArgumentKey m_key;
-    string m_value;
 
-};
 //
 //
 //
-class Response
-{
-public:
-    enum class ResponseKey {
-        EMPTY_PATH,
-        NOT_OBJ_PATH,
-        NOT_EXIST_PATH,
-        IMPORT_SUCCESS,
-        EXPORT_SUCCESS,
-        DELETE_FACE_SUCCESS,
-        ADD_FACE_SUCCESS,
-        MODIFY_FACE_POINT_SUCCESS,
-        DELETE_LINE_SUCCESS,
-        ADD_LINE_SUCCESS,
-        MODIFY_LINE_POINT_SUCCESS,
-        UNKNOWN,
-        EXPORT_FAILED,
-        IMPORT_FAILED,
-        DISPLAY_ALL_FACES,
-        DISPLAY_FACE_POINTS,
-        DISPLAY_ALL_LINES,
-        DISPLAY_LINE_POINTS,
-        DISPLAY_STATISTICS,
-    };
-    Response(ResponseKey key, vector<string> values);
-    Response& operator=(const Response& response);
-    virtual ~Response();
-    ResponseKey GetKey() const;
-    string GetValue() const;
-private:
-    ResponseKey m_key;
-    string m_value;
-};
 
 
 

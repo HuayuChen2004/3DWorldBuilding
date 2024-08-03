@@ -25,10 +25,12 @@ class Point3D;
 class Face3D : public FixedSizePoint3DContainer
 {
 public:
+    // 记得在构造函数里面调用父类的构造函数
     Face3D(const Point3D& point1, const Point3D& point2, const Point3D& point3);
     Face3D(const Point3D& point, const Line3D& line);
     Face3D(const Line3D& line1, const Line3D& line2);
     Face3D(const Face3D& face);
+    Face3D(const vector<Point3D>& points);
     virtual ~Face3D();
     Face3D& operator=(const Face3D& face);
 
