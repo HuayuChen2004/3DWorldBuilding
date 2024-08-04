@@ -30,17 +30,23 @@
 #include <vector>
 #include <cmath>
 
+using namespace std;
+
+
+
 
 class Vector
 {
 private:
-    std::vector<double> data;
+    vector<double> data;
     unsigned int m_uiDim;
 public:
-    Vector(unsigned int dim);
-    Vector(const std::vector<double>& data);
+    Vector(const vector<double>& data);
     Vector(const Vector& vec);
     virtual ~Vector();
+
+    vector<double> GetData() const;
+    void ModifyData(const vector<double>& data);
 
     double operator[](unsigned int index) const;
     double& operator[](unsigned int index);
@@ -62,9 +68,8 @@ public:
     double Dot(const Vector& vec) const;
     Vector Normalize(unsigned int p = 2) const;
     Vector Cross(const Vector& vec) const;
-    double Angle(const Vector& vec) const;
+    double AngleFrom(const Vector& vec) const;
     double Distance(const Vector& vec) const;
-    double Distance2(const Vector& vec) const;
     bool IsParallel(const Vector& vec) const;
     bool IsOrthogonal(const Vector& vec) const;
     Vector Project(const Vector& vec) const;
@@ -77,10 +82,10 @@ public:
     Vector RemoveDimension(unsigned int dim) const;
     Vector Lerp(const Vector& vec, double t) const;
 
-    std::vector<double>::iterator begin();
-    std::vector<double>::iterator end();
-    std::vector<double>::const_iterator begin() const;
-    std::vector<double>::const_iterator end() const;
+    vector<double>::iterator begin();
+    vector<double>::iterator end();
+    vector<double>::const_iterator begin() const;
+    vector<double>::const_iterator end() const;
     
     Vector Slice(unsigned int start, unsigned int end) const;
     Vector Slice(unsigned int start) const;
@@ -141,7 +146,7 @@ public:
     Vector Concatenate(const Vector& vec) const;
     Vector Repeat(unsigned int n) const;
     unsigned int Find(double value) const;
-    std::string ToString() const;
+    string ToString() const;
 
     static double Norm(const Vector& vec, unsigned int p = 2);
     static double Length(const Vector& vec);
@@ -157,7 +162,7 @@ public:
     static Vector Inversion(const Vector& vec);
     static Vector Log(const Vector& vec);
     static Vector Exp(const Vector& vec);
-    static Vector Pow(const Vector& vec, double p);
+    static Vector Pow(const Vector& vec, double power);
     static Vector Sqrt(const Vector& vec);
     static Vector Cbrt(const Vector& vec);
     static Vector Sin(const Vector& vec);
@@ -177,7 +182,6 @@ public:
 
     static double Distance(const Vector& vec1, const Vector& vec2);
     static double Distance2(const Vector& vec1, const Vector& vec2);
-    static double Angle(const Vector& vec1, const Vector& vec2);
     static Vector Cross(const Vector& vec1, const Vector& vec2);
     static Vector Lerp(const Vector& vec1, const Vector& vec2, double t);
     static Vector Random(unsigned int dim, double min, double max);
@@ -190,7 +194,7 @@ public:
     static Vector Range(unsigned int dim, double start, double end, double step = 1.0);
     static Vector Linspace(unsigned int dim, double start, double end, unsigned int num);
     static Vector Meshgrid(const Vector& x, const Vector& y);
-    static Vector Concatenate(const std::vector<Vector>& vecs);
+    static Vector Concatenate(const vector<Vector>& vecs);
     static Vector Repeat(const Vector& vec, unsigned int n);
     static Vector Transpose(const Vector& vec);
     static Vector Filter(const Vector& vec, double (*func)(double));
@@ -219,18 +223,15 @@ public:
     static Vector Ceil(const Vector& vec);
     static Vector Floor(const Vector& vec);
     static Vector Clamp(const Vector& vec, double min, double max);
-    static Vector Inversion(const Vector& vec);
     static Vector Map(const Vector& vec, double (*func)(double));
-    
-
-
+    static bool IsLinearIndependent(const vector<Vector>& vecs);
 
     static const unsigned int MAX_DIM {999u};
     static const unsigned int MIN_DIM {1u};
     const unsigned int& Dim {m_uiDim};
 
 
-    friend std::ostream& operator<<(std::ostream& os, const Vector& vec);
+    friend ostream& operator<<(ostream& os, const Vector& vec);
 };
 
 #endif // VECTOR_HPP

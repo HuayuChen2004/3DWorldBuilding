@@ -56,12 +56,13 @@ public:
     bool IsCoincident(const Line3D& line) const;
 
     bool IsPointOnLine(const Point3D& point) const;
+    bool OnSamePlane(const Line3D& line) const;
 
     double Angle(const Line3D& line) const;
 
     static double Angle(const Line3D& line1, const Line3D& line2);
     static double Distance(const Line3D& line1, const Line3D& line2);
-    static double Distance(const Point3D& p, const Line3D& line);
+    static double Distance(const Point3D& point, const Line3D& line);
     
     static Point3D Projection(const Point3D& point, const Line3D& line);
     static Point3D Intersection(const Line3D& line1, const Line3D& line2);
@@ -70,16 +71,14 @@ public:
     static bool IsCoincident(const Line3D& line1, const Line3D& line2);
     static bool IsPointOnLine(const Point3D& point, const Line3D& line);
 
-    Face3D PerpendicularPlane() const;
-
     Point3D GetP1() const;
     Point3D GetP2() const;
 
+    void SetP1(const Point3D& point);
+    void SetP2(const Point3D& point);
+
     double Length() const;
 
-private:
-    Point3D* m_pp1;
-    Point3D* m_pp2;
 };
 
 #endif // LINE3D_HPP

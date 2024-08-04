@@ -29,11 +29,11 @@ using namespace std;
 class FixedSizePoint3DContainer
 {
 public:
-    FixedSizePoint3DContainer(vector<Point3D> points);
+    FixedSizePoint3DContainer(const vector<Point3D>& points);
     vector<Point3D> GetPoints() const;
     Point3D GetPoint(unsigned int index) const;
     void ModifyPoint(unsigned int index, const Point3D& point);
-    string ToString() const;
+    vector<string> ToString() const;
     ostream& operator<<(ostream& os) const;
     bool operator==(const FixedSizePoint3DContainer& container) const;
     bool operator!=(const FixedSizePoint3DContainer& container) const;
@@ -43,8 +43,9 @@ public:
 
 private:
     vector<Point3D> m_points;
+    unsigned int m_uiSize;
 
-    Point3D StringToPoint(const string& pointString);
+    static Point3D StringToPoint(const string& pointString);
 };
 
 #endif // FIXEDSIZEPOINT3DCONTAINER_HPP

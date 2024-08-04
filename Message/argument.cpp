@@ -26,12 +26,14 @@ using namespace std;
 Argument::Argument(ArgumentKey key, vector<string> values) : 
                 m_key(key), m_values(values) {}
 
-Argument::ArgumentKey const& Argument::GetKey() const
+Argument::ArgumentKey Argument::GetKey() const
 {
-    return m_key;
+    ArgumentKey key = m_key;
+    return key;
 }
 
-vector<string> const& Argument::GetValues() const
+vector<string> Argument::GetValues() const
 {
-    return m_values;
+    vector<string> valuesCopy = m_values;
+    return valuesCopy;
 }

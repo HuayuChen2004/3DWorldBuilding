@@ -45,8 +45,8 @@ public:
     };
     Argument(ArgumentKey key, vector<string> values);
     virtual ~Argument();
-    ArgumentKey const& GetKey() const;
-    vector<string> const& GetValues() const;
+    ArgumentKey GetKey() const;
+    vector<string> GetValues() const;
 private:
     ArgumentKey m_key;
     vector<string> m_values;

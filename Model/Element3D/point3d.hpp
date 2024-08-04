@@ -53,29 +53,23 @@ public:
     // remember to add const unsigned int& Dim{3} in the cpp file
     Point3D(const vector<double>& coords);
     Point3D(const Point3D& point);
+    Point3D& operator=(const Point3D& point);
     virtual ~Point3D();
-    Point3D& operator=(const Point3D& p);
-
-    double operator[](unsigned int index) const;
-    double& operator[](unsigned int index);
 
     void SetX(double x);
     void SetY(double y);
     void SetZ(double z);
 
-    Point3D AddVector(const vector<double>& vec);
-    Point3D SubtractVector(const vector<double>& vec);
+    // double DistanceToLine3D(const Line3D& line) const;
+    // double DistanceToFace3D(const Face3D& face) const;
 
-    double DistanceToLine3D(const Line3D& line) const;
-    double DistanceToFace3D(const Face3D& face) const;
+    // Point3D ProjectToLine3D(const Line3D& line) const;
+    // Point3D ProjectToPlane3D(const Face3D& face) const;
 
-    Point3D ProjectToLine3D(const Line3D& line) const;
-    Point3D ProjectToPlane3D(const Face3D& face) const;
-
-    bool IsOnBoundary(const Face3D& face) const;
-    bool IsInside(const Line3D& line) const;
-    bool IsInside(const Face3D& face) const;
-    bool IsOnEnd(const Line3D& line) const;
+    // bool IsOnBoundary(const Face3D& face) const;
+    // bool IsInside(const Line3D& line) const;
+    // bool IsInside(const Face3D& face) const;
+    // bool IsOnEnd(const Line3D& line) const;
 
     const double& X{m_rX};
     const double& Y{m_rY};

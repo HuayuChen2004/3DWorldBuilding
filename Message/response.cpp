@@ -22,12 +22,14 @@ using namespace std;
 Response::Response(ResponseKey key, vector<string> values) : 
                 m_key(key), m_values(values) {}
 
-Response::ResponseKey const& Response::GetKey() const
+Response::ResponseKey Response::GetKey() const
 {
-    return m_key;
+    ResponseKey key = m_key;
+    return key;
 }
 
-vector<string> const& Response::GetValues() const
+vector<string> Response::GetValues() const
 {
-    return m_values;
+    vector<string> valuesCopy = m_values;
+    return valuesCopy;
 }

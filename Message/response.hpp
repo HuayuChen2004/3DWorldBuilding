@@ -52,8 +52,8 @@ public:
     };
     Response(ResponseKey key, vector<string> values);
     virtual ~Response();
-    ResponseKey const& GetKey() const;
-    vector<string> const& GetValues() const;
+    ResponseKey GetKey() const;
+    vector<string> GetValues() const;
 private:
     ResponseKey m_key;
     vector<string> m_values;

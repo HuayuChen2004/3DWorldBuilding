@@ -55,13 +55,6 @@ public:
 
     double Area() const;
 
-private:
-// if the face is initiated with a line and a point, 
-// convert the line to two points that the line is made up of 
-    Point3D* m_pp1;
-    Point3D* m_pp2;
-    Point3D* m_pp3;
-
 };
 
 
