@@ -117,3 +117,44 @@ double Face3D::Distance(const Face3D& face) const {
     if (!IsParallel(face)) {
         throw invalid_argument("The two faces are not parallel");
     }
+    Point3D PerpendicularPoint1 = PerpendicularLine().GetPoint(0);
+    Point3D PerpendicularPoint2 = PerpendicularLine().GetPoint(1);
+    Vector normal = PerpendicularPoint1.ToVector() - 
+                    PerpendicularPoint2.ToVector();
+    Point3D PointOnPlane1 = GetPoint(0);
+    Point3D PointOnPlane2 = face.GetPoint(0);
+    Vector crossPlane = PointOnPlane1.ToVector() - PointOnPlane2.ToVector();
+    return crossPlane.Dot(normal) / normal.Norm();
+}
+
+double Face3D::Distance(const Point3D& point) const {
+    if (IsPointOnFace(point)) {
+        return 0;
+    }
+    Line3D line = PerpendicularLine();
+    Point3D PerpendicularPoint1 = line.GetPoint(0);
+    Point3D PerpendicularPoint2 = line.GetPoint(1);
+    Vector normal = PerpendicularPoint1.ToVector() - 
+                    PerpendicularPoint2.ToVector();
+    Vector crossPlane = GetPoint(0).ToVector() - point.ToVector();
+    return crossPlane.Dot(normal) / normal.Norm();
+}
+
+bool Face3D::IsParallel(const Line3D& line) const {
+    Line3D normal = PerpendicularLine();
+    return normal.IsPerpendicular(line) && !IsPointOnFace(line.GetPoint(0));
+}
+
+double Face3D::Distance(const Line3D& line) const {
+    if (!IsParallel(line)) {
+        throw invalid_argument("The line is not parallel to the face");
+    }
+    Point3D PerpendicularPoint1 = PerpendicularLine().GetPoint(0);
+    Point3D PerpendicularPoint2 = PerpendicularLine().GetPoint(1);
+    Vector normal = PerpendicularPoint1.ToVector() - 
+                    PerpendicularPoint2.ToVector();
+    Point3D PointOnPlane1 = GetPoint(0);
+    Point3D PointOnPlane2 = line.GetPoint(0);
+    Vector crossPlane = PointOnPlane1.ToVector() - PointOnPlane2.ToVector();
+    return crossPlane.Dot(normal) / normal.Norm();
+}

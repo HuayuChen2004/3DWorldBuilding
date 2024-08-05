@@ -17,11 +17,23 @@
 #define MODEL3DOBJIMPORTER_HPP
 
 #include "model3dimporter.hpp"
+#include "../Element3D/face3d.hpp"
+#include "../Element3D/line3d.hpp"
 
 class Model3DObjImporter : public Model3DImporter
 {
 public:
+    Model3DObjImporter();
+    virtual ~Model3DObjImporter();
     Model3D Load(const string& path) const override;
+    vector<Point3D> LoadVertices(const string& path) const;
+    vector<Face3D> LoadFaces(const string& path) const;
+    vector<Line3D> LoadLines(const string& path) const;
+    
+private:
+    // vector<Point3D> LoadVertices(const string& path) const;
+    
+    string LoadName(const string& path) const;
 };
 
 

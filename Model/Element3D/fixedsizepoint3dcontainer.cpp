@@ -40,7 +40,7 @@ void FixedSizePoint3DContainer::ModifyPoint(unsigned int index,
     m_points.at(index) = point;
 }
 
-vector<string> FixedSizePoint3DContainer::ToString() const {
+vector<string> FixedSizePoint3DContainer::ToStrings() const {
     vector<string> pointStrings;
     for (const Point3D& point : m_points) {
         pointStrings.push_back(point.ToString());

@@ -51,6 +51,7 @@
 #include "../Model/Element3D/point3d.hpp"
 #include "../Message/argument.hpp"
 #include "../Message/response.hpp"
+#include <limits>
 
 
 using ArgKey = Argument::ArgumentKey;
@@ -84,7 +85,11 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             vector<shared_ptr<Face3D>> faces = m_model->GetFaces();
             vector<string> face_strings;
             for (const shared_ptr<Face3D>& face_ptr : faces) {
-                face_strings.push_back(face_ptr->ToString());
+                string one_face_strings = "";
+                for (const Point3D& point : face_ptr->GetPoints()) {
+                    one_face_strings += point.ToString();
+                }
+                face_strings.push_back(one_face_strings);
             }
             return Response(ResKey::DISPLAY_ALL_FACES, face_strings);
         }
@@ -104,7 +109,11 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             vector<shared_ptr<Line3D>> lines = m_model->GetLines();
             vector<string> line_strings;
             for (const shared_ptr<Line3D>& line_ptr : lines) {
-                line_strings.push_back(line_ptr->ToString());
+                string one_line_string = "";
+                for (const Point3D& point : line_ptr->GetPoints()) {
+                    one_line_string += point.ToString();
+                }
+                line_strings.push_back(one_line_string);
             }
             return Response(ResKey::DISPLAY_ALL_LINES, line_strings);
         }
@@ -257,7 +266,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
                 return Response(Response::ResponseKey::EXPORT_FAILED, {});
             }
         }
-
+        else {
+            return Response(Response::ResponseKey::UNKNOWN, {});
+        }
         
     }
 }
@@ -300,11 +311,6 @@ void Controller::Export3DModel(const string& path)
     if (path.find(".obj") == string::npos)
     {
         throw invalid_argument("Path is not a valid OBJ file.");
-    }
-    // Check if the path exists
-    if (!filesystem::exists(path))
-    {
-        throw invalid_argument("Path does not exist.");
     }
 
     // Export the 3D model

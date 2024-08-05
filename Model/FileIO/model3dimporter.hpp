@@ -24,6 +24,8 @@
 //
 //
 #include "../Model3D/model3d.hpp"
+#include "../Element3D/face3d.hpp"
+#include "../Element3D/line3d.hpp"
 //
 #include <string>
 //
@@ -45,7 +47,7 @@ using namespace std;
 // 入多种格式的功能，不加分），是促进类架构设计优化，从可能支持多种模型格式的角度，需要考虑导
 // 入器(Importer)类的继承体系，而非单独写一个为本作业专用obj导入器。
 
-class Model3D;
+
 
 class Model3DImporter
 {
@@ -55,19 +57,12 @@ class Model3DImporter
     //
     //
 public:
-    //
-    //
-    //
-    //
-    // in this hw, storage is used to store model3d
+    Model3DImporter();
+    virtual ~Model3DImporter();
+
     virtual Model3D Load(const string& path) const;
-    //
-    //
-    //
-    //
-    //
-    //
-private:
+    virtual vector<Face3D> LoadFaces(const string& path) const = 0;
+    virtual vector<Line3D> LoadLines(const string& path) const = 0;
 
 };
 

@@ -30,6 +30,8 @@
 #include "viewer.hpp"
 #include <iostream>
 #include <exception>
+#include "../Message/argument.hpp"
+#include "../Message/response.hpp"
 
 using namespace std;
 using ArgKey = Argument::ArgumentKey;

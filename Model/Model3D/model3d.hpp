@@ -93,7 +93,7 @@ class Point3D;
 
 class Model3D {
 public:
-    Model3D(vector<Face3D> faces, vector<Line3D> lines);  
+    Model3D(vector<Face3D> faces, vector<Line3D> lines, const string& name="");  
     virtual ~Model3D();
     Model3D& operator=(const Model3D& model);
 
@@ -110,18 +110,21 @@ public:
     // void DisplayLinePoints(int index) const;
     void ModifyLinePoint(unsigned int LineIndex, 
                         unsigned int PointIndex, const Point3D& new_point);
+    void ModifyName(const string& name);
 
     // void DisplayStatistics() const;
     const vector<shared_ptr<Face3D>>& GetFaces() const;
     const vector<shared_ptr<Line3D>>& GetLines() const;
+    string GetName() const;
     const vector<shared_ptr<Point3D>>& GetPoints() const;
 
+
 private:
-// use shared pointer because the elements 
-// are shared among different faces and lines
-    vector<shared_ptr<Face3D>> m_vpFaces;
-    vector<shared_ptr<Line3D>> m_vpLines;
-    vector<shared_ptr<Point3D>> m_vpPoints;
+    string Name;
+    vector<shared_ptr<Face3D>> Faces;
+    vector<shared_ptr<Line3D>> Lines;
+    // vector<shared_ptr<Point3D>> m_vpPoints;
+
 };
 
 

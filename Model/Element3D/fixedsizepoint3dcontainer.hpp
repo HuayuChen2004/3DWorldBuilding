@@ -33,7 +33,7 @@ public:
     vector<Point3D> GetPoints() const;
     Point3D GetPoint(unsigned int index) const;
     void ModifyPoint(unsigned int index, const Point3D& point);
-    vector<string> ToString() const;
+    vector<string> ToStrings() const;
     ostream& operator<<(ostream& os) const;
     bool operator==(const FixedSizePoint3DContainer& container) const;
     bool operator!=(const FixedSizePoint3DContainer& container) const;

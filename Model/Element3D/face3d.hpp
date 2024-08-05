@@ -38,6 +38,7 @@ public:
     bool operator!=(const Face3D& face) const;
 
     bool IsParallel(const Face3D& face) const;
+    bool IsParallel(const Line3D& line) const;
     bool IsPerpendicular(const Face3D& face) const;
     bool IsCoincident(const Face3D& face) const;
 
@@ -47,10 +48,6 @@ public:
     double Distance(const Face3D& face) const;
     double Distance(const Point3D& point) const;
     double Distance(const Line3D& line) const;
-
-    Line3D Intersection(const Face3D& face) const;
-    Point3D Intersection(const Line3D& line) const;
-
     Line3D PerpendicularLine() const;
 
     double Area() const;

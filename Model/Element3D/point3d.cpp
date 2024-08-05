@@ -23,6 +23,8 @@ Point3D::Point3D(double x, double y, double z) : Point(vector<double>{x, y, z}),
 Point3D::Point3D(const Point3D& point) : Point(point),      
                     m_rX(point.m_rX), m_rY(point.m_rY), m_rZ(point.m_rZ) {}
 
+Point3D::~Point3D() {}
+
 void Point3D::SetX(double x) {
     m_rX = x;
     try {
