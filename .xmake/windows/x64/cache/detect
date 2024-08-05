@@ -1,0 +1,60 @@
+{
+    find_program = {
+        gcc = "gcc"
+    },
+    find_programver = {
+        gcc = "8.1.0"
+    },
+    ["lib.detect.has_flags"] = {
+        ["windows_x64_gcc_8.1.0_cxx_cxflags_-m64_-fvisibility-inlines-hidden"] = true,
+        ["windows_x64_gcc_8.1.0_cxx_cxflags_-m64_-MMD -MF"] = true,
+        ["windows_x64_gcc_8.1.0_cxx_cxflags_-m64_-DNDEBUG"] = true,
+        ["windows_x64_gcc_8.1.0_cxx_cxflags_-m64_-fdiagnostics-color=always"] = true,
+        ["windows_x64_gcc_8.1.0_cxx__-m64_-O3"] = true
+    },
+    find_program_gcc_arch_x64_plat_windows_checktoolsh = {
+        ["g++"] = "g++"
+    },
+    ["detect.tools.gcc.has_cflags"] = {
+        ["gcc_8.1.0"] = {
+            ["-Xassembler"] = true,
+            ["-print-multi-lib"] = true,
+            ["--param"] = true,
+            ["-print-libgcc-file-name"] = true,
+            ["-pass-exit-codes"] = true,
+            ["-dumpspecs"] = true,
+            ["-Xlinker"] = true,
+            ["-dumpmachine"] = true,
+            ["-save-temps"] = true,
+            ["-o"] = true,
+            ["-print-multiarch"] = true,
+            ["-print-sysroot-headers-suffix"] = true,
+            ["-dumpversion"] = true,
+            ["--help"] = true,
+            ["-print-sysroot"] = true,
+            ["-print-search-dirs"] = true,
+            ["--version"] = true,
+            ["-no-canonical-prefixes"] = true,
+            ["-Xpreprocessor"] = true,
+            ["-time"] = true,
+            ["-print-multi-directory"] = true,
+            ["-pipe"] = true,
+            ["-c"] = true,
+            ["-print-multi-os-directory"] = true,
+            ["-v"] = true,
+            ["-E"] = true,
+            ["-S"] = true,
+            ["-B"] = true,
+            ["-pie"] = true,
+            ["-shared"] = true,
+            ["-x"] = true,
+            ["--target-help"] = true
+        }
+    },
+    find_program_gcc_arch_x64_plat_windows_checktoolcxx = {
+        gcc = "gcc"
+    },
+    find_program_gcc_arch_x64_plat_windows_checktoolld = {
+        ["g++"] = "g++"
+    }
+}

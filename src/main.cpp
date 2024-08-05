@@ -1,8 +1,3 @@
-#include <string>
-#include <vector>
-#include <fstream>
-#include <stdexcept>
-#include "Model/FileIO/model3dobjimporter.hpp"
 #include "Model/Element3D/point3d.hpp"
 #include <iostream>
 using namespace std;

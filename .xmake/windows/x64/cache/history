@@ -1,0 +1,10 @@
+{
+    cmdlines = {
+        [[xmake lua C:\Users\ASUS\scoop\apps\xmake\current\modules\private\utils\statistics.lua]],
+        "xmake f -p windows -a x64 --toolchain=gcc",
+        "xmake ",
+        [[xmake lua C:\Users\ASUS\scoop\apps\xmake\current\actions\build\cleaner.lua]],
+        "xmake ",
+        "xmake "
+    }
+}
