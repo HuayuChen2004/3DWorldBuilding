@@ -11,6 +11,11 @@
 #include "face3d.hpp"
 #include "line3d.hpp"
 #include "point3d.hpp"
+#include <stdexcept>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <string>
 
 using namespace std;
 

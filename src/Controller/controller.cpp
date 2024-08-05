@@ -49,9 +49,14 @@
 #include "../Model/Element3D/face3d.hpp"
 #include "../Model/Element3D/line3d.hpp"
 #include "../Model/Element3D/point3d.hpp"
+#include "../Model/Model3D/model3d.hpp"
 #include "../Message/argument.hpp"
 #include "../Message/response.hpp"
 #include <limits>
+#include <vector>
+#include <string>
+#include <memory>
+#include <cstdlib>
 
 
 using ArgKey = Argument::ArgumentKey;

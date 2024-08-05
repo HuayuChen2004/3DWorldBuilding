@@ -28,6 +28,8 @@
 //
 #include "point.hpp"
 #include "vector.hpp"
+#include <string>
+#include <vector>
 
 
 #include <exception>

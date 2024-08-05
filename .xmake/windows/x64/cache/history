@@ -5,6 +5,17 @@
         "xmake ",
         [[xmake lua C:\Users\ASUS\scoop\apps\xmake\current\actions\build\cleaner.lua]],
         "xmake ",
-        "xmake "
+        "xmake ",
+        "xmake ",
+        "xmake ",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r"
     }
 }

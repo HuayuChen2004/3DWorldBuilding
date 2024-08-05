@@ -3,7 +3,9 @@
 
 
 #include "point3d.hpp"
-
+#include <vector>
+#include <stdexcept>
+#include <string>
 #include <exception>
 
 using namespace std;

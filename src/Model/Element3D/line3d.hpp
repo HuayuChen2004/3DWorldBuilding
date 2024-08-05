@@ -28,12 +28,11 @@
 
 #include <string>
 #include <ostream>
+#include <vector>
+#include "point3d.hpp"
 #include "fixedsizepoint3dcontainer.hpp"
 
 using namespace std;
-
-class Point3D;
-class Face3D;
 
 class Line3D : public FixedSizePoint3DContainer
 {

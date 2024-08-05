@@ -22,6 +22,9 @@
 #define FIXEDSIZEPOINT3DCONTAINER_HPP
 
 #include <vector>
+#include <string>
+#include <ostream>
+
 #include "point3d.hpp"
 
 using namespace std;

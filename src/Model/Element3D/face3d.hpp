@@ -15,6 +15,10 @@
 
 #include <string>
 #include <ostream>
+#include <vector>
+#include "point3d.hpp"
+#include "line3d.hpp"
+#include <string>
 #include "fixedsizepoint3dcontainer.hpp"
 
 using namespace std;

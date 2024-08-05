@@ -38,6 +38,7 @@
 
 #include <vector>
 #include <cmath>
+#include <string>
 #include "point.hpp"
 
 using namespace std;

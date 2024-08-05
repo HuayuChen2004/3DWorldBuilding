@@ -9,6 +9,8 @@
 // -----------------------------------------------------------
 
 #include "fixedsizepoint3dcontainer.hpp"
+#include "point3d.hpp"
+#include <string>
 #include <iostream>
 #include <sstream>
 #include <vector>

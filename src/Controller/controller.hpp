@@ -55,6 +55,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <cstdlib>
 #include "../Model/Element3D/face3d.hpp"
 #include "../Model/Element3D/point3d.hpp"
 #include "../Model/Element3D/line3d.hpp"
