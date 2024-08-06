@@ -32,6 +32,18 @@
 #include <exception>
 #include "../Message/argument.hpp"
 #include "../Message/response.hpp"
+#include "../Controller/controller.hpp"
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <limits>
+#include <cstdlib>
+#include "../Model/Element3D/face3d.hpp"
+#include "../Model/Element3D/line3d.hpp"
+#include "../Model/Element3D/point3d.hpp"
+#include "../Model/Model3D/model3d.hpp"
+
 
 using namespace std;
 using ArgKey = Argument::ArgumentKey;

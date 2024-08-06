@@ -23,6 +23,8 @@ Face3D::Face3D(const Point3D& point1, const Point3D& point2,
              const Point3D& point3) : 
     FixedSizePoint3DContainer({point1, point2, point3}) {}
 
+Face3D::~Face3D() {}
+
 Face3D::Face3D(const Point3D& point, const Line3D& line) : 
     FixedSizePoint3DContainer({point, line.GetPoint(0), line.GetPoint(1)}) {}
 
@@ -41,9 +43,6 @@ Face3D::Face3D(const Line3D& line1, const Line3D& line2) :
     }
 }
 
-Face3D::Face3D(const Face3D& face) : 
-    FixedSizePoint3DContainer(face.GetPoints()) {}
-
 Face3D& Face3D::operator=(const Face3D& face) {
     if (this != &face) {
         ModifyPoint(0, face.GetPoint(0));
@@ -51,16 +50,6 @@ Face3D& Face3D::operator=(const Face3D& face) {
         ModifyPoint(2, face.GetPoint(2));
     }
     return *this;
-}
-
-bool Face3D::operator==(const Face3D& face) const {
-    return GetPoint(0) == face.GetPoint(0) &&
-           GetPoint(1) == face.GetPoint(1) &&
-           GetPoint(2) == face.GetPoint(2);
-}
-
-bool Face3D::operator!=(const Face3D& face) const {
-    return !(*this == face);
 }
 
 Line3D Face3D::PerpendicularLine() const {

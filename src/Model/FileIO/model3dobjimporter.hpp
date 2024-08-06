@@ -17,8 +17,13 @@
 #define MODEL3DOBJIMPORTER_HPP
 
 #include "model3dimporter.hpp"
+#include "../Model3D/model3d.hpp"
+#include "../Element3D/point3d.hpp"
 #include "../Element3D/face3d.hpp"
 #include "../Element3D/line3d.hpp"
+#include <vector>
+#include <string>
+
 
 class Model3DObjImporter : public Model3DImporter
 {

@@ -83,6 +83,7 @@
 #include "../Element3D/face3d.hpp"
 #include "../Element3D/line3d.hpp"
 #include "../Element3D/point3d.hpp"
+#include <string>
 
 using namespace std;
 
@@ -93,7 +94,7 @@ class Point3D;
 
 class Model3D {
 public:
-    Model3D(vector<Face3D> faces, vector<Line3D> lines, const string& name="");  
+    Model3D(vector<Face3D> faces, vector<Line3D> lines, const string& name="");
     virtual ~Model3D();
     Model3D& operator=(const Model3D& model);
 
@@ -116,7 +117,7 @@ public:
     const vector<shared_ptr<Face3D>>& GetFaces() const;
     const vector<shared_ptr<Line3D>>& GetLines() const;
     string GetName() const;
-    const vector<shared_ptr<Point3D>>& GetPoints() const;
+    vector<Point3D> GetPoints() const;
 
 
 private:
@@ -124,6 +125,8 @@ private:
     vector<shared_ptr<Face3D>> Faces;
     vector<shared_ptr<Line3D>> Lines;
     // vector<shared_ptr<Point3D>> m_vpPoints;
+    bool FindFace(const Face3D& face) const;
+    bool FindLine(const Line3D& line) const;
 
 };
 

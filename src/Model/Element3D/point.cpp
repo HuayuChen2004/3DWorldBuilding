@@ -40,7 +40,7 @@ using namespace std;
 
 
 Point::Point(const vector<double>& coords) {
-    m_uiDim = coords.size();
+    m_uiDim = static_cast<unsigned int>(coords.size());
     m_vrCoords = coords;
 }
 
@@ -56,6 +56,8 @@ Point::Point(const Vector& vec) {
         m_vrCoords[i] = vec[i];
     }
 }
+
+Point::~Point() {}
 
 Point& Point::operator=(const Point& point) {
     m_uiDim = point.m_uiDim;
@@ -316,7 +318,7 @@ string Point::ToString(const Point& point)
 
 void Point::Set(const vector<double>& coords)
 {
-    m_uiDim = coords.size();
+    m_uiDim = static_cast<unsigned int>(coords.size());
     m_vrCoords = coords;
 }
 

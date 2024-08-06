@@ -39,3 +39,5 @@ vector<string> Argument::GetValues() const
     vector<string> valuesCopy = m_values;
     return valuesCopy;
 }
+
+Argument::~Argument() {}

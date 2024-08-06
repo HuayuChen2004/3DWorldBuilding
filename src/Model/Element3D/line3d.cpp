@@ -28,9 +28,6 @@ Line3D::Line3D(const vector<Point3D>& points) :
     }
 }
 
-Line3D::Line3D(const Line3D& line) : 
-            FixedSizePoint3DContainer(line.GetPoints()) {}
-
 Line3D& Line3D::operator=(const Line3D& line) {
     if (this != &line) {
         ModifyPoint(0, line.GetPoint(0));
@@ -38,6 +35,8 @@ Line3D& Line3D::operator=(const Line3D& line) {
     }
     return *this;
 }
+
+Line3D::~Line3D() {}
 
 double Line3D::Distance(const Point3D& point) const {
     Vector vector1 = GetPoint(0).ToVector();
@@ -86,14 +85,6 @@ Point3D Line3D::Intersection(const Line3D& line) const {
     double t2 = crossProduct2 / crossProduct3;
     Point3D intersection = Point3D((vector1 + vector5 * t1).GetData());
     return intersection;
-}
-
-bool Line3D::operator==(const Line3D& line) const {
-    return GetPoint(0) == line.GetPoint(0) && GetPoint(1) == line.GetPoint(1);
-}
-
-bool Line3D::operator!=(const Line3D& line) const {
-    return !(*this == line);
 }
 
 bool Line3D::IsParallel(const Line3D& line) const {

@@ -37,3 +37,5 @@ vector<string> Response::GetValues() const
     vector<string> valuesCopy = m_values;
     return valuesCopy;
 }
+
+Response::~Response() {}

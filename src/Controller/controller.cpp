@@ -137,7 +137,7 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             // get the number of faces, lines, and points
             vector<shared_ptr<Face3D>> faces = m_model->GetFaces();
             vector<shared_ptr<Line3D>> lines = m_model->GetLines();
-            vector<shared_ptr<Point3D>> points = m_model->GetPoints();
+            vector<Point3D> points = m_model->GetPoints();
             // get the total area of the faces
             double total_area = 0.0;
             for (const shared_ptr<Face3D>& face_ptr : faces) {
@@ -155,24 +155,24 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             double max_y = numeric_limits<double>::min();
             double min_z = numeric_limits<double>::max();
             double max_z = numeric_limits<double>::min();
-            for (const shared_ptr<Point3D>& point_ptr : points) {
-                if (point_ptr->X < min_x) {
-                    min_x = point_ptr->X;
+            for (const Point3D& point : points) {
+                if (point.X < min_x) {
+                    min_x = point.X;
                 }
-                if (point_ptr->X > max_x) {
-                    max_x = point_ptr->X;
+                if (point.X > max_x) {
+                    max_x = point.X;
                 }
-                if (point_ptr->Y < min_y) {
-                    min_y = point_ptr->Y;
+                if (point.Y < min_y) {
+                    min_y = point.Y;
                 }
-                if (point_ptr->Y > max_y) {
-                    max_y = point_ptr->Y;
+                if (point.Y > max_y) {
+                    max_y = point.Y;
                 }
-                if (point_ptr->Z < min_z) {
-                    min_z = point_ptr->Z;
+                if (point.Z < min_z) {
+                    min_z = point.Z;
                 }
-                if (point_ptr->Z > max_z) {
-                    max_z = point_ptr->Z;
+                if (point.Z > max_z) {
+                    max_z = point.Z;
                 }
             }
             double minimum_surrounding_cube_volume = 

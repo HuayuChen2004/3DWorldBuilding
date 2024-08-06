@@ -47,6 +47,7 @@
 
 
 #include <string>
+#include <vector>
 #include <iostream>
 #include "../Controller/controller.hpp"
 #include "../Message/argument.hpp"

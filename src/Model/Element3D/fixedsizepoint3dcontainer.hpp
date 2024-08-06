@@ -33,6 +33,7 @@ class FixedSizePoint3DContainer
 {
 public:
     FixedSizePoint3DContainer(const vector<Point3D>& points);
+    FixedSizePoint3DContainer(const FixedSizePoint3DContainer& container);
     vector<Point3D> GetPoints() const;
     Point3D GetPoint(unsigned int index) const;
     void ModifyPoint(unsigned int index, const Point3D& point);
@@ -42,6 +43,7 @@ public:
     bool operator!=(const FixedSizePoint3DContainer& container) const;
     virtual ~FixedSizePoint3DContainer();
     static vector<Point3D> StringsToPoints(const vector<string>& pointStrings);
+    const unsigned int& Size{m_uiSize};
 
 
 private:

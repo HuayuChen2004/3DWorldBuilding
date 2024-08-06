@@ -43,10 +43,6 @@
 
 using namespace std;
 
-class Line3D;
-class Face3D;
-
-
 class Point3D: public Point
 {
 public:

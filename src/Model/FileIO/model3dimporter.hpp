@@ -22,12 +22,14 @@
 #ifndef IMPORTER_HPP
 #define IMPORTER_HPP
 //
+
 //
+#include <string>
+#include <vector>
 #include "../Model3D/model3d.hpp"
 #include "../Element3D/face3d.hpp"
 #include "../Element3D/line3d.hpp"
-//
-#include <string>
+
 //
 using namespace std;
 //

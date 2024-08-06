@@ -24,6 +24,12 @@ FixedSizePoint3DContainer::FixedSizePoint3DContainer(
     m_uiSize = points.size();
 }
 
+FixedSizePoint3DContainer::FixedSizePoint3DContainer(
+            const FixedSizePoint3DContainer& container) : 
+    m_points(container.m_points) {
+    m_uiSize = container.m_uiSize;
+}
+
 vector<Point3D> FixedSizePoint3DContainer::GetPoints() const {
     vector<Point3D> pointsCopy = m_points;
     return pointsCopy;
@@ -38,6 +44,9 @@ void FixedSizePoint3DContainer::ModifyPoint(unsigned int index,
             const Point3D& point) {
     if (index >= m_uiSize) {
         return;
+    }
+    if (find(m_points.begin(), m_points.end(), point) != m_points.end()) {
+        throw invalid_argument("Point already exists in the container.");
     }
     m_points.at(index) = point;
 }
@@ -124,3 +133,9 @@ Point3D FixedSizePoint3DContainer::StringToPoint(const string& pointString) {
 
     return numbers;
 }
+
+FixedSizePoint3DContainer::~FixedSizePoint3DContainer() {
+    m_points.clear();
+}
+
+
