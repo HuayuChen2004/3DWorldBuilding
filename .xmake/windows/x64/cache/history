@@ -1,6 +1,5 @@
 {
     cmdlines = {
-        [[xmake lua C:\Users\ASUS\scoop\apps\xmake\current\actions\build\cleaner.lua]],
         "xmake -r",
         "xmake -r",
         "xmake -r",
@@ -64,6 +63,7 @@
         "xmake run",
         "xmake -r",
         "xmake run",
-        "xmake -r"
+        "xmake -r",
+        "xmake run"
     }
 }
