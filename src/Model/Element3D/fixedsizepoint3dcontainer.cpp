@@ -138,4 +138,7 @@ FixedSizePoint3DContainer::~FixedSizePoint3DContainer() {
     m_points.clear();
 }
 
+ostream& operator<<(ostream& os, const FixedSizePoint3DContainer& container) {
+    return container.operator<<(os);
+}
 

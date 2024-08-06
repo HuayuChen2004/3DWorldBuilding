@@ -1,20 +1,21 @@
 #include "Model/Element3D/point3d.hpp"
 #include "Model/FileIO/model3dobjimporter.hpp"
+#include "Model/Element3D/face3d.hpp"
+#include "Model/FileIO/model3dobjexporter.hpp"
+#include "Controller/controller.hpp"
+#include "Message/argument.hpp"
+#include "Message/response.hpp"
+#include "Viewer/viewer.hpp"
+#include <vector>
 #include <iostream>
 using namespace std;
 
-
+// test obj file path: D:/coding/cpp/oop/hw/cube.obj
 
 int main() {
-    // Point3D point(1, 2, 3);
-    // cout << point << endl;
-    // cout << "Hello, World!" << endl;
-    Model3DObjImporter importer;
-    vector<Point3D> vertices = importer.LoadVertices(
-        "D:/coding/cpp/oop/hw/cube.obj"
-    );
-    for (const Point3D& vertex : vertices) {
-        cout << vertex << endl;
-    }
+    Controller* controller = Controller::GetInstance();
+    Viewer viewer;
+    viewer.Start();
+    
     return 0;
 }

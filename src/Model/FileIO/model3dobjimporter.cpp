@@ -22,7 +22,6 @@ Model3D Model3DObjImporter::Load(const string& path) const {
     if (path.substr(path.find_last_of(".") + 1) != "obj") {
         throw invalid_argument("File is not an obj file");
     }
-
     // load the faces and lines from the obj file
     try {
         vector<Face3D> faces = LoadFaces(path);

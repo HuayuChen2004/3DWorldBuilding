@@ -34,11 +34,12 @@ public:
     vector<Point3D> LoadVertices(const string& path) const;
     vector<Face3D> LoadFaces(const string& path) const;
     vector<Line3D> LoadLines(const string& path) const;
+    string LoadName(const string& path) const;
     
 private:
     // vector<Point3D> LoadVertices(const string& path) const;
     
-    string LoadName(const string& path) const;
+    
 };
 
 

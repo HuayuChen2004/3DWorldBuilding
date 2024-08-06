@@ -44,6 +44,8 @@ public:
     virtual ~FixedSizePoint3DContainer();
     static vector<Point3D> StringsToPoints(const vector<string>& pointStrings);
     const unsigned int& Size{m_uiSize};
+    friend ostream& operator<<(ostream& os, 
+                               const FixedSizePoint3DContainer& container);
 
 
 private:

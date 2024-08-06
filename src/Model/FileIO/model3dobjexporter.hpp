@@ -29,9 +29,10 @@ public:
     virtual ~Model3DObjExporter();
 
     void Save(const string& path, const Model3D& model) const override;
+    vector<Point3D> ListDistinctVertices(const Model3D& model) const;
 
 private:
-    vector<Point3D> ListDistinctVertices(const Model3D& model) const;
+    
 
 };
 

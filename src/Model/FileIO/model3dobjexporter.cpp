@@ -6,6 +6,7 @@
 
 #include <algorithm>
 #include <fstream>
+#include <iostream>
 
 
 using namespace std;
@@ -15,6 +16,7 @@ Model3DObjExporter::Model3DObjExporter() {}
 Model3DObjExporter::~Model3DObjExporter() {}
 
 void Model3DObjExporter::Save(const string& path, const Model3D& model) const {
+
     ofstream file(path);
     if (!file.is_open()) {
         throw runtime_error("Failed to open file");
@@ -26,8 +28,8 @@ void Model3DObjExporter::Save(const string& path, const Model3D& model) const {
     vector<Point3D> vertices = ListDistinctVertices(model);
 
     for (const Point3D& vertex : vertices) {
-        file << "v  " << vertex.X << " " << vertex.Y << " " 
-                                    << vertex.Z << " " << endl;
+        file << "v  " << to_string(vertex.X) << " " << 
+            to_string(vertex.Y) << " " << to_string(vertex.Z) << endl;
     }
 
     for (const shared_ptr<Face3D>& face : model.GetFaces()) {
@@ -37,7 +39,7 @@ void Model3DObjExporter::Save(const string& path, const Model3D& model) const {
             if (it == vertices.end()) {
                 throw runtime_error("Vertex not found");
             }
-            file << distance(vertices.begin(), it) + 1 << " ";
+            file << " " << distance(vertices.begin(), it) + 1 << " ";
         }
         file << endl;
     }
@@ -48,7 +50,7 @@ void Model3DObjExporter::Save(const string& path, const Model3D& model) const {
             if (it == vertices.end()) {
                 throw runtime_error("Vertex not found");
             }
-            file << distance(vertices.begin(), it) + 1 << " ";
+            file << " " << distance(vertices.begin(), it) + 1 << " ";
         }
         file << endl;
     }

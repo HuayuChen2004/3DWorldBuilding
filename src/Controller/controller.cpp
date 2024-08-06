@@ -42,7 +42,6 @@
 //
 #include "controller.hpp"
 #include <stdexcept>
-#include <filesystem>
 
 #include "../Model/FileIO/model3dobjimporter.hpp"
 #include "../Model/FileIO/model3dobjexporter.hpp"
@@ -297,7 +296,7 @@ void Controller::Import3DModel(const string& path)
     // Load the 3D model
     try {
         Model3DObjImporter importer;
-        importer.Load(path);
+        m_model = make_shared<Model3D>(importer.Load(path));
     }
     catch (const exception& e) {
         // Handle the exception

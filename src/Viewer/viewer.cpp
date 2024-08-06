@@ -68,8 +68,16 @@ void Viewer::HandleResponses(const vector<Response>& responses)
         cout << "Import successful." << endl;
         return;
     }
+    if (responses[0].GetKey() == ResKey::IMPORT_FAILED) {
+        cout << "Import failed." << endl;
+        return;
+    }
     if (responses[0].GetKey() == ResKey::EXPORT_SUCCESS) {
         cout << "Export successful." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::EXPORT_FAILED) {
+        cout << "Export failed." << endl;
         return;
     }
     if (responses[0].GetKey() == ResKey::DELETE_FACE_SUCCESS) {
