@@ -129,6 +129,14 @@ void Viewer::HandleResponses(const vector<Response>& responses)
         DisplayStatistics(responses[0].GetValues());
         return;
     }
+    if (responses[0].GetKey() == ResKey::UNKNOWN_INVALID_ARGUMENT) {
+        cout << "Please enter a valid argument." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::UNKNOWN_RUN_TIME_ERROR) {
+        cout << "An unknown error occurred." << endl;
+        return;
+    }
     
 }
     

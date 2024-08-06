@@ -1,11 +1,5 @@
 {
     cmdlines = {
-        "xmake f -p windows -a x64 --toolchain=gcc",
-        "xmake -r",
-        "xmake f -p windows -a x64 --toolchain=g++",
-        "xmake f -p windows -a x64 --toolchain=gcc",
-        "xmake -r",
-        "xmake -r",
         [[xmake lua C:\Users\ASUS\scoop\apps\xmake\current\modules\private\utils\statistics.lua]],
         [[xmake lua C:\Users\ASUS\scoop\apps\xmake\current\actions\build\cleaner.lua]],
         "xmake -r",
@@ -60,6 +54,16 @@
         "xmake run",
         "xmake run",
         "xmake run",
+        "xmake run",
+        "xmake run",
+        "xmake run",
+        "xmake run",
+        "xmake run",
+        "xmake run",
+        "xmake run",
+        "xmake run",
+        "xmake run",
+        "xmake -r",
         "xmake run"
     }
 }

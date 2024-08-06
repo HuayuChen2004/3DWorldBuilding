@@ -49,6 +49,8 @@ public:
         DISPLAY_ALL_LINES,
         DISPLAY_LINE_POINTS,
         DISPLAY_STATISTICS,
+        UNKNOWN_INVALID_ARGUMENT,
+        UNKNOWN_RUN_TIME_ERROR,
     };
     Response(ResponseKey key, vector<string> values);
     virtual ~Response();

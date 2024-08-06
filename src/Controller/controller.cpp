@@ -56,6 +56,7 @@
 #include <string>
 #include <memory>
 #include <cstdlib>
+#include <iostream> // for debugging
 
 
 using ArgKey = Argument::ArgumentKey;
@@ -260,6 +261,10 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             else if (string(e.what()) == "Path does not exist.") {
                 return Response(Response::ResponseKey::NOT_EXIST_PATH, {});
             }
+            else {
+                return Response(
+                    Response::ResponseKey::UNKNOWN_INVALID_ARGUMENT, {});
+            }
         }
 
         else if (typeid(e) == typeid(runtime_error)) {
@@ -270,6 +275,10 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             // failed to export the 3D model
             if (string(e.what()) == "Failed to export the 3D model.") {
                 return Response(Response::ResponseKey::EXPORT_FAILED, {});
+            }
+            else {
+                return Response(
+                    Response::ResponseKey::UNKNOWN_RUN_TIME_ERROR, {});
             }
         }
         else {
