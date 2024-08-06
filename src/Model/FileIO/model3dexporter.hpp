@@ -35,7 +35,7 @@ using namespace std;
 //
 //
 //
-class Model3D;
+
 //
 class Model3DExporter
 {
@@ -57,7 +57,7 @@ public:
     //
     //
     //
-    virtual void Save(const string& path, const Model3D& model) const;
+    virtual void Save(const string& path, const Model3D& model) const = 0;
     //
     //
     //

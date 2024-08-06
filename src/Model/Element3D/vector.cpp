@@ -136,4 +136,44 @@ vector<double> Vector::GetData() const {
     return result;
 }
 
+double Vector::Norm(unsigned int p) const {
+    double result = 0;
+    for (unsigned int i = 0; i < m_uiDim; i++) {
+        result += pow(fabs(data[i]), p);
+    }
+    return pow(result, 1.0 / p);
+}
 
+bool Vector::IsLinearIndependent(const vector<Vector>& vectors) {
+    unsigned int n = vectors.size();
+    unsigned int dimension = vectors[0].Dim;
+    if (n > dimension) {
+        return false;
+    }
+    vector<vector<double>> matrix(dimension, vector<double>(n));
+    for (unsigned int i = 0; i < n; i++) {
+        for (unsigned int j = 0; j < dimension; j++) {
+            matrix[j][i] = vectors[i][j];
+        }
+    }
+    for (unsigned int i = 0; i < n; i++) {
+        for (unsigned int j = 0; j < i; j++) {
+            for (unsigned int k = 0; k < dimension; k++) {
+                if (matrix[k][i] == 0) {
+                    if (matrix[k][j] != 0) {
+                        return true;
+                    }
+                }
+                else if (matrix[k][j] == 0) {
+                    if (matrix[k][i] != 0) {
+                        return true;
+                    }
+                }
+                else if (matrix[k][i] / matrix[k][j] != matrix[k][i]) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}

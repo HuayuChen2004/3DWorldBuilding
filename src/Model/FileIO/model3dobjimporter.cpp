@@ -54,3 +54,63 @@ vector<Point3D> Model3DObjImporter::LoadVertices(const string& path) const {
 
     return vertices;
 }
+
+vector<Face3D> Model3DObjImporter::LoadFaces(const string& path) const {
+    vector<Face3D> faces;
+    ifstream file(path);
+    if (!file.is_open()) {
+        throw invalid_argument("Failed to open the file");
+    }
+
+    vector<Point3D> vertices = LoadVertices(path);
+    string line;
+    while (getline(file, line)) {
+        if (line.substr(0, 2) == "f ") {
+            int vertexIndex1, vertexIndex2, vertexIndex3;
+            if (sscanf(line.c_str(), "f  %d  %d  %d", &vertexIndex1, &vertexIndex2, &vertexIndex3) != 3) {
+                throw invalid_argument("Failed to parse the face");
+            }
+            faces.push_back(Face3D(vertices[vertexIndex1 - 1], vertices[vertexIndex2 - 1], vertices[vertexIndex3 - 1]));
+        }
+    }
+
+    return faces;
+}
+
+vector<Line3D> Model3DObjImporter::LoadLines(const string& path) const {
+    vector<Line3D> lines;
+    ifstream file(path);
+    if (!file.is_open()) {
+        throw invalid_argument("Failed to open the file");
+    }
+
+    vector<Point3D> vertices = LoadVertices(path);
+    string line;
+    while (getline(file, line)) {
+        if (line.substr(0, 2) == "l ") {
+            int vertexIndex1, vertexIndex2;
+            if (sscanf(line.c_str(), "l  %d  %d", &vertexIndex1, &vertexIndex2) != 2) {
+                throw invalid_argument("Failed to parse the line");
+            }
+            lines.push_back(Line3D(vertices[vertexIndex1 - 1], vertices[vertexIndex2 - 1]));
+        }
+    }
+
+    return lines;
+}
+
+string Model3DObjImporter::LoadName(const string& path) const {
+    ifstream file(path);
+    if (!file.is_open()) {
+        throw invalid_argument("Failed to open the file");
+    }
+
+    string line;
+    while (getline(file, line)) {
+        if (line.substr(0, 2) == "g ") {
+            return line.substr(2);
+        }
+    }
+
+    return "";
+}

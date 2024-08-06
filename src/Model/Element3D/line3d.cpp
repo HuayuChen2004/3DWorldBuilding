@@ -194,4 +194,14 @@ void Line3D::SetP2(const Point3D& point) {
     ModifyPoint(1, point);
 }
 
+double Line3D::Length() const {
+    return GetP1().DistanceFrom(GetP2());
+}
 
+bool Line3D::OnSamePlane(const Line3D& line) const {
+    Vector vector1 = GetP1().ToVector() - GetP2().ToVector();
+    Vector vector2 = line.GetP1().ToVector() - line.GetP2().ToVector();
+    Vector vector3 = GetP1().ToVector() - line.GetP1().ToVector();
+    return !Vector::IsLinearIndependent(
+        vector<Vector>({vector1, vector2, vector3}));
+}

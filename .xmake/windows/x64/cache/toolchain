@@ -4,29 +4,39 @@
         toolname = "gcc",
         toolchain_info = {
             name = "gcc",
-            arch = "x64",
+            plat = "windows",
             cachekey = "gcc_arch_x64_plat_windows",
-            plat = "windows"
+            arch = "x64"
+        }
+    },
+    tool_target_hw_windows_x64_cc = {
+        program = "gcc",
+        toolname = "gcc",
+        toolchain_info = {
+            name = "gcc",
+            plat = "windows",
+            cachekey = "gcc_arch_x64_plat_windows",
+            arch = "x64"
+        }
+    },
+    tool_target_hw_windows_x64_ld = {
+        program = "g++",
+        toolname = "gxx",
+        toolchain_info = {
+            name = "gcc",
+            plat = "windows",
+            cachekey = "gcc_arch_x64_plat_windows",
+            arch = "x64"
         }
     },
     tool_target_hw_windows_x64_sh = {
         program = "g++",
+        toolname = "gxx",
         toolchain_info = {
             name = "gcc",
             plat = "windows",
             cachekey = "gcc_arch_x64_plat_windows",
             arch = "x64"
-        },
-        toolname = "gxx"
-    },
-    tool_target_hw_windows_x64_ld = {
-        program = "g++",
-        toolchain_info = {
-            name = "gcc",
-            plat = "windows",
-            cachekey = "gcc_arch_x64_plat_windows",
-            arch = "x64"
-        },
-        toolname = "gxx"
+        }
     }
 }

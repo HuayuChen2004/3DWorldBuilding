@@ -43,6 +43,13 @@ Face3D::Face3D(const Line3D& line1, const Line3D& line2) :
     }
 }
 
+Face3D::Face3D(const vector<Point3D>& points) : 
+    FixedSizePoint3DContainer(points) {
+    if (points.size() != 3) {
+        throw invalid_argument("Face3D must have 3 points");
+    }
+}
+
 Face3D& Face3D::operator=(const Face3D& face) {
     if (this != &face) {
         ModifyPoint(0, face.GetPoint(0));
@@ -151,4 +158,13 @@ double Face3D::Distance(const Line3D& line) const {
     Point3D PointOnPlane2 = line.GetPoint(0);
     Vector crossPlane = PointOnPlane1.ToVector() - PointOnPlane2.ToVector();
     return crossPlane.Dot(normal) / normal.Norm();
+}
+
+double Face3D::Area() const {
+    Vector vector1 = GetPoint(0).ToVector();
+    Vector vector2 = GetPoint(1).ToVector();
+    Vector vector3 = GetPoint(2).ToVector();
+    Vector vector4 = vector2 - vector1;
+    Vector vector5 = vector3 - vector1;
+    return 0.5 * vector4.Cross(vector5).Norm();
 }

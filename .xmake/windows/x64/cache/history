@@ -11,6 +11,20 @@
         "xmake -r",
         "xmake -r",
         "xmake -r",
-        "xmake -r"
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake -r",
+        "xmake build",
+        "xmake run",
+        "xmake -r",
+        "xmake -r",
+        "xmake build",
+        "xmake run",
+        "xmake -r",
+        "xmake run"
     }
 }

@@ -43,6 +43,7 @@
 
 using namespace std;
 
+
 class Point3D: public Point
 {
 public:

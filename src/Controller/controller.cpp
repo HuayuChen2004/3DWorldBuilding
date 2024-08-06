@@ -62,6 +62,8 @@
 using ArgKey = Argument::ArgumentKey;
 using ResKey = Response::ResponseKey;
 
+Controller* Controller::m_instance = nullptr;
+
 Controller* Controller::GetInstance()
 {
     if (!m_instance)

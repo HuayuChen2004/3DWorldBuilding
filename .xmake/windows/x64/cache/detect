@@ -1,6 +1,8 @@
 {
-    find_program_gcc_arch_x64_plat_windows_checktoolld = {
-        ["g++"] = "g++"
+    find_program = {
+        git = "git",
+        ping = "ping",
+        gcc = "gcc"
     },
     find_program_gcc_arch_x64_plat_windows_checktoolcxx = {
         gcc = "gcc"
@@ -8,55 +10,56 @@
     find_programver = {
         gcc = "8.1.0"
     },
-    find_program = {
-        ping = "ping",
-        gcc = "gcc",
-        git = "git"
+    find_program_gcc_arch_x64_plat_windows_checktoolld = {
+        ["g++"] = "g++"
     },
-    ["detect.tools.gcc.has_cflags"] = {
-        ["gcc_8.1.0"] = {
-            ["-print-multi-os-directory"] = true,
-            ["-shared"] = true,
-            ["-pipe"] = true,
-            ["-x"] = true,
-            ["-print-multiarch"] = true,
-            ["--version"] = true,
-            ["-print-search-dirs"] = true,
-            ["-print-sysroot-headers-suffix"] = true,
-            ["-pass-exit-codes"] = true,
-            ["-S"] = true,
-            ["-print-multi-directory"] = true,
-            ["-o"] = true,
-            ["-dumpversion"] = true,
-            ["-no-canonical-prefixes"] = true,
-            ["-Xpreprocessor"] = true,
-            ["-print-libgcc-file-name"] = true,
-            ["-time"] = true,
-            ["-pie"] = true,
-            ["-dumpspecs"] = true,
-            ["-Xlinker"] = true,
-            ["--param"] = true,
-            ["-B"] = true,
-            ["-print-multi-lib"] = true,
-            ["-Xassembler"] = true,
-            ["--help"] = true,
-            ["--target-help"] = true,
-            ["-save-temps"] = true,
-            ["-E"] = true,
-            ["-v"] = true,
-            ["-c"] = true,
-            ["-dumpmachine"] = true,
-            ["-print-sysroot"] = true
-        }
+    find_program_gcc_arch_x64_plat_windows_checktoolsh = {
+        ["g++"] = "g++"
     },
     ["lib.detect.has_flags"] = {
-        ["windows_x64_gcc_8.1.0_cxx__-m64_-O3"] = true,
         ["windows_x64_gcc_8.1.0_cxx_cxflags_-m64_-fdiagnostics-color=always"] = true,
+        ["windows_x64_gcc_8.1.0_cxx__-m64_-O3"] = true,
         ["windows_x64_gcc_8.1.0_cxx_cxflags_-m64_-fvisibility-inlines-hidden"] = true,
         ["windows_x64_gcc_8.1.0_cxx_cxflags_-m64_-MMD -MF"] = true,
         ["windows_x64_gcc_8.1.0_cxx_cxflags_-m64_-DNDEBUG"] = true
     },
-    find_program_gcc_arch_x64_plat_windows_checktoolsh = {
-        ["g++"] = "g++"
+    find_program_gcc_arch_x64_plat_windows_checktoolcc = {
+        gcc = "gcc"
+    },
+    ["detect.tools.gcc.has_cflags"] = {
+        ["gcc_8.1.0"] = {
+            ["-o"] = true,
+            ["-print-multi-lib"] = true,
+            ["-x"] = true,
+            ["-print-multiarch"] = true,
+            ["-E"] = true,
+            ["-pass-exit-codes"] = true,
+            ["-Xpreprocessor"] = true,
+            ["--version"] = true,
+            ["-no-canonical-prefixes"] = true,
+            ["-c"] = true,
+            ["-pie"] = true,
+            ["--target-help"] = true,
+            ["-print-multi-directory"] = true,
+            ["-print-libgcc-file-name"] = true,
+            ["--help"] = true,
+            ["-pipe"] = true,
+            ["-time"] = true,
+            ["-B"] = true,
+            ["--param"] = true,
+            ["-dumpversion"] = true,
+            ["-print-multi-os-directory"] = true,
+            ["-print-search-dirs"] = true,
+            ["-print-sysroot-headers-suffix"] = true,
+            ["-S"] = true,
+            ["-dumpspecs"] = true,
+            ["-shared"] = true,
+            ["-Xassembler"] = true,
+            ["-v"] = true,
+            ["-dumpmachine"] = true,
+            ["-print-sysroot"] = true,
+            ["-Xlinker"] = true,
+            ["-save-temps"] = true
+        }
     }
 }

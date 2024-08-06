@@ -14,11 +14,13 @@
 #define MODEL3DOBJEXPORTER_HPP
 
 #include "model3dexporter.hpp"
+#include "../Model3D/model3d.hpp"
+#include <vector>
 #include <string>
 
 using namespace std;
 
-class Model3DExporter;
+
 
 class Model3DObjExporter : public Model3DExporter
 {
@@ -26,8 +28,10 @@ public:
     Model3DObjExporter();
     virtual ~Model3DObjExporter();
 
-    void Save(const string& path, const Model3D& model);
+    void Save(const string& path, const Model3D& model) const override;
 
+private:
+    vector<Point3D> ListDistinctVertices(const Model3D& model) const;
 
 };
 
