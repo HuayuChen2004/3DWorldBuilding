@@ -4,8 +4,8 @@
         ["xmake.lua"] = 1722854401
     },
     options = {
-        arch = "x64",
+        plat = "windows",
         toolchain = "gcc",
-        plat = "windows"
+        arch = "x64"
     }
 }

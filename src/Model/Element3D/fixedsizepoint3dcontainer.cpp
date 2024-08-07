@@ -49,7 +49,9 @@ void FixedSizePoint3DContainer::ModifyPoint(unsigned int index,
     if (find(m_points.begin(), m_points.end(), point) != m_points.end()) {
         throw invalid_argument("Point already exists in the container.");
     }
-    m_points.at(index) = point;
+    // modify m_points
+    m_points[index].Set(point);
+
 }
 
 vector<string> FixedSizePoint3DContainer::ToStrings() const {

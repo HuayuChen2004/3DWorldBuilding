@@ -123,6 +123,7 @@ Response Controller::HandleArguments(vector<Argument> arguments)
                 string one_line_string = "";
                 for (const Point3D& point : line_ptr->GetPoints()) {
                     one_line_string += point.ToString();
+                    one_line_string += " ";
                 }
                 line_strings.push_back(one_line_string);
             }
@@ -219,6 +220,12 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             // get the point index
             int point_index = stoi(arguments[0].GetValues()[1]);
             // get the new point
+            if (face_index >= m_model->GetFaces().size() || face_index < 0) {
+                return Response(ResKey::INDEX_OUT_OF_RANGE, {});
+            }
+            if (point_index >= m_model->GetFaces()[face_index]->GetPoints().size() || point_index < 0) {
+                return Response(ResKey::INDEX_OUT_OF_RANGE, {});
+            }
             Point3D new_point = FixedSizePoint3DContainer::StringsToPoints(
                 vector<string>{arguments[0].GetValues()[2]})[0];
             ModifyFacePoint(face_index, point_index, new_point);

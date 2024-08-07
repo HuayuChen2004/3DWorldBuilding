@@ -1,6 +1,7 @@
 #include "model3d.hpp"
 #include <string>
 #include <vector>
+#include <iostream> // debugging
 
 using namespace std;
 
@@ -107,7 +108,7 @@ void Model3D::ModifyLinePoint(unsigned int LineIndex,
 
 bool Model3D::FindFace(const Face3D& face) const {
     for (const shared_ptr<Face3D>& f : Faces) {
-        if (*f == face) {
+        if (Face3D::IsSameFace(*f, face)) {
             return true;
         }
     }
@@ -116,7 +117,7 @@ bool Model3D::FindFace(const Face3D& face) const {
 
 bool Model3D::FindLine(const Line3D& line) const {
     for (const shared_ptr<Line3D>& l : Lines) {
-        if (*l == line) {
+        if (Line3D::IsSameSegment(*l, line)) {
             return true;
         }
     }

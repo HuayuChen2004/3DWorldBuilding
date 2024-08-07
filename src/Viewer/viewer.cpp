@@ -487,8 +487,9 @@ void Viewer::ShowModifyPointOfFace() {
         string point_id;
         cin >> point_id;
         cout << "Enter the new coordinates of the point: ";
+        cin.sync();
         string coord;
-        cin >> coord;
+        getline(cin, coord);
         Argument arg(ArgKey::MODIFY_FACE_POINT, 
                 vector<string>{face_id, point_id, coord});
         Controller* controller = Controller::GetInstance();
@@ -521,12 +522,13 @@ void Viewer::ShowListAllLines() {
 void Viewer::ShowAddLine() {
     try {
         cout << "Add Line" << endl;
+        cin.sync();
         cout << "Enter the coordinates of the first point: ";
         string coord1;
-        cin >> coord1;
+        getline(cin, coord1);
         cout << "Enter the coordinates of the second point: ";
         string coord2;
-        cin >> coord2;
+        getline(cin, coord2);
         Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::ADD_LINE, vector<string>{coord1, coord2});
         Response response = 
@@ -588,8 +590,9 @@ void Viewer::ShowModifyPointOfLine() {
         string point_id;
         cin >> point_id;
         cout << "Enter the new coordinates of the point: ";
+        cin.sync();
         string coord;
-        cin >> coord;
+        getline(cin, coord);
         Argument arg(ArgKey::MODIFY_LINE_POINT, 
                 vector<string>{line_id, point_id, coord});
         Controller* controller = Controller::GetInstance();
@@ -636,7 +639,7 @@ void Viewer::DisplayFacePoints(const vector<string>& values) const{
 void Viewer::DisplayAllLines(const vector<string>& values) const{
     for (unsigned int i = 0; i < values.size(); i++) {
         cout << "Line " << i << endl;
-        cout << values[i] << endl;
+        cout << values[i] << " " << endl;
     }
 }
 
