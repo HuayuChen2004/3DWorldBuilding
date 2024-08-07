@@ -182,10 +182,34 @@ void Viewer::HandleResponses(const vector<Response>& responses)
         cout << "Index out of range." << endl;
         return;
     }
-    else {
-        cout << "An unknown error occurred. Please try again." << endl;
+    if (responses[0].GetKey() == ResKey::INVALID_NUMBER_FORMAT) {
+        cout << "Invalid number format." << endl;
         return;
     }
+    if (responses[0].GetKey() == ResKey::NOT_A_POINT) {
+        cout << "Not a point." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::INPUT_NUMBER_ERROR) {
+        cout << "Input number wrong." << endl;
+    }
+    if (responses[0].GetKey() == ResKey::INVALID_INPUT) {
+        cout << "Invalid input." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::PARSE_FAILED) {
+        cout << "Parse failed." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::OPEN_FILE_FAILED) {
+        cout << "Open file failed." << endl;
+        return;
+    }
+    
+
+    cout << "An unknown error occurred. Please try again." << endl;
+    return;
+    
     
 }
     
@@ -646,7 +670,7 @@ void Viewer::DisplayAllLines(const vector<string>& values) const{
 void Viewer::DisplayLinePoints(const vector<string>& values) const{
     for (unsigned int i = 0; i < values.size(); i++) {
         cout << "Point " << i << endl;
-        cout << values[i] << endl;
+        cout << values[i] << " " << endl;
     }
 }
 

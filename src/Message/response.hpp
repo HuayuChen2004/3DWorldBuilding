@@ -62,6 +62,12 @@ public:
         DUPLICATE_LINE,
         NOT_A_FACE,
         NOT_A_LINE,
+        INVALID_NUMBER_FORMAT,
+        NOT_A_POINT,
+        INPUT_NUMBER_ERROR,
+        INVALID_INPUT,
+        PARSE_FAILED,
+        OPEN_FILE_FAILED,
     };
     Response(ResponseKey key, vector<string> values);
     virtual ~Response();

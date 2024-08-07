@@ -72,12 +72,11 @@ double Point::At(unsigned int index) const
     // Check index
     if (index <= MIN_DIM)
     {
-        throw invalid_argument("Index should be greater than 0.");
+        throw invalid_argument("Index out of range");
     }
     if (index > m_uiDim)
     {
-        throw invalid_argument("Index should be less \
-                than or equal to dimension.");
+        throw invalid_argument("Index out of range");
     }
     // Return the value at the index
     try {
@@ -103,12 +102,11 @@ double& Point::operator[](unsigned int index)
     // Check index
     if (index <= MIN_DIM)
     {
-        throw invalid_argument("Index should be greater than 0.");
+        throw invalid_argument("Index out of range");
     }
     if (index > m_uiDim)
     {
-        throw invalid_argument("Index should be less than \
-            or equal to dimension.");
+        throw invalid_argument("Index out of range");
     }
     // Return the reference of the value at the index
     try {

@@ -50,7 +50,7 @@ vector<Point3D> Model3DObjImporter::LoadVertices(const string& path) const {
         if (line.substr(0, 2) == "v ") {
             double x, y, z;
             if (sscanf(line.c_str(), "v  %lf  %lf  %lf", &x, &y, &z) != 3) {
-                throw invalid_argument("Failed to parse the vertex");
+                throw invalid_argument("Failed to parse");
             }
             vertices.push_back(Point3D(x, y, z));
         }
@@ -72,7 +72,7 @@ vector<Face3D> Model3DObjImporter::LoadFaces(const string& path) const {
         if (line.substr(0, 2) == "f ") {
             int vertexIndex1, vertexIndex2, vertexIndex3;
             if (sscanf(line.c_str(), "f  %d  %d  %d", &vertexIndex1, &vertexIndex2, &vertexIndex3) != 3) {
-                throw invalid_argument("Failed to parse the face");
+                throw invalid_argument("Failed to parse");
             }
             faces.push_back(Face3D(vertices[vertexIndex1 - 1], vertices[vertexIndex2 - 1], vertices[vertexIndex3 - 1]));
         }
@@ -94,7 +94,7 @@ vector<Line3D> Model3DObjImporter::LoadLines(const string& path) const {
         if (line.substr(0, 2) == "l ") {
             int vertexIndex1, vertexIndex2;
             if (sscanf(line.c_str(), "l  %d  %d", &vertexIndex1, &vertexIndex2) != 2) {
-                throw invalid_argument("Failed to parse the line");
+                throw invalid_argument("Failed to parse");
             }
             lines.push_back(Line3D(vertices[vertexIndex1 - 1], vertices[vertexIndex2 - 1]));
         }

@@ -223,7 +223,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             if (face_index >= m_model->GetFaces().size() || face_index < 0) {
                 return Response(ResKey::INDEX_OUT_OF_RANGE, {});
             }
-            if (point_index >= m_model->GetFaces()[face_index]->GetPoints().size() || point_index < 0) {
+            if (point_index >= 
+                m_model->GetFaces()[face_index]->GetPoints().size() 
+                || point_index < 0) {
                 return Response(ResKey::INDEX_OUT_OF_RANGE, {});
             }
             Point3D new_point = FixedSizePoint3DContainer::StringsToPoints(
@@ -268,32 +270,60 @@ Response Controller::HandleArguments(vector<Argument> arguments)
                 return Response(Response::ResponseKey::EMPTY_PATH, {});
             }
             // invalid path exception
-            else if (string(e.what()) == "Path is not a valid OBJ file.") {
+            if (string(e.what()) == "Path is not a valid OBJ file.") {
                 return Response(Response::ResponseKey::NOT_OBJ_PATH, {});
             }
             // invalid path exception
-            else if (string(e.what()) == "Path does not exist.") {
+            if (string(e.what()) == "Path does not exist.") {
                 return Response(Response::ResponseKey::NOT_EXIST_PATH, {});
             }
-            else if (string(e.what()) == "Index out of range") {
+            if (string(e.what()) == "Index out of range") {
                 return Response(Response::ResponseKey::INDEX_OUT_OF_RANGE, {});
             }
-            else if (string(e.what()) == "Face already exists") {
+            if (string(e.what()) == "Face already exists") {
                 return Response(Response::ResponseKey::DUPLICATE_FACE, {});
             }
-            else if (string(e.what()) == "The three points are not distinct") {
+            if (string(e.what()) == "The three points are not distinct") {
                 return Response(Response::ResponseKey::NOT_A_FACE, {});
             }
-            else if (string(e.what()) == "Line already exists") {
+            if (string(e.what()) == "Line already exists") {
                 return Response(Response::ResponseKey::DUPLICATE_LINE, {});
             }
-            else if (string(e.what()) == "The two points are the same") {
+            if (string(e.what()) == "The two points are the same") {
                 return Response(Response::ResponseKey::NOT_A_LINE, {});
             }
-            else {
-                return Response(
-                    Response::ResponseKey::UNKNOWN_INVALID_ARGUMENT, {});
+            if (string(e.what()) == "Invalid input.") {
+                return Response(Response::ResponseKey::INVALID_INPUT, {});
             }
+            if (string(e.what()) == "Failed to parse") {
+                return Response(Response::ResponseKey::PARSE_FAILED, {});
+            }
+            if (string(e.what()) == "The three points are not distinct"
+                || string(e.what()) == "The point is on the line"
+                || string(e.what()) == "The two lines are not on the same plane"
+                || string(e.what()) == "The two lines are coincident"
+                || string(e.what()) == "Face3D must have 3 points") {
+                
+                return Response(Response::ResponseKey::NOT_A_FACE, {});
+            }
+            if (string(e.what()) == "Invalid number format.") {
+                return Response(
+                    Response::ResponseKey::INVALID_NUMBER_FORMAT, {});
+            }
+            if (string(e.what()) == "Exactly three numbers are required.") {
+                return Response(Response::ResponseKey::INPUT_NUMBER_ERROR, {});
+            }
+            if (string(e.what()) == "The two points are the same"
+                || string(e.what()) == "Line3D must have 2 points"
+                || string(e.what()) == "The two points are the same") {
+                return Response(Response::ResponseKey::NOT_A_LINE, {});
+            }
+            if (string(e.what()) == "Point3D must have 3 coordinates") {
+                return Response(Response::ResponseKey::NOT_A_POINT, {});
+            }
+            return Response(
+                Response::ResponseKey::UNKNOWN_INVALID_ARGUMENT, {});
+            
         }
 
         else if (typeid(e) == typeid(runtime_error)) {
@@ -312,7 +342,8 @@ Response Controller::HandleArguments(vector<Argument> arguments)
                 return Response(Response::ResponseKey::ADD_FACE_FAILED, {});
             }
             if (string(e.what()) == "Failed to modify the face point.") {
-                return Response(Response::ResponseKey::MODIFY_FACE_POINT_FAILED, {});
+                return Response(
+                    Response::ResponseKey::MODIFY_FACE_POINT_FAILED, {});
             }
             if (string(e.what()) == "Failed to delete the line.") {
                 return Response(Response::ResponseKey::DELETE_LINE_FAILED, {});
@@ -321,7 +352,11 @@ Response Controller::HandleArguments(vector<Argument> arguments)
                 return Response(Response::ResponseKey::ADD_LINE_FAILED, {});
             }
             if (string(e.what()) == "Failed to modify the line point.") {
-                return Response(Response::ResponseKey::MODIFY_LINE_POINT_FAILED, {});
+                return Response(
+                    Response::ResponseKey::MODIFY_LINE_POINT_FAILED, {});
+            }
+            if (string(e.what()) == "Failed to open the file") {
+                return Response(Response::ResponseKey::OPEN_FILE_FAILED, {});
             }
             else {
                 return Response(
@@ -366,7 +401,8 @@ void Controller::AddFace(const Face3D& face)
     m_model->AddFace(face);
 }
 
-void Controller::ModifyFacePoint(unsigned int FaceIndex, unsigned int PointIndex, const Point3D& NewPoint)
+void Controller::ModifyFacePoint(
+    unsigned int FaceIndex, unsigned int PointIndex, const Point3D& NewPoint)
 {
     // Modify the face point
     m_model->ModifyFacePoint(FaceIndex, PointIndex, NewPoint);
