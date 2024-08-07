@@ -121,6 +121,7 @@ private:
     void DisplayAllLines(const vector<string>& LineStrings) const;
     void DisplayLinePoints(const vector<string>& PointStrings) const;
     void DisplayStatistics(const vector<string>& StatsStrings) const;
+    int GetIntegerInput(const string& InputString) const;
 };
 
 

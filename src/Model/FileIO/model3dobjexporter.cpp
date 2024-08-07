@@ -21,6 +21,16 @@ void Model3DObjExporter::Save(const string& path, const Model3D& model) const {
     if (!file.is_open()) {
         throw runtime_error("Failed to open file");
     }
+    // Check if the path is empty
+    if (path.empty())
+    {
+        throw invalid_argument("Path should not be empty.");
+    }
+    // Check if the path is valid
+    if (path.find(".obj") == string::npos)
+    {
+        throw invalid_argument("Path is not a valid OBJ file.");
+    }
 
     file << "# OBJ file" << endl;
     file << "g " << model.GetName() << endl;

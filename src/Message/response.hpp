@@ -57,6 +57,11 @@ public:
         ADD_LINE_FAILED,
         MODIFY_LINE_POINT_FAILED,
         DELETE_LINE_FAILED,
+        INDEX_OUT_OF_RANGE,
+        DUPLICATE_FACE,
+        DUPLICATE_LINE,
+        NOT_A_FACE,
+        NOT_A_LINE,
     };
     Response(ResponseKey key, vector<string> values);
     virtual ~Response();

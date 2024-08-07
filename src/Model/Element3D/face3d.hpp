@@ -42,7 +42,7 @@ public:
     bool IsPerpendicular(const Face3D& face) const;
     bool IsCoincident(const Face3D& face) const;
 
-    bool IsPointOnFace(const Point3D& point) const;
+    bool IsPointOnFacePlane(const Point3D& point) const;
 
     double Angle(const Face3D& face) const;
     double Distance(const Face3D& face) const;
@@ -51,6 +51,8 @@ public:
     Line3D PerpendicularLine() const;
 
     double Area() const;
+
+    static bool IsSameFace(const Face3D& face1, const Face3D& face2);
 
 };
 

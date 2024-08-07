@@ -45,7 +45,7 @@ Model3D& Model3D::operator=(const Model3D& model) {
 
 void Model3D::DeleteFace(unsigned int index) {
     if (index >= Faces.size()) {
-        throw invalid_argument("Invalid index");
+        throw invalid_argument("Index out of range");
     }
     
     Faces.erase(Faces.begin() + index);
@@ -53,7 +53,7 @@ void Model3D::DeleteFace(unsigned int index) {
 
 void Model3D::DeleteLine(unsigned int index) {
     if (index >= Lines.size()) {
-        throw invalid_argument("Invalid index");
+        throw invalid_argument("Index out of range");
     }
     
     Lines.erase(Lines.begin() + index);
@@ -62,7 +62,7 @@ void Model3D::DeleteLine(unsigned int index) {
 void Model3D::AddFace(const Face3D& face) {
     // check if there are faces that are the same
     for (const shared_ptr<Face3D>& f : Faces) {
-        if (*f == face) {
+        if (Face3D::IsSameFace(*f, face)) {
             throw invalid_argument("Face already exists");
         }
     }
@@ -72,7 +72,7 @@ void Model3D::AddFace(const Face3D& face) {
 void Model3D::AddLine(const Line3D& line) {
     // check if there are lines that are the same
     for (const shared_ptr<Line3D>& l : Lines) {
-        if (*l == line) {
+        if (Line3D::IsSameSegment(*l, line)) {
             throw invalid_argument("Line already exists");
         }
     }
@@ -82,7 +82,7 @@ void Model3D::AddLine(const Line3D& line) {
 void Model3D::ModifyFacePoint(unsigned int FaceIndex, 
                         unsigned int PointIndex, const Point3D& new_point) {
     if (FaceIndex >= Faces.size()) {
-        throw invalid_argument("Invalid index");
+        throw invalid_argument("Index out of range");
     }
     Face3D NewFace = *Faces[FaceIndex];
     NewFace.ModifyPoint(PointIndex, new_point);
@@ -95,7 +95,7 @@ void Model3D::ModifyFacePoint(unsigned int FaceIndex,
 void Model3D::ModifyLinePoint(unsigned int LineIndex, 
                         unsigned int PointIndex, const Point3D& new_point) {
     if (LineIndex >= Lines.size()) {
-        throw invalid_argument("Invalid index");
+        throw invalid_argument("Index out of range");
     }
     Line3D NewLine = *Lines[LineIndex];
     NewLine.ModifyPoint(PointIndex, new_point);

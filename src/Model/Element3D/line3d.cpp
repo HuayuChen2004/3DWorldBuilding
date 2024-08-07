@@ -19,12 +19,19 @@
 using namespace std;
 
 Line3D::Line3D(const Point3D& point1, const Point3D& point2) : 
-    FixedSizePoint3DContainer({point1, point2}) {}
+    FixedSizePoint3DContainer({point1, point2}) {
+        if (point1 == point2) {
+            throw invalid_argument("The two points are the same");
+        }
+    }
 
 Line3D::Line3D(const vector<Point3D>& points) : 
             FixedSizePoint3DContainer(points) {
     if (points.size() != 2) {
         throw invalid_argument("Line3D must have 2 points");
+    }
+    if (points[0] == points[1]) {
+        throw invalid_argument("The two points are the same");
     }
 }
 
@@ -204,4 +211,9 @@ bool Line3D::OnSamePlane(const Line3D& line) const {
     Vector vector3 = GetP1().ToVector() - line.GetP1().ToVector();
     return !Vector::IsLinearIndependent(
         vector<Vector>({vector1, vector2, vector3}));
+}
+
+bool Line3D::IsSameSegment(const Line3D& line1, const Line3D& line2) {
+    return line1.GetP1() == line2.GetP1() && line1.GetP2() == line2.GetP2()
+        || line1.GetP1() == line2.GetP2() && line1.GetP2() == line2.GetP1();
 }

@@ -44,7 +44,7 @@ Point3D FixedSizePoint3DContainer::GetPoint(unsigned int index) const {
 void FixedSizePoint3DContainer::ModifyPoint(unsigned int index, 
             const Point3D& point) {
     if (index >= m_uiSize) {
-        return;
+        throw invalid_argument("Index out of range");
     }
     if (find(m_points.begin(), m_points.end(), point) != m_points.end()) {
         throw invalid_argument("Point already exists in the container.");
@@ -131,3 +131,7 @@ ostream& operator<<(ostream& os, const FixedSizePoint3DContainer& container) {
     return container.operator<<(os);
 }
 
+bool FixedSizePoint3DContainer::IsPoint3DInContainer(
+            const Point3D& point) const {
+    return find(m_points.begin(), m_points.end(), point) != m_points.end();
+}

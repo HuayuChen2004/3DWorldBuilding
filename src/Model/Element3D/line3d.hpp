@@ -65,6 +65,7 @@ public:
     static bool IsPerpendicular(const Line3D& line1, const Line3D& line2);
     static bool IsCoincident(const Line3D& line1, const Line3D& line2);
     static bool IsPointOnLine(const Point3D& point, const Line3D& line);
+    static bool IsSameSegment(const Line3D& line1, const Line3D& line2);
 
     Point3D GetP1() const;
     Point3D GetP2() const;

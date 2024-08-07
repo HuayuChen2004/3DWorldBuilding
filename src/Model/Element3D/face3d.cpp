@@ -21,12 +21,20 @@ using namespace std;
 
 Face3D::Face3D(const Point3D& point1, const Point3D& point2, 
              const Point3D& point3) : 
-    FixedSizePoint3DContainer({point1, point2, point3}) {}
+    FixedSizePoint3DContainer({point1, point2, point3}) {
+    if (point1 == point2 || point1 == point3 || point2 == point3) {
+        throw invalid_argument("The three points are not distinct");
+    }
+}
 
 Face3D::~Face3D() {}
 
 Face3D::Face3D(const Point3D& point, const Line3D& line) : 
-    FixedSizePoint3DContainer({point, line.GetPoint(0), line.GetPoint(1)}) {}
+    FixedSizePoint3DContainer({point, line.GetPoint(0), line.GetPoint(1)}) {
+    if (line.IsPointOnLine(point)) {
+        throw invalid_argument("The point is on the line");
+    }
+}
 
 Face3D::Face3D(const Line3D& line1, const Line3D& line2) : 
     FixedSizePoint3DContainer({line1.GetPoint(0), line1.GetPoint(1), 
@@ -47,6 +55,10 @@ Face3D::Face3D(const vector<Point3D>& points) :
     FixedSizePoint3DContainer(points) {
     if (points.size() != 3) {
         throw invalid_argument("Face3D must have 3 points");
+    }
+    if (points[0] == points[1] || points[0] == points[2] || 
+        points[1] == points[2]) {
+        throw invalid_argument("The three points are not distinct");
     }
 }
 
@@ -89,12 +101,12 @@ bool Face3D::IsPerpendicular(const Face3D& face) const {
 }
 
 bool Face3D::IsCoincident(const Face3D& face) const {
-    return face.IsPointOnFace(GetPoint(0)) && 
-           face.IsPointOnFace(GetPoint(1)) && 
-           face.IsPointOnFace(GetPoint(2));
+    return face.IsPointOnFacePlane(GetPoint(0)) && 
+           face.IsPointOnFacePlane(GetPoint(1)) && 
+           face.IsPointOnFacePlane(GetPoint(2));
 }
 
-bool Face3D::IsPointOnFace(const Point3D& point) const {
+bool Face3D::IsPointOnFacePlane(const Point3D& point) const {
     Vector vector1 = GetPoint(0).ToVector() - point.ToVector();
     Vector vector2 = GetPoint(1).ToVector() - point.ToVector();
     Vector vector3 = GetPoint(2).ToVector() - point.ToVector();
@@ -129,7 +141,7 @@ double Face3D::Distance(const Face3D& face) const {
 }
 
 double Face3D::Distance(const Point3D& point) const {
-    if (IsPointOnFace(point)) {
+    if (IsPointOnFacePlane(point)) {
         return 0;
     }
     Line3D line = PerpendicularLine();
@@ -143,7 +155,7 @@ double Face3D::Distance(const Point3D& point) const {
 
 bool Face3D::IsParallel(const Line3D& line) const {
     Line3D normal = PerpendicularLine();
-    return normal.IsPerpendicular(line) && !IsPointOnFace(line.GetPoint(0));
+    return normal.IsPerpendicular(line) && !IsPointOnFacePlane(line.GetPoint(0));
 }
 
 double Face3D::Distance(const Line3D& line) const {
@@ -167,4 +179,15 @@ double Face3D::Area() const {
     Vector vector4 = vector2 - vector1;
     Vector vector5 = vector3 - vector1;
     return 0.5 * vector4.Cross(vector5).Norm();
+}
+
+bool Face3D::IsSameFace(const Face3D& face1, const Face3D& face2) {
+    vector<Point3D> points1 = face1.GetPoints();
+    vector<Point3D> points2 = face2.GetPoints();
+    for (const Point3D& point : points1) {
+        if (find(points2.begin(), points2.end(), point) == points2.end()) {
+            return false;
+        }
+    }
+    return true;
 }

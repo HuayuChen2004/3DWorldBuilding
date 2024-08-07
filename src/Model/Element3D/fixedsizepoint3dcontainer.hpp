@@ -41,11 +41,12 @@ public:
     ostream& operator<<(ostream& os) const;
     bool operator==(const FixedSizePoint3DContainer& container) const;
     bool operator!=(const FixedSizePoint3DContainer& container) const;
+    bool IsPoint3DInContainer(const Point3D& point) const;
     virtual ~FixedSizePoint3DContainer();
     static vector<Point3D> StringsToPoints(const vector<string>& pointStrings);
     const unsigned int& Size{m_uiSize};
     friend ostream& operator<<(ostream& os, 
-                               const FixedSizePoint3DContainer& container);
+                            const FixedSizePoint3DContainer& container);
 
 
 private:

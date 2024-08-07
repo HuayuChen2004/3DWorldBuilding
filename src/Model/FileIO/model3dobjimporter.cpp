@@ -18,9 +18,14 @@ Model3DObjImporter::~Model3DObjImporter() {}
 
 
 Model3D Model3DObjImporter::Load(const string& path) const {
-    // check if the file is an obj file
+    // Check if the path is empty
+    if (path.empty()) {
+        throw invalid_argument("Path should not be empty.");
+    }
+
+    // Check if the file is an obj file
     if (path.substr(path.find_last_of(".") + 1) != "obj") {
-        throw invalid_argument("File is not an obj file");
+        throw invalid_argument("Path is not a valid OBJ file.");
     }
     // load the faces and lines from the obj file
     try {

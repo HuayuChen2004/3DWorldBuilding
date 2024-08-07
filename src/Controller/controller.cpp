@@ -104,6 +104,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
         else if (key == ArgKey::DISPLAY_FACE_POINTS) {
             // get the face index
             int index = stoi(arguments[0].GetValues()[0]);
+            if (index >= m_model->GetFaces().size() || index < 0) {
+                return Response(ResKey::INDEX_OUT_OF_RANGE, {});
+            }
             // get the face points
             vector<shared_ptr<Face3D>> faces = m_model->GetFaces();
             vector<string> point_strings;
@@ -128,6 +131,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
         else if (key == ArgKey::DISPLAY_LINE_POINTS) {
             // get the line index
             int index = stoi(arguments[0].GetValues()[0]);
+            if (index >= m_model->GetLines().size() || index < 0) {
+                return Response(ResKey::INDEX_OUT_OF_RANGE, {});
+            }
             // get the line points
             vector<shared_ptr<Line3D>> lines = m_model->GetLines();
             vector<string> point_strings;
@@ -262,6 +268,21 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             else if (string(e.what()) == "Path does not exist.") {
                 return Response(Response::ResponseKey::NOT_EXIST_PATH, {});
             }
+            else if (string(e.what()) == "Index out of range") {
+                return Response(Response::ResponseKey::INDEX_OUT_OF_RANGE, {});
+            }
+            else if (string(e.what()) == "Face already exists") {
+                return Response(Response::ResponseKey::DUPLICATE_FACE, {});
+            }
+            else if (string(e.what()) == "The three points are not distinct") {
+                return Response(Response::ResponseKey::NOT_A_FACE, {});
+            }
+            else if (string(e.what()) == "Line already exists") {
+                return Response(Response::ResponseKey::DUPLICATE_LINE, {});
+            }
+            else if (string(e.what()) == "The two points are the same") {
+                return Response(Response::ResponseKey::NOT_A_LINE, {});
+            }
             else {
                 return Response(
                     Response::ResponseKey::UNKNOWN_INVALID_ARGUMENT, {});
@@ -310,149 +331,58 @@ Response Controller::HandleArguments(vector<Argument> arguments)
 //
 void Controller::Import3DModel(const string& path)
 {
-    // Check if the path is empty
-    if (path.empty())
-    {
-        throw invalid_argument("Path should not be empty.");
-    }
-    // Check if the path is valid
-    if (path.find(".obj") == string::npos)
-    {
-        throw invalid_argument("Path is not a valid OBJ file.");
-    }
-
     // Load the 3D model
-    try {
-        Model3DObjImporter importer;
-        m_model = make_shared<Model3D>(importer.Load(path));
-    }
-    catch (const exception& e) {
-        // Handle the exception
-        throw runtime_error("Failed to import the 3D model.");
-    }
-    // Import the 3D model
-    // ...
+    Model3DObjImporter importer;
+    m_model = make_shared<Model3D>(importer.Load(path));
+
 }
 
 void Controller::Export3DModel(const string& path)
 {
-    // Check if the path is empty
-    if (path.empty())
-    {
-        throw invalid_argument("Path should not be empty.");
-    }
-    // Check if the path is valid
-    if (path.find(".obj") == string::npos)
-    {
-        throw invalid_argument("Path is not a valid OBJ file.");
-    }
+    
 
     // Export the 3D model
-    try {
         Model3DObjExporter exporter;
         exporter.Save(path, *m_model);
-    }
-    catch (const exception& e) {
-        throw runtime_error("Failed to export the 3D model.");
-    }
     // ...
 }
 
 void Controller::DeleteFace(unsigned int FaceIndex)
 {
-    if (FaceIndex >= m_model->GetFaces().size())
-    {
-        throw invalid_argument("Face index out of range.");
-    }
     // Delete the face
-    try {
-        m_model->DeleteFace(FaceIndex);
-    }
-    catch (const exception& e) {
-        // Handle the exception
-        throw runtime_error("Failed to delete the face.");
-    }
+    m_model->DeleteFace(FaceIndex);
 }
 
 void Controller::AddFace(const Face3D& face)
 {
     // Add the face
-    try {
-        m_model->AddFace(face);
-    }
-    catch (const exception& e) {
-        // Handle the exception
-        throw runtime_error("Failed to add the face.");
-    }
+    m_model->AddFace(face);
 }
 
 void Controller::ModifyFacePoint(unsigned int FaceIndex, unsigned int PointIndex, const Point3D& NewPoint)
 {
-    if (FaceIndex >= m_model->GetFaces().size())
-    {
-        throw invalid_argument("Face index out of range.");
-    }
-    if (PointIndex >= m_model->GetFaces()[FaceIndex]->GetPoints().size())
-    {
-        throw invalid_argument("Point index out of range.");
-    }
     // Modify the face point
-    try {
-        m_model->ModifyFacePoint(FaceIndex, PointIndex, NewPoint);
-    }
-    catch (const exception& e) {
-        // Handle the exception
-        throw runtime_error("Failed to modify the face point.");
-    }
+    m_model->ModifyFacePoint(FaceIndex, PointIndex, NewPoint);
 }
 
 void Controller::DeleteLine(unsigned int LineIndex)
 {
-    if (LineIndex >= m_model->GetLines().size())
-    {
-        throw invalid_argument("Line index out of range.");
-    }
     // Delete the line
-    try {
-        m_model->DeleteLine(LineIndex);
-    }
-    catch (const exception& e) {
-        // Handle the exception
-        throw runtime_error("Failed to delete the line.");
-    }
+    m_model->DeleteLine(LineIndex);
+
 }
 
 void Controller::AddLine(const Line3D& line)
 {
     // Add the line
-    try {
-        m_model->AddLine(line);
-    }
-    catch (const exception& e) {
-        // Handle the exception
-        throw runtime_error("Failed to add the line.");
-    }
+    m_model->AddLine(line);
 }
 
 void Controller::ModifyLinePoint(unsigned int LineIndex, 
                 unsigned int PointIndex, const Point3D& NewPoint)
 {
-    if (LineIndex >= m_model->GetLines().size())
-    {
-        throw invalid_argument("Line index out of range.");
-    }
-    if (PointIndex >= m_model->GetLines()[LineIndex]->GetPoints().size())
-    {
-        throw invalid_argument("Point index out of range.");
-    }
     // Modify the line point
-    try {
-        m_model->ModifyLinePoint(LineIndex, PointIndex, NewPoint);
-    }
-    catch (const exception& e) {
-        // Handle the exception
-        throw runtime_error("Failed to modify the line point.");
-    }
+    m_model->ModifyLinePoint(LineIndex, PointIndex, NewPoint);
 }
 
 

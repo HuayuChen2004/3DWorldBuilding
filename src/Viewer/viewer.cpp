@@ -39,6 +39,7 @@
 #include <cmath>
 #include <limits>
 #include <cstdlib>
+#include <regex>
 #include "../Model/Element3D/face3d.hpp"
 #include "../Model/Element3D/line3d.hpp"
 #include "../Model/Element3D/point3d.hpp"
@@ -161,6 +162,26 @@ void Viewer::HandleResponses(const vector<Response>& responses)
         cout << "Modify line point failed." << endl;
         return;
     }
+    if (responses[0].GetKey() == ResKey::DUPLICATE_FACE) {
+        cout << "Face already exists." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DUPLICATE_LINE) {
+        cout << "Line already exists." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::NOT_A_FACE) {
+        cout << "Not a face." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::NOT_A_LINE) {
+        cout << "Not a line." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::INDEX_OUT_OF_RANGE) {
+        cout << "Index out of range." << endl;
+        return;
+    }
     else {
         cout << "An unknown error occurred. Please try again." << endl;
         return;
@@ -187,7 +208,9 @@ void Viewer::Start()
             string arg;
             cin >> arg;
 
-            switch (atoi(arg.c_str()))
+            int input = GetIntegerInput(arg);
+
+            switch (input)
             {
             case 1:
                 ShowImportModel();
@@ -308,7 +331,10 @@ void Viewer::ShowModifyModelMenu()
 
             string choice;
             cin >> choice;
-            switch (atoi(choice.c_str()))
+
+            int input = GetIntegerInput(choice);
+
+            switch (input)
             {
             case 1:
                 ShowListAllFaces();
@@ -409,8 +435,7 @@ void Viewer::ShowAddFace() {
     try {
         cout << "Add Face" << endl;
         cout << "Enter the coordinates of the first point: ";
-        string temp;
-        getline(cin, temp);
+        cin.sync();
         string coord1;
         getline(cin, coord1);
         cout << "Enter the coordinates of the second point: ";
@@ -453,6 +478,7 @@ void Viewer::ShowListAllPointsOfFace() {
 
 void Viewer::ShowModifyPointOfFace() {
     try {
+        cin.sync();
         cout << "Modify Point of Face" << endl;
         cout << "Enter the face ID to modify: ";
         string face_id;
@@ -624,5 +650,22 @@ void Viewer::DisplayLinePoints(const vector<string>& values) const{
 void Viewer::DisplayStatistics(const vector<string>& values) const{
     for (unsigned int i = 0; i < values.size(); i++) {
         cout << values[i] << endl;
+    }
+}
+
+int Viewer::GetIntegerInput(const string& InputString) const {
+    // 使用正则表达式检查输入是否为正整数
+    std::regex positive_integer_regex("^[1-9]\\d*$");
+    if (!std::regex_match(InputString, positive_integer_regex)) {
+        throw invalid_argument("Invalid input.");
+    }
+
+    try {
+        int input = stoi(InputString); // 尝试将字符串转换为整数
+        return input;
+    } catch (const invalid_argument& e) {
+        throw invalid_argument("Invalid input.");
+    } catch (const out_of_range& e) {
+        throw invalid_argument("Invalid input.");
     }
 }
