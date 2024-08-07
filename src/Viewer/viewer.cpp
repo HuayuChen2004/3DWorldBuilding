@@ -137,6 +137,34 @@ void Viewer::HandleResponses(const vector<Response>& responses)
         cout << "An unknown error occurred." << endl;
         return;
     }
+    if (responses[0].GetKey() == ResKey::ADD_FACE_FAILED) {
+        cout << "Add face failed." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DELETE_FACE_FAILED) {
+        cout << "Delete face failed." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::MODIFY_FACE_POINT_FAILED) {
+        cout << "Modify face point failed." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::ADD_LINE_FAILED) {
+        cout << "Add line failed." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::DELETE_LINE_FAILED) {
+        cout << "Delete line failed." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::MODIFY_LINE_POINT_FAILED) {
+        cout << "Modify line point failed." << endl;
+        return;
+    }
+    else {
+        cout << "An unknown error occurred. Please try again." << endl;
+        return;
+    }
     
 }
     
@@ -381,14 +409,16 @@ void Viewer::ShowAddFace() {
     try {
         cout << "Add Face" << endl;
         cout << "Enter the coordinates of the first point: ";
+        string temp;
+        getline(cin, temp);
         string coord1;
-        cin >> coord1;
+        getline(cin, coord1);
         cout << "Enter the coordinates of the second point: ";
         string coord2;
-        cin >> coord2;
+        getline(cin, coord2);
         cout << "Enter the coordinates of the third point: ";
         string coord3;
-        cin >> coord3;
+        getline(cin, coord3);
         Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::ADD_FACE, vector<string>{coord1, coord2, coord3});
         Response response = 

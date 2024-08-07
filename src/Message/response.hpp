@@ -51,6 +51,12 @@ public:
         DISPLAY_STATISTICS,
         UNKNOWN_INVALID_ARGUMENT,
         UNKNOWN_RUN_TIME_ERROR,
+        ADD_FACE_FAILED,
+        MODIFY_FACE_POINT_FAILED,
+        DELETE_FACE_FAILED,
+        ADD_LINE_FAILED,
+        MODIFY_LINE_POINT_FAILED,
+        DELETE_LINE_FAILED,
     };
     Response(ResponseKey key, vector<string> values);
     virtual ~Response();

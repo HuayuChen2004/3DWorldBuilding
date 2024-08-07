@@ -95,6 +95,7 @@ Response Controller::HandleArguments(vector<Argument> arguments)
                 string one_face_strings = "";
                 for (const Point3D& point : face_ptr->GetPoints()) {
                     one_face_strings += point.ToString();
+                    one_face_strings += " ";
                 }
                 face_strings.push_back(one_face_strings);
             }
@@ -275,6 +276,24 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             // failed to export the 3D model
             if (string(e.what()) == "Failed to export the 3D model.") {
                 return Response(Response::ResponseKey::EXPORT_FAILED, {});
+            }
+            if (string(e.what()) == "Failed to delete the face.") {
+                return Response(Response::ResponseKey::DELETE_FACE_FAILED, {});
+            }
+            if (string(e.what()) == "Failed to add the face.") {
+                return Response(Response::ResponseKey::ADD_FACE_FAILED, {});
+            }
+            if (string(e.what()) == "Failed to modify the face point.") {
+                return Response(Response::ResponseKey::MODIFY_FACE_POINT_FAILED, {});
+            }
+            if (string(e.what()) == "Failed to delete the line.") {
+                return Response(Response::ResponseKey::DELETE_LINE_FAILED, {});
+            }
+            if (string(e.what()) == "Failed to add the line.") {
+                return Response(Response::ResponseKey::ADD_LINE_FAILED, {});
+            }
+            if (string(e.what()) == "Failed to modify the line point.") {
+                return Response(Response::ResponseKey::MODIFY_LINE_POINT_FAILED, {});
             }
             else {
                 return Response(
