@@ -68,6 +68,8 @@ public:
         INVALID_INPUT,
         PARSE_FAILED,
         OPEN_FILE_FAILED,
+        NO_MODEL_TO_EXPORT,
+        NO_3D_MODEL,
     };
     Response(ResponseKey key, vector<string> values);
     virtual ~Response();

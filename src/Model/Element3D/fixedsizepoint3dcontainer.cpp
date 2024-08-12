@@ -103,7 +103,7 @@ Point3D FixedSizePoint3DContainer::StringToPoint(const string& pointString) {
     }).base(), trimmedInput.end());
 
     // 使用正则表达式匹配数字
-    regex re("\\s*([-+]?[0-9]*\\.?[0-9]+)\\s*");
+    regex re("\\s*([-+]?[0-9]*\\.?[0-9]+)(?:\\s+|\\s*,\\s*|\\s*$)");
     auto begin = sregex_iterator(trimmedInput.begin(), trimmedInput.end(), re);
     auto end = sregex_iterator();
 

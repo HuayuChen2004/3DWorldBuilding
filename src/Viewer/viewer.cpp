@@ -192,6 +192,7 @@ void Viewer::HandleResponses(const vector<Response>& responses)
     }
     if (responses[0].GetKey() == ResKey::INPUT_NUMBER_ERROR) {
         cout << "Input number wrong." << endl;
+        return;
     }
     if (responses[0].GetKey() == ResKey::INVALID_INPUT) {
         cout << "Invalid input." << endl;
@@ -205,8 +206,15 @@ void Viewer::HandleResponses(const vector<Response>& responses)
         cout << "Open file failed." << endl;
         return;
     }
+    if (responses[0].GetKey() == ResKey::NO_MODEL_TO_EXPORT) {
+        cout << "No model to export." << endl;
+        return;
+    }
+    if (responses[0].GetKey() == ResKey::NO_3D_MODEL) {
+        cout << "Please import a 3D model first." << endl;
+        return;
+    }
     
-
     cout << "An unknown error occurred. Please try again." << endl;
     return;
     
@@ -260,8 +268,7 @@ void Viewer::Start()
         }
         catch (const exception& e) {
             // handle exception here
-            cout << "viewer.cpp line 63" << endl;
-            cout << "catch exception" << e.what() << endl;
+            cout << "invalid choice" << endl;
         }
     } // end while loop
     // 结束之后说一些话
@@ -294,8 +301,7 @@ void Viewer::ShowImportModel()
     }
     catch (const exception& e) {
         // handle exception here
-        cout << "viewer.cpp line 94" << endl;
-        cout << "catch exception" << e.what() << endl;
+        cout << "invalid input" << endl;
     }
 }
 
@@ -307,8 +313,7 @@ void Viewer::ShowExportModel()
         cout << string(50, '=') << endl;
         //参数传给controller，并获取response展示给用户
         cout << "Export 3D Model" << endl;
-        cout << "Enter the path to save the 3D model \
-                (or type 'exit' to exit): ";
+        cout << "Enter the path to save the 3D model(or type 'exit' to exit): ";
         string path;
         cin >> path;
         
@@ -325,8 +330,7 @@ void Viewer::ShowExportModel()
     }
     catch (const exception& e) {
         // handle exception here
-        cout << "viewer.cpp line 116" << endl;
-        cout << "catch exception" << e.what() << endl;
+        cout << "invalid input" << endl;
     }
 }
 
@@ -409,15 +413,14 @@ void Viewer::ShowModifyModelMenu()
                 return;
 
             default:
-                cout << "Invalid choice, please try again." << endl;
+                cout << "Invalid choice" << endl;
                 break;
             }
         }
     }
     catch (const exception& e) {
         // handle exception here
-        cout << "viewer.cpp line 214" << endl;
-        cout << "catch exception: " << e.what() << endl;
+        cout << "invalid choice" << endl;
     }
 }
 

@@ -89,6 +89,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
         }
         else if (key == ArgKey::DISPLAY_ALL_FACES) {
             // get all faces
+            if (!m_model) {
+                throw runtime_error("There is no 3D model to display.");
+            }
             vector<shared_ptr<Face3D>> faces = m_model->GetFaces();
             vector<string> face_strings;
             for (const shared_ptr<Face3D>& face_ptr : faces) {
@@ -102,6 +105,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             return Response(ResKey::DISPLAY_ALL_FACES, face_strings);
         }
         else if (key == ArgKey::DISPLAY_FACE_POINTS) {
+            if (!m_model) {
+                throw runtime_error("There is no 3D model to display.");
+            }
             // get the face index
             int index = stoi(arguments[0].GetValues()[0]);
             if (index >= m_model->GetFaces().size() || index < 0) {
@@ -116,6 +122,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             return Response(ResKey::DISPLAY_FACE_POINTS, point_strings);
         }
         else if (key == ArgKey::DISPLAY_ALL_LINES) {
+            if (!m_model) {
+                throw runtime_error("There is no 3D model to display.");
+            }
             // get all lines
             vector<shared_ptr<Line3D>> lines = m_model->GetLines();
             vector<string> line_strings;
@@ -130,6 +139,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             return Response(ResKey::DISPLAY_ALL_LINES, line_strings);
         }
         else if (key == ArgKey::DISPLAY_LINE_POINTS) {
+            if (!m_model) {
+                throw runtime_error("There is no 3D model to display.");
+            }
             // get the line index
             int index = stoi(arguments[0].GetValues()[0]);
             if (index >= m_model->GetLines().size() || index < 0) {
@@ -144,6 +156,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             return Response(ResKey::DISPLAY_LINE_POINTS, point_strings);
         }
         else if (key == ArgKey::DISPLAY_STATISTICS) {
+            if (!m_model) {
+                throw runtime_error("There is no 3D model to display.");
+            }
             // get the number of faces, lines, and points
             vector<shared_ptr<Face3D>> faces = m_model->GetFaces();
             vector<shared_ptr<Line3D>> lines = m_model->GetLines();
@@ -209,9 +224,25 @@ Response Controller::HandleArguments(vector<Argument> arguments)
         }
         else if (key == ArgKey::ADD_FACE) {
             // get the face points
-            vector<Point3D> points = FixedSizePoint3DContainer::StringsToPoints(
-                arguments[0].GetValues());
-            AddFace(Face3D(points));
+            try {
+                vector<Point3D> points = 
+                        FixedSizePoint3DContainer::StringsToPoints(
+                                        arguments[0].GetValues());
+                AddFace(Face3D(points));
+            }
+            catch (const invalid_argument& e) {
+                if (string(e.what()) == "Invalid number format.") {
+                    return Response(ResKey::INVALID_NUMBER_FORMAT, {});
+                }
+                else if (string(e.what()) == 
+                        "Exactly three numbers are required.") {
+                    return Response(ResKey::INPUT_NUMBER_ERROR, {});
+                }
+                else {
+                    return Response(ResKey::UNKNOWN, {});
+                }
+            }
+            
             return Response(ResKey::ADD_FACE_SUCCESS, {});
         }
         else if (key == ArgKey::MODIFY_FACE_POINT) {
@@ -358,6 +389,23 @@ Response Controller::HandleArguments(vector<Argument> arguments)
             if (string(e.what()) == "Failed to open the file") {
                 return Response(Response::ResponseKey::OPEN_FILE_FAILED, {});
             }
+            if (string(e.what()) == "There is no 3D model to export.") {
+                return Response(Response::ResponseKey::NO_MODEL_TO_EXPORT, {});
+            }
+            if (string(e.what()) == 
+                "There is no 3D model to delete the face from." || 
+                string(e.what()) == 
+                "There is no 3D model to add the face to." || 
+                string(e.what()) == 
+                "There is no 3D model to modify the face point." || 
+                string(e.what()) == 
+                "There is no 3D model to delete the line from." || 
+                string(e.what()) == 
+                "There is no 3D model to add the line to." || 
+                string(e.what()) ==
+                "There is no 3D model to modify the line point.") {
+                return Response(Response::ResponseKey::NO_3D_MODEL, {});
+            }
             else {
                 return Response(
                     Response::ResponseKey::UNKNOWN_RUN_TIME_ERROR, {});
@@ -384,19 +432,30 @@ void Controller::Export3DModel(const string& path)
     
 
     // Export the 3D model
-        Model3DObjExporter exporter;
-        exporter.Save(path, *m_model);
+    if (!m_model) {
+        throw runtime_error("There is no 3D model to export.");
+    }
+    
+    Model3DObjExporter exporter;
+    exporter.Save(path, *m_model);
     // ...
 }
 
 void Controller::DeleteFace(unsigned int FaceIndex)
 {
     // Delete the face
+    if (!m_model) {
+        throw runtime_error("There is no 3D model to delete the face from.");
+    }
+    
     m_model->DeleteFace(FaceIndex);
 }
 
 void Controller::AddFace(const Face3D& face)
 {
+    if (!m_model) {
+        throw runtime_error("There is no 3D model to add the face to.");
+    }
     // Add the face
     m_model->AddFace(face);
 }
@@ -404,12 +463,19 @@ void Controller::AddFace(const Face3D& face)
 void Controller::ModifyFacePoint(
     unsigned int FaceIndex, unsigned int PointIndex, const Point3D& NewPoint)
 {
+    if (!m_model) {
+        throw runtime_error("There is no 3D model to modify the face point.");
+    }
     // Modify the face point
     m_model->ModifyFacePoint(FaceIndex, PointIndex, NewPoint);
 }
 
 void Controller::DeleteLine(unsigned int LineIndex)
 {
+    if (!m_model) {
+        throw runtime_error("There is no 3D model to delete the line from.");
+    }
+    
     // Delete the line
     m_model->DeleteLine(LineIndex);
 
@@ -417,6 +483,9 @@ void Controller::DeleteLine(unsigned int LineIndex)
 
 void Controller::AddLine(const Line3D& line)
 {
+    if (!m_model) {
+        throw runtime_error("There is no 3D model to add the line to.");
+    }
     // Add the line
     m_model->AddLine(line);
 }
@@ -424,6 +493,9 @@ void Controller::AddLine(const Line3D& line)
 void Controller::ModifyLinePoint(unsigned int LineIndex, 
                 unsigned int PointIndex, const Point3D& NewPoint)
 {
+    if (!m_model) {
+        throw runtime_error("There is no 3D model to modify the line point.");
+    }
     // Modify the line point
     m_model->ModifyLinePoint(LineIndex, PointIndex, NewPoint);
 }

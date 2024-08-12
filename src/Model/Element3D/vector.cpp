@@ -177,3 +177,11 @@ bool Vector::IsLinearIndependent(const vector<Vector>& vectors) {
     }
     return false;
 }
+
+void Vector::ModifyData(const vector<double>& coords) {
+    if (coords.size() != m_uiDim) {
+        throw invalid_argument("New data must have the same dimension");
+    }
+    data = coords;
+}
+
