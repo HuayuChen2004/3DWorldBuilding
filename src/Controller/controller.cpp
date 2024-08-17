@@ -403,7 +403,9 @@ Response Controller::HandleArguments(vector<Argument> arguments)
                 string(e.what()) == 
                 "There is no 3D model to add the line to." || 
                 string(e.what()) ==
-                "There is no 3D model to modify the line point.") {
+                "There is no 3D model to modify the line point." ||
+                string(e.what()) == 
+                "There is no 3D model to display."){
                 return Response(Response::ResponseKey::NO_3D_MODEL, {});
             }
             else {

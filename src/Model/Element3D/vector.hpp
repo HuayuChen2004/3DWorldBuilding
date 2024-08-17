@@ -73,9 +73,7 @@ public:
     double Distance(const Vector& vec) const;
     bool IsParallel(const Vector& vec) const;
     bool IsOrthogonal(const Vector& vec) const;
-    Vector Project(const Vector& vec) const;
-    Vector Reject(const Vector& vec) const;
-    Vector Rotate(const Vector& axis, double angle) const;
+    Vector ProjectTo(const Vector& vec) const;
     bool IsZero() const;
     bool IsUnit() const;
 
@@ -105,7 +103,7 @@ public:
     double Max() const;
     double Min() const;
     double Sum() const;
-    double Product() const;
+    double Product(const Vector& vec) const;
     double Mean() const;
     double Variance() const;
     double StandardDeviation() const;
@@ -143,7 +141,6 @@ public:
     Vector Clamp(double min, double max, double step) const;
     unsigned int ArgMax() const;
     unsigned int ArgMin() const;
-    Vector Transpose() const;
     Vector Concatenate(const Vector& vec) const;
     Vector Repeat(unsigned int n) const;
     unsigned int Find(double value) const;
@@ -156,8 +153,6 @@ public:
     static double Angle(const Vector& vec1, const Vector& vec2);
     static Vector Normalize(const Vector& vec, unsigned int p = 2);
     static Vector Project(const Vector& vec1, const Vector& vec2);
-    static Vector Reject(const Vector& vec1, const Vector& vec2);
-    static Vector Rotate(const Vector& vec, const Vector& axis, double angle);
     static Vector Reflection(const Vector& vec, const Vector& normal);
     static Vector Refraction(const Vector& vec, const Vector& normal, double n1, double n2);
     static Vector Inversion(const Vector& vec);
@@ -182,7 +177,6 @@ public:
     static Vector RadianToDegree(const Vector& vec);
 
     static double Distance(const Vector& vec1, const Vector& vec2);
-    static double Distance2(const Vector& vec1, const Vector& vec2);
     static Vector Cross(const Vector& vec1, const Vector& vec2);
     static Vector Lerp(const Vector& vec1, const Vector& vec2, double t);
     static Vector Random(unsigned int dim, double min, double max);
@@ -194,10 +188,8 @@ public:
     static Vector Constant(unsigned int dim, double value);
     static Vector Range(unsigned int dim, double start, double end, double step = 1.0);
     static Vector Linspace(unsigned int dim, double start, double end, unsigned int num);
-    static Vector Meshgrid(const Vector& x, const Vector& y);
     static Vector Concatenate(const vector<Vector>& vecs);
     static Vector Repeat(const Vector& vec, unsigned int n);
-    static Vector Transpose(const Vector& vec);
     static Vector Filter(const Vector& vec, double (*func)(double));
     static Vector Replace(const Vector& vec, double oldValue, double newValue);
     static Vector Round(const Vector& vec, double step);
@@ -213,7 +205,7 @@ public:
     static double Max(const Vector& vec);
     static double Min(const Vector& vec);
     static double Sum(const Vector& vec);
-    static double Product(const Vector& vec);
+    static double Product(const Vector& vec1, const Vector& vec2);
     static double Mean(const Vector& vec);
     static double Variance(const Vector& vec);
     static double StandardDeviation(const Vector& vec);
