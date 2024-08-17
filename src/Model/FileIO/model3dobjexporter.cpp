@@ -47,7 +47,7 @@ void Model3DObjExporter::Save(const string& path, const Model3D& model) const {
         for (const Point3D& vertex : face->GetPoints()) {
             auto it = find(vertices.begin(), vertices.end(), vertex);
             if (it == vertices.end()) {
-                throw runtime_error("Vertex not found");
+                throw runtime_error("Failed to export the 3D model.");
             }
             file << " " << distance(vertices.begin(), it) + 1 << " ";
         }
@@ -58,7 +58,7 @@ void Model3DObjExporter::Save(const string& path, const Model3D& model) const {
         for (const Point3D& vertex : line->GetPoints()) {
             auto it = find(vertices.begin(), vertices.end(), vertex);
             if (it == vertices.end()) {
-                throw runtime_error("Vertex not found");
+                throw runtime_error("Failed to export the 3D model.");
             }
             file << " " << distance(vertices.begin(), it) + 1 << " ";
         }

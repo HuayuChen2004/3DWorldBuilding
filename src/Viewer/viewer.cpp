@@ -238,7 +238,9 @@ void Viewer::Start()
             cout << "Enter your choice: ";
 
             string arg;
-            cin >> arg;
+            cin.sync();
+            getline(cin, arg);
+            cin.sync();
 
             int input = GetIntegerInput(arg);
 
@@ -286,7 +288,7 @@ void Viewer::ShowImportModel()
         cout << "Import 3D Model" << endl;
         cout << "Enter the path to the 3D model (or type 'exit' to exit): ";
         string path;
-        cin >> path;
+        getline(cin, path);
         
         if (path == "exit") {
             cout << "Exiting import model process." << endl;
@@ -315,7 +317,7 @@ void Viewer::ShowExportModel()
         cout << "Export 3D Model" << endl;
         cout << "Enter the path to save the 3D model(or type 'exit' to exit): ";
         string path;
-        cin >> path;
+        getline(cin, path);
         
         if (path == "exit") {
             cout << "Exiting export model process." << endl;
@@ -336,8 +338,9 @@ void Viewer::ShowExportModel()
 
 void Viewer::ShowModifyModelMenu()
 {
-    try {
-        while (true) {
+    bool IsRunning = true;
+        while (IsRunning) {
+        try {
             // menu to modify 3D model
             cout << endl;
             cout << string(50, '=') << endl;
@@ -357,8 +360,10 @@ void Viewer::ShowModifyModelMenu()
             cout << "12. Exit" << endl;
             cout << "Enter your choice: ";
 
+            cin.sync();
             string choice;
-            cin >> choice;
+            getline(cin, choice);
+            cin.sync();
 
             int input = GetIntegerInput(choice);
 
@@ -410,17 +415,17 @@ void Viewer::ShowModifyModelMenu()
 
             case 12:
                 cout << "Exiting modify model process." << endl;
-                return;
+                IsRunning = false;
 
             default:
                 cout << "Invalid choice" << endl;
                 break;
             }
         }
-    }
-    catch (const exception& e) {
-        // handle exception here
-        cout << "invalid choice" << endl;
+        catch (const exception& e) {
+            // handle exception here
+            cout << "invalid choice" << endl;
+        }
     }
 }
 
@@ -444,7 +449,7 @@ void Viewer::ShowDeleteFace() {
         cout << "Delete Face" << endl;
         cout << "Enter the face ID to delete: ";
         string face_id;
-        cin >> face_id;
+        getline(cin, face_id);
         Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DELETE_FACE, vector<string>{face_id});
         Response response = 
@@ -489,7 +494,7 @@ void Viewer::ShowListAllPointsOfFace() {
         cout << "List All Points of Face" << endl;
         cout << "Enter the face ID to list: ";
         string face_id;
-        cin >> face_id;
+        getline(cin, face_id);
         Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DISPLAY_FACE_POINTS, vector<string>{face_id});
         Response response = 
@@ -509,10 +514,10 @@ void Viewer::ShowModifyPointOfFace() {
         cout << "Modify Point of Face" << endl;
         cout << "Enter the face ID to modify: ";
         string face_id;
-        cin >> face_id;
+        getline(cin, face_id);
         cout << "Enter the point ID to modify: ";
         string point_id;
-        cin >> point_id;
+        getline(cin, point_id);
         cout << "Enter the new coordinates of the point: ";
         cin.sync();
         string coord;
@@ -574,7 +579,7 @@ void Viewer::ShowDeleteLine() {
         cout << "Delete Line" << endl;
         cout << "Enter the line ID to delete: ";
         string line_id;
-        cin >> line_id;
+        getline(cin, line_id);
         Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DELETE_LINE, vector<string>{line_id});
         Response response = 
@@ -593,7 +598,7 @@ void Viewer::ShowListAllPointsOfLine() {
         cout << "List All Points of Line" << endl;
         cout << "Enter the line ID to list: ";
         string line_id;
-        cin >> line_id;
+        getline(cin, line_id);
         Controller* controller = Controller::GetInstance();
         Argument arg(ArgKey::DISPLAY_LINE_POINTS, vector<string>{line_id});
         Response response = 
@@ -612,10 +617,10 @@ void Viewer::ShowModifyPointOfLine() {
         cout << "Modify Point of Line" << endl;
         cout << "Enter the line ID to modify: ";
         string line_id;
-        cin >> line_id;
+        getline(cin, line_id);
         cout << "Enter the point ID to modify: ";
         string point_id;
-        cin >> point_id;
+        getline(cin, point_id);
         cout << "Enter the new coordinates of the point: ";
         cin.sync();
         string coord;
@@ -684,18 +689,17 @@ void Viewer::DisplayStatistics(const vector<string>& values) const{
 }
 
 int Viewer::GetIntegerInput(const string& InputString) const {
-    // 使用正则表达式检查输入是否为正整数
-    std::regex positive_integer_regex("^[1-9]\\d*$");
-    if (!std::regex_match(InputString, positive_integer_regex)) {
-        throw invalid_argument("Invalid input.");
-    }
+    // 正则表达式匹配前后可以有空格的单个整数，并捕获该整数
+    regex pattern(R"(^\s*(\d+)\s*$)");
+    smatch match;
 
-    try {
-        int input = stoi(InputString); // 尝试将字符串转换为整数
-        return input;
-    } catch (const invalid_argument& e) {
-        throw invalid_argument("Invalid input.");
-    } catch (const out_of_range& e) {
-        throw invalid_argument("Invalid input.");
+    if (regex_match(InputString, match, pattern)) {
+        // 提取捕获的数字部分
+        string number = match.str(1);
+        return stoi(number);
+    } else {
+        throw invalid_argument("Invalid input");
     }
 }
+
+

@@ -950,10 +950,6 @@ double Vector::Distance(const Vector& vec1, const Vector& vec2) {
     return vec1.Distance(vec2);
 }
 
-Vector Vector::Cross(const Vector& vec1, const Vector& vec2) {
-    return vec1.Cross(vec2);
-}
-
 Vector Vector::RandomNormal(unsigned int dim, double mean, double std) {
     vector<double> result(dim);
     for (unsigned int i = 0; i < dim; i++) {
@@ -1245,57 +1241,6 @@ Vector Vector::Map(const Vector& vec, double (*func)(double)) {
     return Vector(result);
 }
 
-bool Vector::IsLinearIndependent(const vector<Vector>& vecs) {
-    unsigned int n = vecs.size();
-    if (n == 0) {
-        return false;
-    }
-    unsigned int m = vecs[0].m_uiDim;
-    if (m == 0) {
-        return false;
-    }
-    if (n > m) {
-        return false;
-    }
-        // Create a matrix from the vectors
-    vector<vector<double>> matrix(n, vector<double>(m));
-    for (unsigned int i = 0; i < n; ++i) {
-        for (unsigned int j = 0; j < m; ++j) {
-            matrix[i][j] = vecs[i].data[j];
-        }
-    }
-
-    // Perform Gaussian elimination to determine the rank of the matrix
-    unsigned int rank = 0;
-    for (unsigned int i = 0; i < n; ++i) {
-        // Find the pivot row
-        unsigned int pivot = i;
-        for (unsigned int j = i + 1; j < n; ++j) {
-            if (fabs(matrix[j][i]) > fabs(matrix[pivot][i])) {
-                pivot = j;
-            }
-        }
-        if (fabs(matrix[pivot][i]) < 1e-10) {
-            continue; // Skip this column if the pivot is zero
-        }
-        ++rank;
-
-        // Swap the current row with the pivot row
-        if (pivot != i) {
-            swap(matrix[i], matrix[pivot]);
-        }
-
-        // Eliminate the current column in all rows below the pivot
-        for (unsigned int j = i + 1; j < n; ++j) {
-            double factor = matrix[j][i] / matrix[i][i];
-            for (unsigned int k = i; k < m; ++k) {
-                matrix[j][k] -= factor * matrix[i][k];
-            }
-        }
-    }
-
-    return rank == n;
-}
 
 
 
