@@ -32,17 +32,20 @@
 class Model3DObjImporter : public Model3DImporter
 {
 public:
+    // default constructor
     Model3DObjImporter();
+    // virtual destructor
     virtual ~Model3DObjImporter();
+    // load a 3D model from a file in OBJ format
     Model3D Load(const string& path) const override;
+    // load vertices from a file
     vector<Point3D> LoadVertices(const string& path) const;
+    // load faces from a file
     vector<Face3D> LoadFaces(const string& path) const;
+    // load lines from a file
     vector<Line3D> LoadLines(const string& path) const;
+    // load the name of the model from a file
     string LoadName(const string& path) const;
-    
-private:
-    // vector<Point3D> LoadVertices(const string& path) const;
-    
     
 };
 

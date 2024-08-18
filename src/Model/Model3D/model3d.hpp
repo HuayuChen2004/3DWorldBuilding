@@ -22,15 +22,6 @@
 //       add unsigned int to the getter of faces, lines, and points
 // reason: to make the code more readable and efficient
 // -----------------------------------------------------------
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 // this is the header file of Model3D class
 // the class Model3D is a class that represents a 3D model 
@@ -52,32 +43,35 @@
 using namespace std;
 
 
-class Face3D;
-class Line3D;
-class Point3D;
-
 class Model3D {
 public:
+    // constructor, initiate a model3d with faces and lines and a name
     Model3D(vector<Face3D> faces, vector<Line3D> lines, const string& name="");
+    // virtual destructor
     virtual ~Model3D();
+    // assignment operator
     Model3D& operator=(const Model3D& model);
 
-    // void DisplayAllFaces() const;
+    // functions to modify the model3d
+    // displaying functions are not provided
+    // function 1: delete a face
     void DeleteFace(unsigned int index);
+    // function 2: add a face
     void AddFace(const Face3D& face);
-    // void DisplayFacePoints(int index) const;
+    // function 3: modify a point of a face
     void ModifyFacePoint(unsigned int FaceIndex, 
                         unsigned int PointIndex, const Point3D& new_point);
-
-    // void DisplayAllLines() const;
+    // function 4: delete a line
     void DeleteLine(unsigned int index);
+    // function 5: add a line
     void AddLine(const Line3D& line);
-    // void DisplayLinePoints(int index) const;
+    // function 6: modify a point of a line
     void ModifyLinePoint(unsigned int LineIndex, 
                         unsigned int PointIndex, const Point3D& new_point);
+    // function 7: modify the name of the model3d
     void ModifyName(const string& name);
 
-    // void DisplayStatistics() const;
+    // getter of faces, lines, name, and points
     const vector<shared_ptr<Face3D>>& GetFaces() const;
     const vector<shared_ptr<Line3D>>& GetLines() const;
     string GetName() const;
@@ -85,10 +79,13 @@ public:
 
 
 private:
+    // the name of the model3d
     string Name;
+    // the faces and lines of the model3d
     vector<shared_ptr<Face3D>> Faces;
     vector<shared_ptr<Line3D>> Lines;
-    // vector<shared_ptr<Point3D>> m_vpPoints;
+
+    // helper functions to check if a face or a line is in the model3d
     bool FindFace(const Face3D& face) const;
     bool FindLine(const Line3D& line) const;
 

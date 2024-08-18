@@ -75,11 +75,17 @@ public:
         NO_MODEL_TO_EXPORT,
         NO_3D_MODEL,
     };
+    // constructor, response key: the type of response,
+    // values: the values returned for that response
     Response(ResponseKey key, vector<string> values);
+    // virtual destructor
     virtual ~Response();
+    // getter for the key
     ResponseKey GetKey() const;
+    // getter for the values
     vector<string> GetValues() const;
 private:
+    // private member variables, key and values
     ResponseKey m_key;
     vector<string> m_values;
 };

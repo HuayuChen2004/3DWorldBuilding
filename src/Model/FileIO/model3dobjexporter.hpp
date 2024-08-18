@@ -29,14 +29,17 @@ using namespace std;
 class Model3DObjExporter : public Model3DExporter
 {
 public:
+    // default constructor
     Model3DObjExporter();
+    // virtual destructor
     virtual ~Model3DObjExporter();
 
+    // export the 3D model to a file in OBJ format
     void Save(const string& path, const Model3D& model) const override;
-    vector<Point3D> ListDistinctVertices(const Model3D& model) const;
-
-private:
     
+private:
+    // list distinct vertices in the model
+    vector<Point3D> ListDistinctVertices(const Model3D& model) const;
 
 };
 

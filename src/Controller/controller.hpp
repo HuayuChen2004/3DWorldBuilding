@@ -32,29 +32,14 @@
 // reason: to support handling some error
 //         and to support singleton pattern
 // -----------------------------------------------------------
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 // the class controller is a class that controls the 3D model
 // and interacts with the viewer
 // the class controller has functions to operate the model
 // and functions to interact with the viewer
-//
-//
-//
-//
+
 #ifndef CONTROLLER_HPP
 #define CONTROLLER_HPP
-
-
 
 #include <string>
 #include <vector>
@@ -68,105 +53,47 @@
 #include "../Message/response.hpp"
 
 using namespace std;
-//
-//
-//
-//
-//
-//
-//从viewer传到controller的参数
-//
 
-//
-//
-//
-
-
-
-//
-//
-//
 class Controller
 {
 public:
-    //
-    //
-    //
-    //操作model的函数
-    //
-    //
+    // get instance of controller
+    // singleton pattern, only one instance of controller is allowed
     static Controller* GetInstance();
-    //实现里面的功能
-    //
-    //
-    //
-    //
-    //和viewer交互
-    //
-    //
-    //
-    //
-    //
-    //
+    // handle the arguments passed from the viewer
+    // and return the response to the viewer
     Response HandleArguments(vector<Argument> arguments);
-    //
-    //
-    //
 
-    //
-    //
-    //
-    //
-    //
-    //
 private:
-
-    
+    // singleton pattern, the only instance
     static Controller* m_instance;
-    Controller() {} // 私有构造函数
-    Controller(const Controller&) = delete; // 删除拷贝构造函数
-    void operator=(const Controller&) = delete; // 删除拷贝赋值运算符
-
+    // private constructor, since it is a singleton pattern
+    Controller() {} 
+    // delete copy constructor and assignment operator
+    Controller(const Controller&) = delete; 
+    void operator=(const Controller&) = delete; 
+    // functions to operate the model
+    // function 1: import 3D model from a file
     void Import3DModel(const string& path);
-    //
+    // function 2: export 3D model to a file
     void Export3DModel(const string& path);
-    //word里面2.几那些功能最好每一个写一个函数
-
+    // function 3: delete a face from the model
     void DeleteFace(unsigned int FaceIndex);
+    // function 4: add a face to the model
     void AddFace(const Face3D& face);
-
+    // function 5: modify a point of a face
     void ModifyFacePoint(unsigned int FaceIndex, unsigned int PointIndex, 
                         const Point3D& point);
-
+    // function 6: add a line to the model
     void AddLine(const Line3D& line);
+    // function 7: delete a line from the model
     void DeleteLine(unsigned int LineIndex);
-
+    // function 8: modify a point of a line
     void ModifyLinePoint(unsigned int LineIndex, unsigned int PointIndex, 
                         const Point3D& point);
-    //
-    // support only one model 
+    // other functions about displaying the model is implemented in the viewer
+    // support operations on only one model 
     shared_ptr<Model3D> m_model;
-    //
-    //`
-
-
-
-
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif // CONTROLLER_HPP

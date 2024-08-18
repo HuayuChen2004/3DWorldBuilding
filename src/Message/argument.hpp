@@ -24,7 +24,6 @@
 #include <string>
 #include <vector>
 
-
 using namespace std;
 
 
@@ -47,11 +46,17 @@ public:
         DISPLAY_STATISTICS,
         UNKNOWN
     };
+    // constructor, argument key: the type of command, 
+    // values: the arguments passed
     Argument(ArgumentKey key, vector<string> values);
+    // virtual destructor
     virtual ~Argument();
+    // getter for the key
     ArgumentKey GetKey() const;
+    // getter for the values
     vector<string> GetValues() const;
 private:
+    // private member variables, key and values
     ArgumentKey m_key;
     vector<string> m_values;
 

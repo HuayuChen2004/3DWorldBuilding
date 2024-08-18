@@ -48,35 +48,37 @@ using namespace std;
 class Point3D: public Point
 {
 public:
+    // constructor that initializes the point with x, y, and z coordinates
     Point3D(double x, double y, double z);  
-    // remember to add const unsigned int& Dim{3} in the cpp file
+    // constructor that initializes the point using a vector of coordinates
     Point3D(const vector<double>& coords);
+    // copy constructor that initializes the point from another Point3D object
     Point3D(const Point3D& point);
+    // assignment operator to assign one Point3D object to another
     Point3D& operator=(const Point3D& point);
+    // virtual destructor
     virtual ~Point3D();
 
+    // sets the x coordinate of the point
     void SetX(double x);
+    // sets the y coordinate of the point
     void SetY(double y);
+    // sets the z coordinate of the point
     void SetZ(double z);
 
-    // double DistanceToLine3D(const Line3D& line) const;
-    // double DistanceToFace3D(const Face3D& face) const;
-
-    // Point3D ProjectToLine3D(const Line3D& line) const;
-    // Point3D ProjectToPlane3D(const Face3D& face) const;
-
-    // bool IsOnBoundary(const Face3D& face) const;
-    // bool IsInside(const Line3D& line) const;
-    // bool IsInside(const Face3D& face) const;
-    // bool IsOnEnd(const Line3D& line) const;
-
+    // reference to the x coordinate of the point (read-only)
     const double& X{m_rX};
+    // reference to the y coordinate of the point (read-only)
     const double& Y{m_rY};
+    // reference to the z coordinate of the point (read-only)
     const double& Z{m_rZ};
 
 private:
+    // the x coordinate of the point
     double m_rX;
+    // the y coordinate of the point
     double m_rY;
+    // the z coordinate of the point
     double m_rZ;
 };
 
