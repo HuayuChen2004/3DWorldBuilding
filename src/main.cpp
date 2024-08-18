@@ -1,3 +1,19 @@
+// [file name] : main.cpp
+// [function] : main function of the program
+// [author] : Huayu Chen
+// [date] : 2024/8/7
+
+// [edit history] :
+// -----------------------------------------------------------
+// date: 2024/8/7
+// author: Huayu Chen
+// edit: add main function
+// reason: to test the program
+// -----------------------------------------------------------
+
+
+
+
 #include "Model/Element3D/point3d.hpp"
 #include "Model/FileIO/model3dobjimporter.hpp"
 #include "Model/Element3D/face3d.hpp"

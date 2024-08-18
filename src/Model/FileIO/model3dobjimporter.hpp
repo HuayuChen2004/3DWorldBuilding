@@ -1,7 +1,9 @@
-// this is the header file for the Model3DObjImporter class
-// the class Model3DObjImporter is derived from Model3DImporter and implements 
-// the import function for OBJ files
-// edit logging:
+// [file name] : model3dobjimporter.hpp
+// [function] : declare the Model3DObjImporter class
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/31
 // author: Huayu Chen
@@ -10,7 +12,9 @@
 // -----------------------------------------------------------
 
 
-
+// this is the header file for the Model3DObjImporter class
+// the class Model3DObjImporter is derived from Model3DImporter and implements 
+// the import function for OBJ files
 
 
 #ifndef MODEL3DOBJIMPORTER_HPP

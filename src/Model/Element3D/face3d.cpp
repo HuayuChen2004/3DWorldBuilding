@@ -1,6 +1,9 @@
-// This is the implementation of the Face3D class.
-// This class is used to store the 3D face.
-// edit logging:
+// [file name] : face3d.cpp
+// [function] : implement the Face3D class
+// [author] : Huayu Chen
+// [date] : 2024/8/4
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/4
 // author: Huayu Chen
@@ -16,7 +19,8 @@
 #include <algorithm>
 #include <cmath>
 #include <string>
-
+// This is the implementation of the Face3D class.
+// This class is used to store the 3D face.
 using namespace std;
 
 Face3D::Face3D(const Point3D& point1, const Point3D& point2, 

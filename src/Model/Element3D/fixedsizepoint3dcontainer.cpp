@@ -1,13 +1,17 @@
-// This is the implementation of the FixedSizePoint3DContainer class.
-// This class is used to store a fixed size container of 3D points.
-// edit logging:
+// [file name] : fixedsizepoint3dcontainer.cpp
+// [function] : implement the FixedSizePoint3DContainer class
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/3
 // author: Huayu Chen
 // edit: add implementation of the FixedSizePoint3DContainer class
 // reason: to support storing a fixed size container of 3D points
 // -----------------------------------------------------------
-
+// This is the implementation of the FixedSizePoint3DContainer class.
+// This class is used to store a fixed size container of 3D points.
 #include "fixedsizepoint3dcontainer.hpp"
 #include "point3d.hpp"
 #include <string>

@@ -1,4 +1,15 @@
-//
+// [file name] : point.cpp
+// [function] : implement the Point class
+// [author] : Huayu Chen
+// [date] : 2024/8/4
+
+// [edit history] :
+// -----------------------------------------------------------
+// date: 2024/8/4
+// author: Huayu Chen
+// edit: add implementation of the Point class
+// reason: to support storing the point in the 3D space
+// -----------------------------------------------------------
 //
 //
 //

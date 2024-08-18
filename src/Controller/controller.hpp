@@ -1,9 +1,9 @@
-// this is the header file of the controller class
-// the class controller is a class that controls the 3D model
-// and interacts with the viewer
-// the class controller has functions to operate the model
-// and functions to interact with the viewer
-// edit logging:
+// [file name] : controller.hpp
+// [function] : declare the class controller
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/31
 // author: Huayu Chen
@@ -43,6 +43,10 @@
 //
 //
 //
+// the class controller is a class that controls the 3D model
+// and interacts with the viewer
+// the class controller has functions to operate the model
+// and functions to interact with the viewer
 //
 //
 //

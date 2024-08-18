@@ -1,11 +1,9 @@
-// this is the header file for the Response class
-// the Response class is used to store the response from the controller
-// to the viewer
-// the response is stored as a key-value pair, where the key is the
-// response name and the value is a vector of strings
-// the key is an enum class that defines all the possible response names
-// the values are the actual values returned for that response
-// edit logging:
+// [file name] : response.hpp
+// [function] : declare the class Response
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/3
 // author: Huayu Chen
@@ -17,7 +15,13 @@
 //         values from the viewer
 // -----------------------------------------------------------
 
-
+// this is the header file for the Response class
+// the Response class is used to store the response from the controller
+// to the viewer
+// the response is stored as a key-value pair, where the key is the
+// response name and the value is a vector of strings
+// the key is an enum class that defines all the possible response names
+// the values are the actual values returned for that response
 #ifndef RESPONSE_HPP
 #define RESPONSE_HPP
 

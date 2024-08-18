@@ -1,3 +1,17 @@
+// [file name] : model3d.cpp
+// [function] : implement the Model3D class
+// [author] : Huayu Chen
+// [date] : 2024/8/6
+
+// [edit history] :
+// -----------------------------------------------------------
+// date: 2024/8/6
+// author: Huayu Chen
+// edit: add implementation of the Model3D class
+// reason: to support storing 3D models
+// -----------------------------------------------------------
+
+
 #include "model3d.hpp"
 #include <string>
 #include <vector>

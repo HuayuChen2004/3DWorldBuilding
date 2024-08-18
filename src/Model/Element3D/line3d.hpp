@@ -1,8 +1,9 @@
-// this is the header file for the line class
-// a line is made up of two Point3Ds
-// the line class can be used to calculate the distance between two Point3Ds
-// the line class can also be used to calculate the intersection of two lines
-// edit logging:
+// [file name] : line3d.hpp
+// [function] : declare the Line3D class
+// [author] : Huayu Chen
+// [date] : 2024/7/20
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/20
 // author: Huayu Chen
@@ -22,7 +23,10 @@
 // reason: to support more operations on lines and points
 //         and to make the line class more useful
 // -----------------------------------------------------------
-
+// this is the header file for the line class
+// a line is made up of two Point3Ds
+// the line class can be used to calculate the distance between two Point3Ds
+// the line class can also be used to calculate the intersection of two lines
 #ifndef LINE3D_HPP
 #define LINE3D_HPP
 

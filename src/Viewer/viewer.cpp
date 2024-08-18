@@ -1,6 +1,9 @@
-// this file is the implementation of the Viewer class
-// it contains the implementation of various user interface functions
-// edit logging:
+// [file name] : viewer.cpp
+// [function] : implement the Viewer class
+// [author] : Huayu Chen
+// [date] : 2024/8/1
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/1
 // author: Huayu Chen
@@ -20,8 +23,7 @@
 //       add functions to handle responses
 // reason: to support displaying the model and handling responses
 // -----------------------------------------------------------
-// date: 2024/8/4
-// author: Huayu Chen
+
 
 
 
@@ -246,23 +248,23 @@ void Viewer::Start()
 
             switch (input)
             {
-            case 1:
+            case 1 :
                 ShowImportModel();
                 break;
 
-            case 2:
+            case 2 :
                 ShowExportModel();
                 break;
 
-            case 3:
+            case 3 :
                 ShowModifyModelMenu();
                 break;
 
-            case 4:
+            case 4 :
                 IsRunning = false;
                 break;
             
-            default:
+            default :
                 cout << "Invalid choice" << endl;
                 break;
             }
@@ -369,55 +371,55 @@ void Viewer::ShowModifyModelMenu()
 
             switch (input)
             {
-            case 1:
+            case 1 :
                 ShowListAllFaces();
                 break;
 
-            case 2:
+            case 2 :
                 ShowDeleteFace();
                 break;
 
-            case 3:
+            case 3 :
                 ShowAddFace();
                 break;
 
-            case 4:
+            case 4 :
                 ShowListAllPointsOfFace();
                 break;
 
-            case 5:
+            case 5 :
                 ShowModifyPointOfFace();
                 break;
 
-            case 6:
+            case 6 :
                 ShowListAllLines();
                 break;
 
-            case 7:
+            case 7 :
                 ShowAddLine();
                 break;
 
-            case 8:
+            case 8 :
                 ShowDeleteLine();
                 break;
 
-            case 9:
+            case 9 :
                 ShowListAllPointsOfLine();
                 break;
 
-            case 10:
+            case 10 :
                 ShowModifyPointOfLine();
                 break;
 
-            case 11:
+            case 11 :
                 ShowShowStatistics();
                 break;
 
-            case 12:
+            case 12 :
                 cout << "Exiting modify model process." << endl;
                 IsRunning = false;
 
-            default:
+            default :
                 cout << "Invalid choice" << endl;
                 break;
             }

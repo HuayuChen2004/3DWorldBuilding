@@ -1,4 +1,15 @@
+// [file name] : model3dobjexporter.cpp
+// [function] : implement the Model3DObjExporter class
+// [author] : Huayu Chen
+// [date] : 2024/8/5
 
+// [edit history] :
+// -----------------------------------------------------------
+// date: 2024/8/5
+// author: Huayu Chen
+// edit: add implementation of the Model3DObjExporter class
+// reason: to support exporting 3D models to OBJ files
+// -----------------------------------------------------------
 
 
 

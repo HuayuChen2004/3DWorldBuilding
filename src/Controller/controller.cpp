@@ -1,6 +1,9 @@
-// this is 
-//
-// edit logging:
+// [file name] : controller.cpp
+// [function] : implement the class controller
+// [author] : Huayu Chen
+// [date] : 2024/8/2
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/2
 // author: Huayu Chen

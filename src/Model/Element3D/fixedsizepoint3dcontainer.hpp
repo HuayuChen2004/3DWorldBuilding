@@ -1,6 +1,9 @@
-// this is a container for a fixed number of 3D points
-// it is the base class for line3d and face3d
-// edit logging:
+// [file name] : fixedsizepoint3dcontainer.hpp
+// [function] : declare the FixedSizePoint3DContainer class
+// [author] : Huayu Chen
+// [date] : 2024/8/2
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/2
 // author: Huayu Chen
@@ -16,7 +19,8 @@
 //         for display and output to a stream
 // -----------------------------------------------------------
 // 
-
+// this is a container for a fixed number of 3D points
+// it is the base class for line3d and face3d
 
 #ifndef FIXEDSIZEPOINT3DCONTAINER_HPP
 #define FIXEDSIZEPOINT3DCONTAINER_HPP

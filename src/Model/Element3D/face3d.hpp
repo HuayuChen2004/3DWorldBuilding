@@ -1,6 +1,9 @@
-// the header file of the class Face3D
-// the class Face3D is a class that represents a face in a three-dimensional space
-// edit logging:
+// [file name] : face3d.hpp
+// [function] : declare the Face3D class
+// [author] : Huayu Chen
+// [date] : 2024/7/30
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/30
 // author: Huayu Chen
@@ -9,7 +12,9 @@
 //       add some common math functions
 // reason: to support various operations on face3d
 // -----------------------------------------------------------
-
+// the header file of the class Face3D
+// the class Face3D is a class that represents a 
+// face in a three-dimensional space
 #ifndef FACE3D_HPP
 #define FACE3D_HPP
 

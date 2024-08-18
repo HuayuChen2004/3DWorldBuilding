@@ -1,11 +1,9 @@
-//
-//
-//
-// the header file of the class Point3D
-// the class Point3D is a class that represents a point in a three-dimensional space
-// a point3d can be initiated with a 3d vector
-// some vector operations can also be used on points
-// edit logging:
+// [file name] : point3d.hpp
+// [function] : declare the Point3D class
+// [author] : Huayu Chen
+// [date] : 2024/7/20
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/20
 // author: Huayu Chen
@@ -28,7 +26,10 @@
 // author: Huayu Chen
 //
 //
-//
+//// the header file of the class Point3D
+// the class Point3D is a class that represents a point in a three-dimensional space
+// a point3d can be initiated with a 3d vector
+// some vector operations can also be used on points
 //
 //
 //

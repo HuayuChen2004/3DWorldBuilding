@@ -1,5 +1,15 @@
-// This is the implementation of Point3D class
-// This class is used to store the 3D point
+// [file name] : point3d.cpp
+// [function] : implement the Point3D class
+// [author] : Huayu Chen
+// [date] : 2024/8/4
+
+// [edit history] :
+// -----------------------------------------------------------
+// date: 2024/8/4
+// author: Huayu Chen
+// edit: add implementation of the Point3D class
+// reason: to support storing the 3D point
+// -----------------------------------------------------------
 
 
 #include "point3d.hpp"

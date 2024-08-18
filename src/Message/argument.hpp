@@ -1,6 +1,9 @@
-// this is the header file for the Argument class
-// this class is used to store the arguments 
-// edit logging:
+// [file name] : argument.hpp
+// [function] : declare the class argument
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/3
 // author: Huayu Chen
@@ -12,7 +15,8 @@
 // -----------------------------------------------------------
 
 
-
+// this is the header file for the Argument class
+// this class is used to store the arguments 
 
 #ifndef ARGUMENT_HPP
 #define ARGUMENT_HPP

@@ -1,8 +1,9 @@
-// this is the header file of the model3dimporter class
-// the class model3dimporter is a class that imports 3D models from files
-// the class model3dimporter is a base class for other model3d importers
-// the class model3dimporter has a virtual function Load that loads a model3d from a file
-// edit logging:
+// [file name] : model3dimporter.hpp
+// [function] : declare the Model3DImporter class
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/31
 // author: Huayu Chen
@@ -18,7 +19,11 @@
 //
 //
 //
-
+// this is the header file of the model3dimporter class
+// the class model3dimporter is a class that imports 3D models from files
+// the class model3dimporter is a base class for other model3d importers
+// the class model3dimporter has a virtual function Load that 
+// loads a model3d from a file
 #ifndef IMPORTER_HPP
 #define IMPORTER_HPP
 //

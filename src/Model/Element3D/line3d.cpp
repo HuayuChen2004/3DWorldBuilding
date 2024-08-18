@@ -1,6 +1,9 @@
-// This is the implementation of the Line3D class.
-// This class is used to store the 3D line.
-// edit logging:
+// [file name] : line3d.cpp
+// [function] : implement the Line3D class
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/3
 // author: Huayu Chen
@@ -15,7 +18,8 @@
 #include <stdexcept>
 #include <cmath>
 #include <string>
-
+// This is the implementation of the Line3D class.
+// This class is used to store the 3D line.
 using namespace std;
 
 Line3D::Line3D(const Point3D& point1, const Point3D& point2) : 

@@ -1,5 +1,9 @@
-// this is the implementation of the Model3DObjImporter class
-// edit logging:
+// [file name] : model3dobjimporter.cpp
+// [function] : implement the Model3DObjImporter class
+// [author] : Huayu Chen
+// [date] : 2024/8/5
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/5
 // author: Huayu Chen

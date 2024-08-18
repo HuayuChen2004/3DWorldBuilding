@@ -1,6 +1,9 @@
-// this is the header file for the Model3DExporter class
-// the class Model3DExporter is a class that exports 3D models to files
-// edit logging: 
+// [file name] : model3dexporter.hpp
+// [function] : declare the Model3DExporter class
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/31
 // author: Huayu Chen
@@ -15,7 +18,8 @@
 //
 //
 //
-
+// this is the header file for the Model3DExporter class
+// the class Model3DExporter is a class that exports 3D models to files
 #ifndef EXPORTER_HPP
 #define EXPORTER_HPP
 //

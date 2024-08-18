@@ -1,8 +1,9 @@
-// the header file of the class Point
-// the class Point is a class that represents a point in a multi-dimensional space
-// a point can be initiated with a vector
-// some vector operations can also be used on points
-// edit logging:
+// [file name] : point.hpp
+// [function] : declare the Point class
+// [author] : Huayu Chen
+// [date] : 2024/7/20
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/20
 // author: Huayu Chen
@@ -25,7 +26,10 @@
 // -----------------------------------------------------------
 //
 //
-
+// the header file of the class Point
+// the class Point is a class that represents a point in a multi-dimensional space
+// a point can be initiated with a vector
+// some vector operations can also be used on points
 
 #ifndef POINT_HPP
 #define POINT_HPP

@@ -1,11 +1,9 @@
-// this is the implementation file for the Argument class
-// this class is used to store the arguments passed from the 
-// viewer to the controller
-// the arguments are stored as a key-value pair, where the key is the 
-// argument name and the value is a vector of strings
-// the key is an enum class that defines all the possible argument names
-// the values are the actual values passed for that argument
-// edit logging:
+// [file name] : argument.cpp
+// [function] : implement the Argument class
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/3
 // author: Huayu Chen
@@ -21,7 +19,13 @@
 using namespace std;
 
 
-
+// this is the implementation file for the Argument class
+// this class is used to store the arguments passed from the 
+// viewer to the controller
+// the arguments are stored as a key-value pair, where the key is the 
+// argument name and the value is a vector of strings
+// the key is an enum class that defines all the possible argument names
+// the values are the actual values passed for that argument
 
 
 

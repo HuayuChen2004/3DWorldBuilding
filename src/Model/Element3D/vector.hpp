@@ -1,9 +1,9 @@
-// the vector class is a class that represents a n-dim vector
-// it is the base for the point class
-// a point can be seen as a vector that starts at the origin
-// and a point should be able to be initiated with a vector
-// some vector operations can also be used on points
-// edit logging:
+// [file name] : vector.hpp
+// [function] : declare the Vector class
+// [author] : Huayu Chen
+// [date] : 2024/7/20
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/20
 // author: Huayu Chen
@@ -17,7 +17,11 @@
 // -----------------------------------------------------------
 
 
-
+// the vector class is a class that represents a n-dim vector
+// it is the base for the point class
+// a point can be seen as a vector that starts at the origin
+// and a point should be able to be initiated with a vector
+// some vector operations can also be used on points
 
 
 // -----------------------------------------------------------

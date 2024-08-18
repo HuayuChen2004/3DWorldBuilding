@@ -1,5 +1,15 @@
-// This file contains the implementation of the Vector class.
-// This class is used to store a vector of double values.
+// [file name] : vector.cpp
+// [function] : implement the Vector class
+// [author] : Huayu Chen
+// [date] : 2024/8/5
+
+// [edit history] :
+// -----------------------------------------------------------
+// date: 2024/8/5
+// author: Huayu Chen
+// edit: add implementation of the Vector class
+// reason: to support storing the vector in the 3D space
+// -----------------------------------------------------------
 
 #include "vector.hpp"
 #include <vector>

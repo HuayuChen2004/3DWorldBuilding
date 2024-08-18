@@ -1,8 +1,9 @@
-// this is the header file of the Viewer class
-// the class Viewer is a class that interacts with the user
-// the class Viewer has functions to show the user interface
-// and functions to get user input
-// edit logging:
+// [file name] : viewer.hpp
+// [function] : implement the Viewer class
+// [author] : Huayu Chen
+// [date] : 2024/8/1
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/8/1
 // author: Huayu Chen
@@ -32,7 +33,10 @@
 //
 //
 //
-//
+//// this is the header file of the Viewer class
+// the class Viewer is a class that interacts with the user
+// the class Viewer has functions to show the user interface
+// and functions to get user input
 //
 //
 //

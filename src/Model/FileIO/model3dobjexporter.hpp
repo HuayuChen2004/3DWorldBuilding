@@ -1,7 +1,9 @@
-// This is the header file for the Model3DObjExporter class.
-// The class Model3DObjExporter is derived from Model3DExporter and implements 
-// the export function for OBJ files.
-// edit logging
+// [file name] : model3dobjexporter.hpp
+// [function] : declare the Model3DObjExporter class
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+
+// [edit history] :
 // -----------------------------------------------------------
 // date: 2024/7/31
 // author: Huayu Chen
@@ -20,7 +22,9 @@
 
 using namespace std;
 
-
+// This is the header file for the Model3DObjExporter class.
+// The class Model3DObjExporter is derived from Model3DExporter and implements 
+// the export function for OBJ files.
 
 class Model3DObjExporter : public Model3DExporter
 {
