@@ -16,17 +16,6 @@
 //         and can be extended to support more operations
 // -----------------------------------------------------------
 
-
-// the vector class is a class that represents a n-dim vector
-// it is the base for the point class
-// a point can be seen as a vector that starts at the origin
-// and a point should be able to be initiated with a vector
-// some vector operations can also be used on points
-
-
-// -----------------------------------------------------------
-// code below
-
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
@@ -36,6 +25,26 @@
 #include <string>
 
 using namespace std;
+
+// notes about the class Vector
+// -----------------------------------------------------------
+// [class name] : Vector
+// [function] : represent a n-dim vector
+// [notes on interface] :
+// 1. the vector is defined by a vector of doubles
+// 2. the vector has some common mathematical operations such as addition,
+//    subtraction, dot product, cross product, and normalization
+// 3. the vector has some common statistical operations such as max, min,
+//    sum, product, mean, variance, standard deviation, median, mode, and so on
+// 4. the vector has some common mathematical functions such as log, exp, pow,
+//    sqrt, cbrt, sin, cos, tan, asin, acos, atan, sinh, cosh, and so on
+// 5. the vector can be sliced and reversed
+// 6. the vector can be concatenated and repeated
+// 7. the vector can be modified using various operations
+// 8. the vector can be printed to the console
+// [author] : Huayu Chen
+// [date] : 2024/8/8
+// -----------------------------------------------------------
 
 class Vector
 {

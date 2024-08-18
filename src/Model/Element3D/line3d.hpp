@@ -23,10 +23,7 @@
 // reason: to support more operations on lines and points
 //         and to make the line class more useful
 // -----------------------------------------------------------
-// this is the header file for the line class
-// a line is made up of two Point3Ds
-// the line class can be used to calculate the distance between two Point3Ds
-// the line class can also be used to calculate the intersection of two lines
+
 #ifndef LINE3D_HPP
 #define LINE3D_HPP
 
@@ -37,6 +34,23 @@
 #include "fixedsizepoint3dcontainer.hpp"
 
 using namespace std;
+
+// notes about the class Line3D
+// -----------------------------------------------------------
+// [class name] : Line3D
+// [function] : represent a line in a three-dimensional space
+// [notes on interface] :
+// 1. the line is defined by two points, derived from the 
+//    FixedSizePoint3DContainer class
+// 2. the line has some common geometric operations such as distance calculation
+//    and angle calculation
+// 3. the line has some relationship judgement functions such as parallel,
+//    perpendicular, and coincident, these functions have static versions
+// 4. there are getter and setter functions for the two points of the line
+// [author] : Huayu Chen
+// [date] : 2024/8/2
+// -----------------------------------------------------------
+
 
 class Line3D : public FixedSizePoint3DContainer
 {

@@ -25,13 +25,6 @@
 // edit: add string representation for the point class
 // reason: to support the output of the point class in string format
 // -----------------------------------------------------------
-//
-//
-// the header file of the class Point
-// the class Point is a class that represents 
-// a point in a multi-dimensional space
-// a point can be initiated with a vector
-// some vector operations can also be used on points
 
 #ifndef POINT_HPP
 #define POINT_HPP
@@ -43,6 +36,23 @@
 #include "vector.hpp"
 
 using namespace std;
+
+// notes about the class Point
+// -----------------------------------------------------------
+// [class name] : Point
+// [function] : represent a point in a multi-dimensional space
+// [notes on interface] :
+// 1. the point is defined by a vector of coordinates, and can be initialized
+//    with a vector object or another point object
+// 2. the point class supports basic operations such as distance calculation
+//    and angle calculation
+// 3. these operations have static versions
+// 4. the point class can be converted to a vector object
+// 5. the point class can be copied and converted to a string representation
+// 6. the point class supports output to a stream
+// [author] : Huayu Chen
+// [date] : 2024/8/2
+// -----------------------------------------------------------
 
 class Point
 {

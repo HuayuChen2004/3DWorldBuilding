@@ -11,13 +11,7 @@
 //       add Load function
 // reason: to support importing 3D models from files
 // -----------------------------------------------------------
-//
 
-// this is the header file of the model3dimporter class
-// the class model3dimporter is a class that imports 3D models from files
-// the class model3dimporter is a base class for other model3d importers
-// the class model3dimporter has a virtual function Load that 
-// loads a model3d from a file
 #ifndef IMPORTER_HPP
 #define IMPORTER_HPP
 
@@ -29,6 +23,19 @@
 
 using namespace std;
 
+// notes on the class Model3DImporter
+// -----------------------------------------------------------
+// [class name] : Model3DImporter
+// [function] : import 3D models from files
+// [notes on interface] :
+// 1. The Model3DImporter class is a class that imports 3D models from files.
+// 2. The Model3DImporter class is an abstract class, so it needs to be derived
+// 3. The LoadFaces and LoadLines functions are pure virtual functions that need
+//    to be implemented by derived classes.
+// 4. The Load function is a virtual function that loads a 3D model from a file.
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+// -----------------------------------------------------------
 
 class Model3DImporter
 {

@@ -22,9 +22,18 @@
 
 using namespace std;
 
-// This is the header file for the Model3DObjExporter class.
-// The class Model3DObjExporter is derived from Model3DExporter and implements 
-// the export function for OBJ files.
+// notes on the class Model3DObjExporter
+// -----------------------------------------------------------
+// [class name] : Model3DObjExporter
+// [function] : export 3D models to OBJ files
+// [notes on interface] :
+// 1. The Model3DObjExporter class is a class that exports 3D models to OBJ 
+//    files. It is derived from the Model3DExporter class.
+// 2. The Save function takes a path and a Model3D object as input and exports 
+//    the 3D model to a file in OBJ format.
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+// -----------------------------------------------------------
 
 class Model3DObjExporter : public Model3DExporter
 {

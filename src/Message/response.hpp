@@ -15,13 +15,6 @@
 //         values from the viewer
 // -----------------------------------------------------------
 
-// this is the header file for the Response class
-// the Response class is used to store the response from the controller
-// to the viewer
-// the response is stored as a key-value pair, where the key is the
-// response name and the value is a vector of strings
-// the key is an enum class that defines all the possible response names
-// the values are the actual values returned for that response
 #ifndef RESPONSE_HPP
 #define RESPONSE_HPP
 
@@ -30,9 +23,36 @@
 
 using namespace std;
 
+// notes for the Response class
+// -----------------------------------------------------------
+// [class name] : Response
+// [function] : store the response from the controller to the viewer
+// [notes on interface] :
+// 1. the response is stored as a key-value pair, where the key is the
+//    response name and the value is a vector of strings that contains the
+//    actual values returned for that response
+// 2. the key is an enum class that defines all the possible response names
+// 3. there are constant getters to get the key and values
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+// -----------------------------------------------------------
+
 class Response
 {
 public:
+    // notes for the ResponseKey enum class
+    // -----------------------------------------------------------
+    // [class name] : ResponseKey
+    // [function] : define all the possible response names
+    // [notes on interface] :
+    // 1. the key is an enum class that defines all the possible response names
+    //    so there are no member variables or functions
+    // 2. some error responses are added to handle invalid arguments 
+    //    and runtime errors
+    // 3. add new response names if the program needs to support more responses
+    // [author] : Huayu Chen
+    // [date] : 2024/8/3
+    // -----------------------------------------------------------
     enum class ResponseKey {
         EMPTY_PATH,
         NOT_OBJ_PATH,

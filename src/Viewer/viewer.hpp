@@ -42,6 +42,23 @@
 
 using namespace std;
 
+// notes on the class Viewer
+// -----------------------------------------------------------
+// [class name] : Viewer
+// [function] : interact with the user
+// [notes on interface] :
+// 1. the viewer class is a class that interacts with the user
+// 2. the public function Start is the entry point of the viewer
+//    and the only function that should be called from outside the class
+// 3. the private function HandleResponses is used to handle the responses
+//    from the controller
+// 4. other private functions are used to show the user interface
+//    and get user input
+// [author] : Huayu Chen
+// [date] : 2024/8/1
+// -----------------------------------------------------------
+
+
 class Viewer
 {
 

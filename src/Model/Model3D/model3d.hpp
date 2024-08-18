@@ -42,6 +42,18 @@
 
 using namespace std;
 
+// notes on the class Model3D
+// -----------------------------------------------------------
+// [class name] : Model3D
+// [function] : represent a 3D model that contains faces and lines
+// [notes on interface] :
+// 1. the model3d is defined by a vector of faces and a vector of lines
+// 2. the model3d supports some operations to modify the faces and lines
+// 3. there are getter functions to get the faces, lines, and points
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+// -----------------------------------------------------------
+
 
 class Model3D {
 public:

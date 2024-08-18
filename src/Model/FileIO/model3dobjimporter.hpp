@@ -11,12 +11,6 @@
 //       add Load function to load OBJ files
 // -----------------------------------------------------------
 
-
-// this is the header file for the Model3DObjImporter class
-// the class Model3DObjImporter is derived from Model3DImporter and implements 
-// the import function for OBJ files
-
-
 #ifndef MODEL3DOBJIMPORTER_HPP
 #define MODEL3DOBJIMPORTER_HPP
 
@@ -27,6 +21,23 @@
 #include "../Element3D/line3d.hpp"
 #include <vector>
 #include <string>
+
+// notes on the class Model3DObjImporter
+// -----------------------------------------------------------
+// [class name] : Model3DObjImporter
+// [function] : import 3D models from OBJ files
+// [notes on interface] :
+// 1. The Model3DObjImporter class is a class that imports 3D models from OBJ 
+//    files. It is derived from the Model3DImporter class.
+// 2. The Load function takes a path as input and loads a 3D model from a file
+//    in OBJ format. It returns a Model3D object that contains the loaded model.
+// 3. The LoadVertices, LoadFaces, and LoadLines functions are helper functions
+//    that load vertices, faces, and lines from a file in OBJ format.
+// 4. The LoadName function is a helper function that loads the name of the 
+//    model from a file in OBJ format.
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+// -----------------------------------------------------------
 
 
 class Model3DObjImporter : public Model3DImporter

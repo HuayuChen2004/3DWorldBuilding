@@ -14,10 +14,6 @@
 //         from the viewer to the controller
 // -----------------------------------------------------------
 
-
-// this is the header file for the Argument class
-// this class is used to store the arguments 
-
 #ifndef ARGUMENT_HPP
 #define ARGUMENT_HPP
 
@@ -26,10 +22,34 @@
 
 using namespace std;
 
+// notes for the Argument class
+// -----------------------------------------------------------
+// [class name] : Argument
+// [function] : store the arguments passed from the viewer to the controller
+// [notes on interface] :
+// 1. the arguments are stored as a key-value pair, where the key is the
+//    argument name and the value is a vector of strings that contains the
+//    arguments passed
+// 2. there are constant getters to get the key and values
+// 3. the key is an enum class that defines all the possible argument names
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+// -----------------------------------------------------------
 
 class Argument
 {
 public:
+    // notes for the ArgumentKey enum class
+    // -----------------------------------------------------------
+    // [enum class name] : ArgumentKey
+    // [function] : define all the possible argument names
+    // [author] : Huayu Chen
+    // [notes on interface] :
+    // 1. this is an enum class that defines all the possible argument names
+    //    so there are no member variables or functions
+    // 2. add new argument names if the program needs to support more commands
+    // [date] : 2024/8/3
+    // -----------------------------------------------------------
     enum class ArgumentKey {
         IMPORT_3D_MODEL,
         EXPORT_3D_MODEL,

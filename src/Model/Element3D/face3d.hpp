@@ -12,9 +12,7 @@
 //       add some common math functions
 // reason: to support various operations on face3d
 // -----------------------------------------------------------
-// the header file of the class Face3D
-// the class Face3D is a class that represents a 
-// face in a three-dimensional space
+
 #ifndef FACE3D_HPP
 #define FACE3D_HPP
 
@@ -27,6 +25,21 @@
 #include "fixedsizepoint3dcontainer.hpp"
 
 using namespace std;
+
+// notes about the class Face3D
+// -----------------------------------------------------------
+// [class name] : Face3D
+// [function] : represent a face in a three-dimensional space
+// [notes on interface] :
+// 1. the face is defined by three points or two lines or a point and a line
+// 2. the face has some common geometric operations such as distance calculation
+//    and angle calculation
+// 3. the class is derived from the FixedSizePoint3DContainer class, which means
+//    that the face can be represented by a fixed number of points
+// [author] : Huayu Chen
+// [date] : 2024/8/2
+// -----------------------------------------------------------
+
 
 class Face3D : public FixedSizePoint3DContainer
 {

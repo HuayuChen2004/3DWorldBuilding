@@ -12,8 +12,6 @@
 // reason: to support exporting 3D models to files
 // -----------------------------------------------------------
 
-// this is the header file for the Model3DExporter class
-// the class Model3DExporter is a class that exports 3D models to files
 #ifndef EXPORTER_HPP
 #define EXPORTER_HPP
 
@@ -21,6 +19,20 @@
 #include "../Model3D/model3d.hpp"
 
 using namespace std;
+
+// notes on the class Model3DExporter
+// -----------------------------------------------------------
+// [class name] : Model3DExporter
+// [function] : export 3D models to files
+// [notes on interface] :
+// 1. The Model3DExporter class is a class that exports 3D models to files
+// 2. The Model3DExporter class is an abstract class, so it needs to be derived
+//    to implement the Save function
+// 3. The Save function is a pure virtual function that needs to be implemented
+//    by derived classes
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+// -----------------------------------------------------------
 
 class Model3DExporter
 {

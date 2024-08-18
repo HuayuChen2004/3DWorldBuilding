@@ -22,18 +22,7 @@
 // reason: to support more operations on points and lines and faces
 //         and to make the code more readable and efficient
 // -----------------------------------------------------------
-// date: 2024/8/1
-// author: Huayu Chen
-//
-//
-//// the header file of the class Point3D
-// the class Point3D is a class that represents a point in a three-dimensional space
-// a point3d can be initiated with a 3d vector
-// some vector operations can also be used on points
-//
-//
-//
-//
+
 #ifndef POINT3D_HPP
 #define POINT3D_HPP
 
@@ -44,6 +33,20 @@
 
 using namespace std;
 
+// notes about the class Point3D
+// -----------------------------------------------------------
+// [class name] : Point3D
+// [function] : represent a point in a three-dimensional space
+// [notes on interface] :
+// 1. the point3d is defined by three coordinates, and can be initialized
+//    with a vector object or another point3d object
+// 2. the point3d class is derived from the Point class, which means that 
+//    the point3d class shares some common operations with the Point class
+// 3. there are const reference members for the x, y, and z coordinates
+//    and setter functions for the x, y, and z coordinates
+// [author] : Huayu Chen
+// [date] : 2024/8/2
+// -----------------------------------------------------------
 
 class Point3D: public Point
 {

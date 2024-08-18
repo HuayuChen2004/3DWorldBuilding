@@ -33,11 +33,6 @@
 //         and to support singleton pattern
 // -----------------------------------------------------------
 
-// the class controller is a class that controls the 3D model
-// and interacts with the viewer
-// the class controller has functions to operate the model
-// and functions to interact with the viewer
-
 #ifndef CONTROLLER_HPP
 #define CONTROLLER_HPP
 
@@ -53,6 +48,22 @@
 #include "../Message/response.hpp"
 
 using namespace std;
+
+// notes on the class controller
+// -----------------------------------------------------------
+// [class name] : Controller
+// [function] : control the operations on the 3D model
+//              and interact with the viewer
+// [notes on interface] : 
+// 1. The controller class in this program 
+//    is a class with only one instance, so the constructor is private
+//    and the only way to get an instance of the controller is to call the 
+//    static GetInstance() function.
+// 2. The operations on the model are encapsulated in the HandleArguments 
+//    function. Supported operations can be found in the Argument class.
+// [author] : Huayu Chen
+// [date] : 2024/7/31
+// -----------------------------------------------------------
 
 class Controller
 {

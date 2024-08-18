@@ -18,9 +18,6 @@
 // reason: to support converting the container to a string 
 //         for display and output to a stream
 // -----------------------------------------------------------
-// 
-// this is a container for a fixed number of 3D points
-// it is the base class for line3d and face3d
 
 #ifndef FIXEDSIZEPOINT3DCONTAINER_HPP
 #define FIXEDSIZEPOINT3DCONTAINER_HPP
@@ -32,6 +29,24 @@
 #include "point3d.hpp"
 
 using namespace std;
+
+// notes for the FixedSizePoint3DContainer class
+// -----------------------------------------------------------
+// [class name] : FixedSizePoint3DContainer
+// [function] : store a fixed number of 3D points in a container
+// [notes on interface] :
+// 1. since the container is fixed size, the number of points in the container
+//    is determined by the size of the vector passed to the constructor, and 
+//    cannot be changed, so there is no function to add or delete points.
+// 2. there are constant getters to get the points and a point by index, and 
+//    a function to modify a point by index.
+// 3. there is a function to convert the container to a vector of strings, 
+//    each string represents a point.
+// 4. the container can be output to a stream.
+// [author] : Huayu Chen
+// [date] : 2024/8/2
+// -----------------------------------------------------------
+
 
 class FixedSizePoint3DContainer
 {
