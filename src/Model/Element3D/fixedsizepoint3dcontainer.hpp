@@ -52,6 +52,8 @@ class FixedSizePoint3DContainer
 {
 public:
     // constructor, init with a vector of points
+    // no default constructor, the size of the container is determined by the 
+    // size of the vector passed to the constructor
     FixedSizePoint3DContainer(const vector<Point3D>& points);
     // copy constructor
     FixedSizePoint3DContainer(const FixedSizePoint3DContainer& container);
@@ -85,11 +87,6 @@ private:
     // and the size of the container
     vector<Point3D> m_points;
     unsigned int m_uiSize;
-
-    // convert a vector of strings to a vector of points
-    static vector<Point3D> StringsToPoints(const vector<string>& pointStrings);
-    // convert a string to a point
-    static Point3D StringToPoint(const string& pointString);
 };
 
 #endif // FIXEDSIZEPOINT3DCONTAINER_HPP

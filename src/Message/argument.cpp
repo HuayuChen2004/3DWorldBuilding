@@ -18,30 +18,51 @@
 
 using namespace std;
 
-
-// this is the implementation file for the Argument class
-// this class is used to store the arguments passed from the 
-// viewer to the controller
-// the arguments are stored as a key-value pair, where the key is the 
-// argument name and the value is a vector of strings
-// the key is an enum class that defines all the possible argument names
-// the values are the actual values passed for that argument
-
-
-
+// -----------------------------------------------------------
+// [name] : Argument
+// [function] : constructor of the Argument class
+// [input] : a key of class ArgumentKey and a vector of strings
+// [output] : none
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+// -----------------------------------------------------------
 Argument::Argument(ArgumentKey key, vector<string> values) : 
                 m_key(key), m_values(values) {}
 
+// -----------------------------------------------------------
+// [name] : GetKey
+// [function] : get the key of the argument
+// [input] : none
+// [output] : the key of the argument
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+// -----------------------------------------------------------
 Argument::ArgumentKey Argument::GetKey() const
 {
     ArgumentKey key = m_key;
     return key;
 }
 
+// -----------------------------------------------------------
+// [name] : GetValues
+// [function] : get the values of the argument
+// [input] : none
+// [output] : a copy of the values of the argument
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+// -----------------------------------------------------------
 vector<string> Argument::GetValues() const
 {
     vector<string> valuesCopy = m_values;
     return valuesCopy;
 }
 
+// -----------------------------------------------------------
+// [name] : ~Argument
+// [function] : virtual destructor of the Argument class
+// [input] : none
+// [output] : none
+// [author] : Huayu Chen
+// [date] : 2024/8/3
+// -----------------------------------------------------------
 Argument::~Argument() {}

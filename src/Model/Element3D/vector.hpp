@@ -55,6 +55,8 @@ private:
     unsigned int m_uiDim;
 
 public:
+    // default constructor that initializes the vector with a single dimension
+    Vector();
     // constructor that initializes the vector with a vector of doubles
     Vector(const vector<double>& data);
     // copy constructor that initializes the vector from another vector

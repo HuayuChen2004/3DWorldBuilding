@@ -16,6 +16,22 @@
 
 #include "model3dexporter.hpp"
 
+// -----------------------------------------------------------
+// [name] : Model3DExporter
+// [function] : constructor for Model3DExporter class
+// [input] : none
+// [output] : none
+// [author] : Huayu Chen
+// [date] : 2024/8/4
+// -----------------------------------------------------------
 Model3DExporter::Model3DExporter() {}
 
+// -----------------------------------------------------------
+// [name] : ~Model3DExporter
+// [function] : destructor for Model3DExporter class
+// [input] : none
+// [output] : none
+// [author] : Huayu Chen
+// [date] : 2024/8/4
+// -----------------------------------------------------------
 Model3DExporter::~Model3DExporter() {}

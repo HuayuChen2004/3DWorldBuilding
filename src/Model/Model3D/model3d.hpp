@@ -23,13 +23,6 @@
 // reason: to make the code more readable and efficient
 // -----------------------------------------------------------
 
-// this is the header file of Model3D class
-// the class Model3D is a class that represents a 3D model 
-// in a three-dimensional space
-// a model3d can be initiated with a vector of faces and a vector of lines
-// some operations can also be used on model3d
-
-
 #ifndef MODEL3D_HPP
 #define MODEL3D_HPP
 
@@ -57,8 +50,12 @@ using namespace std;
 
 class Model3D {
 public:
+    // default constructor
+    Model3D();
     // constructor, initiate a model3d with faces and lines and a name
     Model3D(vector<Face3D> faces, vector<Line3D> lines, const string& name="");
+    // copy constructor
+    Model3D(const Model3D& model);
     // virtual destructor
     virtual ~Model3D();
     // assignment operator
@@ -102,21 +99,5 @@ private:
     bool FindLine(const Line3D& line) const;
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif // MODEL3D_HPP

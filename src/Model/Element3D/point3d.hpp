@@ -51,6 +51,8 @@ using namespace std;
 class Point3D: public Point
 {
 public:
+    // default constructor
+    Point3D();
     // constructor that initializes the point with x, y, and z coordinates
     Point3D(double x, double y, double z);  
     // constructor that initializes the point using a vector of coordinates

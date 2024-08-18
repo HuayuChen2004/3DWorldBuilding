@@ -80,6 +80,8 @@ private:
     static Controller* m_instance;
     // private constructor, since it is a singleton pattern
     Controller() {} 
+    // destructor
+    ~Controller();
     // delete copy constructor and assignment operator
     Controller(const Controller&) = delete; 
     void operator=(const Controller&) = delete; 
@@ -105,6 +107,10 @@ private:
     // other functions about displaying the model is implemented in the viewer
     // support operations on only one model 
     shared_ptr<Model3D> m_model;
+    // convert a vector of strings to a vector of points
+    static vector<Point3D> StringsToPoints(const vector<string>& pointStrings);
+    // convert a string to a point
+    static Point3D StringToPoint(const string& pointString);
 };
 
 #endif // CONTROLLER_HPP

@@ -55,6 +55,8 @@ using namespace std;
 class Line3D : public FixedSizePoint3DContainer
 {
 public:
+    // constructor 0: default constructor
+    Line3D();
     // constructor 1: init with two points
     Line3D(const Point3D& point1, const Point3D& point2);
     // constructor 2: init with two points in a vector
@@ -75,13 +77,13 @@ public:
     // check if the current line is perpendicular to another line.
     bool IsPerpendicular(const Line3D& line) const;
     // check if the current line is coincident (identical) with another line.
-    bool Iscoincident(const Line3D& line) const;
+    bool IsCoincidentTo(const Line3D& line) const;
     // check if a given point lies on the current line.
     bool IsPointOnLine(const Point3D& point) const;
     // check if the current line and another line lie on the same plane.
     bool OnSamePlane(const Line3D& line) const;
     // calculate the angle between the current line and another line.
-    double Angle(const Line3D& line) const;
+    double AngleFrom(const Line3D& line) const;
     // static method to calculate the angle between two lines.
     static double Angle(const Line3D& line1, const Line3D& line2);
     // static method to calculate the distance between two lines.

@@ -44,6 +44,8 @@ using namespace std;
 class Face3D : public FixedSizePoint3DContainer
 {
 public:
+    // constructor 0: default constructor
+    Face3D();
     // constructor 1: three points
     Face3D(const Point3D& point1, const Point3D& point2, const Point3D& point3);
     // constructor 2: a point and a line
@@ -64,7 +66,7 @@ public:
     // check if the face is perpendicular to another face
     bool IsPerpendicular(const Face3D& face) const;
     // check if the face is coincident with another face
-    bool IsCoincident(const Face3D& face) const;
+    bool IsCoincidentTo(const Face3D& face) const;
     // check if a point is on the face plane
     bool IsPointOnFacePlane(const Point3D& point) const;
     // calculate the angle between two faces

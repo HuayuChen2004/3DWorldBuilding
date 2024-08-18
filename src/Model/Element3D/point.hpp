@@ -57,6 +57,9 @@ using namespace std;
 class Point
 {
 public:
+    // default constructor that initializes a point at the origin
+    // with a dimension of 1
+    Point();
     // constructor that initializes a point with a vector of coordinates
     Point(const vector<double>& coords);  
     // copy constructor that initializes a point from another point

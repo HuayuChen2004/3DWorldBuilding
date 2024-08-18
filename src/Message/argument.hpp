@@ -79,7 +79,6 @@ private:
     // private member variables, key and values
     ArgumentKey m_key;
     vector<string> m_values;
-
 };
 
 #endif // ARGUMENT_HPP
